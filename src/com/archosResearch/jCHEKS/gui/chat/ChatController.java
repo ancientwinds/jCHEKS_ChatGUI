@@ -8,13 +8,11 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.scene.control.*;
-import javafx.collections.ObservableList;
-import javafx.*;
 /**
  *
  * @author Michael Roussel <rousselm4@gmail.com>
  */
-public class Controller extends Application{
+public class ChatController extends Application{
     private Stage primaryStage;
     private BorderPane rootLayout;
     
@@ -38,7 +36,7 @@ public class Controller extends Application{
     public void initRootLayout() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Controller.class.getResource("view/gui.fxml"));
+            loader.setLocation(ChatController.class.getResource("view/gui.fxml"));
             rootLayout = (BorderPane) loader.load();
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
@@ -62,7 +60,8 @@ public class Controller extends Application{
 
     @FXML
     private void handleSendButton(){
-        messageOutput.appendText(messageInput.getText()+"\n");
+        messageOutput.appendText("You >> ");
+        messageOutput.appendText(messageInput.getText() + "\n");
     }
     
 }
