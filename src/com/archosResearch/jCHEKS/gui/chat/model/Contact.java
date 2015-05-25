@@ -10,16 +10,16 @@ package com.archosResearch.jCHEKS.gui.chat.model;
  * @author Michael Roussel <rousselm4@gmail.com>
  */
 public class Contact {
-    private String name;
-    private int senderChaoticSystemId;
-    private int receiverChaoticSystemId;
-    //private AbstractCommunicator communicator;
-    //private AbstractEncrypter encrypter;
+    private final String name;
+    //private final int senderChaoticSystemId;
+    //private final int receiverChaoticSystemId;
+    //private final AbstractCommunicator communicator;
+    //private final AbstractEncrypter encrypter;
     
-    public Contact(String aName, int aSenderChaoticSystemId, int aReceiverChaoticSystemId){
+    public Contact(String aName/*, int aSenderChaoticSystemId, int aReceiverChaoticSystemId*/){
         this.name = aName;
-        this.senderChaoticSystemId = aSenderChaoticSystemId;
-        this.receiverChaoticSystemId = aReceiverChaoticSystemId;
+        //this.senderChaoticSystemId = aSenderChaoticSystemId;
+        //this.receiverChaoticSystemId = aReceiverChaoticSystemId;
     }
     
     public String getName(){
