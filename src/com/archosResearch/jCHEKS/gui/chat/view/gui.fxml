@@ -7,10 +7,10 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
    <bottom>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="61.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <TextArea prefHeight="100.0" prefWidth="535.0" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="64.0" text="Send" />
+            <TextArea prefHeight="44.0" prefWidth="535.0" />
+            <Button mnemonicParsing="false" prefHeight="102.0" prefWidth="64.0" text="Send" />
          </children>
       </HBox>
    </bottom>

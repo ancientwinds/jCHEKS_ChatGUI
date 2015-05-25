@@ -1,4 +1,5 @@
-package com.archosResearch.jCHEKS.gui.chat;
+package com.archosResearch.jCHEKS.gui.chat.model;
+import com.archosResearch.jCHEKS.gui.chat.model.Contact;
 import java.util.ArrayList;
 /**
  *
@@ -11,11 +12,11 @@ public class ContactCollection {
         this.contacts = new ArrayList<Contact>();
     }
     
-    public Contact findByName(String aName) throws UserNotFoundException{
+    public Contact findByName(String aName) throws ContactNotFoundException{
         for(Contact contact: this.contacts){
             if(contact.getName().equals(aName)){ return contact;}
         }  
-        throw new UserNotFoundException();
+        throw new ContactNotFoundException();
     }
     
 }
