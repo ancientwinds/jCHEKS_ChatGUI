@@ -6,4 +6,5 @@ package com.archosResearch.jCHEKS.gui.chat;
  */
 public class Temp {
     public String temp;
+    public String temp2;
 }
