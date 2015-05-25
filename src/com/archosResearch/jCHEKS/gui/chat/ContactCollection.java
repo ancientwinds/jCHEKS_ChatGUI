@@ -11,7 +11,7 @@ public class ContactCollection {
         this.contacts = new ArrayList<Contact>();
     }
     
-    public Contact findByName(String aName){
+    public Contact findByName(String aName) throws UserNotFoundException{
         for(Contact contact: this.contacts){
             if(contact.getName().equals(aName)){ return contact;}
         }  
