@@ -1,6 +1,7 @@
 package com.archosResearch.jCHEKS.gui.chat;
 import java.io.IOException;
 
+import javafx.fxml.FXML;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -52,4 +53,9 @@ public class Controller extends Application{
         launch(args);
     }
 
+    @FXML
+    private void handleSendButton(){
+        System.out.println("SEND");
+    }
+    
 }
