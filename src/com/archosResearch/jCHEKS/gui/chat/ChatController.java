@@ -60,8 +60,8 @@ public class ChatController extends Application{
 
     @FXML
     private void handleSendButton(){
-        messageOutput.appendText("You >> ");
-        messageOutput.appendText(messageInput.getText() + "\n");
+        messageOutput.appendText("You >> " + messageInput.getText() + "\n");
+        messageInput.setText("");
     }
     
 }
