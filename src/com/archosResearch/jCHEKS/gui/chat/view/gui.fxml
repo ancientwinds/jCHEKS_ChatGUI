@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.archosResearch.jCHEKS.gui.chat.Controller">
    <bottom>
       <HBox prefHeight="61.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <TextArea prefHeight="44.0" prefWidth="535.0" />
+            <TextArea fx:id="messageInput" prefHeight="44.0" prefWidth="535.0" promptText="Write your message here..." />
             <Button mnemonicParsing="false" onAction="#handleSendButton" prefHeight="102.0" prefWidth="64.0" text="Send" />
          </children>
       </HBox>
    </bottom>
    <center>
-      <ListView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <TextArea fx:id="messageOutput" editable="false" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </TextArea>
    </center>
 </BorderPane>

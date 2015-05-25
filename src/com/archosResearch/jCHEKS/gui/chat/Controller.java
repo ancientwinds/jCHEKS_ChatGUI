@@ -5,10 +5,11 @@ import javafx.fxml.FXML;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
+import javafx.scene.control.*;
+import javafx.collections.ObservableList;
+import javafx.*;
 /**
  *
  * @author Michael Roussel <rousselm4@gmail.com>
@@ -16,6 +17,12 @@ import javafx.stage.Stage;
 public class Controller extends Application{
     private Stage primaryStage;
     private BorderPane rootLayout;
+    
+    @FXML
+    private TextArea messageOutput;
+    
+    @FXML
+    private TextArea messageInput;
     
     @Override
     public void start(Stage primaryStage) {
@@ -55,7 +62,7 @@ public class Controller extends Application{
 
     @FXML
     private void handleSendButton(){
-        System.out.println("SEND");
+        messageOutput.appendText(messageInput.getText()+"\n");
     }
     
 }
