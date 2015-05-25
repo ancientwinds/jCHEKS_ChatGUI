@@ -22,4 +22,7 @@ public class Contact {
         this.receiverChaoticSystemId = aReceiverChaoticSystemId;
     }
     
+    public String getName(){
+        return this.name;
+    }
 }
