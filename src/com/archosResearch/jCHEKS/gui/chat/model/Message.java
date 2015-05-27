@@ -6,6 +6,19 @@ package com.archosResearch.jCHEKS.gui.chat.model;
  */
 public class Message {
     private String content;
-    private String sender;
+    private Contact sender;
     //private EState state; (Enum of state)
+    
+    public Message(Contact aSender, String aContent /*, EState state */){
+        this.sender = aSender;
+        this.content = aContent;
+    }
+    
+    public String getContent(){
+        return this.content;
+    }
+    
+    public String getSenderName(){
+        return this.sender.getName();
+    }
 }
