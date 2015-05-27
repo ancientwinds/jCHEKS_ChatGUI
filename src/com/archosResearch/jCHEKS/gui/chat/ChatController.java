@@ -1,6 +1,7 @@
 package com.archosResearch.jCHEKS.gui.chat;
 
 import com.archosResearch.jCHEKS.gui.chat.model.Message;
+import com.archosResearch.jCHEKS.gui.chat.model.Contact;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.application.Application;
@@ -22,6 +23,13 @@ public class ChatController extends Application implements ModelObserver{
     
     @FXML
     private TextArea messageInput;
+    
+    /**
+     * HARDCODED VALUES
+     */
+    private final Contact ME = new Contact("Alice");
+    private final Contact HIM = new Contact("Bob");
+
     
     @Override
     public void start(Stage primaryStage) {
@@ -64,7 +72,7 @@ public class ChatController extends Application implements ModelObserver{
     
     @Override
     public void newMessageSent(Message aMessage){
-        
+        System.out.println(aMessage); //Debug purpose
     }
-    
+      
 }
