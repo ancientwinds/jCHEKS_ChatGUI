@@ -1,6 +1,7 @@
 package com.archosResearch.jCHEKS.gui.chat;
-import java.io.IOException;
 
+import com.archosResearch.jCHEKS.gui.chat.model.Message;
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,10 +13,10 @@ import javafx.scene.control.*;
  *
  * @author Michael Roussel <rousselm4@gmail.com>
  */
-public class ChatController extends Application{
+public class ChatController extends Application implements ModelObserver{
     private Stage primaryStage;
     private BorderPane rootLayout;
-    
+    private AppController appController;
     @FXML
     private TextArea messageOutput;
     
@@ -26,13 +27,10 @@ public class ChatController extends Application{
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Chat");
-
+        this.appController = new AppController();
         initRootLayout();
     }
 
-    /**
-     * Initializes the root layout.
-     */
     public void initRootLayout() {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -64,5 +62,9 @@ public class ChatController extends Application{
         messageInput.setText("");
     }
     
+    @Override
+    public void newMessageSent(Message aMessage){
+        
+    }
     
 }
