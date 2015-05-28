@@ -9,9 +9,9 @@ public class Message {
     private Contact sender;
     //private EState state; (Enum of state)
     
-    public Message(Contact aSender, String aContent /*, EState state */){
-        this.sender = aSender;
-        this.content = aContent;
+    public Message(Contact sender, String content /*, EState state */){
+        this.sender = sender;
+        this.content = content;
     }
     
     public String getContent(){

@@ -17,5 +17,10 @@ public class Model extends ModelObservable{
         this.map.put(new Contact(contactName), new MessageCollection());
         this.contactCollection.add(new Contact(contactName));
     }
+    
+    public void addMessage(Contact contact, Message message){
+        MessageCollection messageCollection = this.map.get(contact);
+        messageCollection.addMessage(message);
+    }
 
 }
