@@ -21,6 +21,7 @@ public class ChatController extends Application implements Observer{
     private Stage primaryStage;
     private BorderPane rootLayout;
     private AppController appController;
+    
     @FXML
     private TextArea messageOutput;
     
