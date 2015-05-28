@@ -19,5 +19,9 @@ public class ContactCollection {
         }  
         throw new ContactNotFoundException();
     }
+
+    void add(Contact contact) {
+        this.contacts.add(contact);
+    }
     
 }
