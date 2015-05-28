@@ -4,8 +4,6 @@ import com.archosResearch.jCHEKS.gui.chat.AppController;
 import com.archosResearch.jCHEKS.gui.chat.model.Message;
 import com.archosResearch.jCHEKS.gui.chat.model.Contact;
 import com.archosResearch.jCHEKS.gui.chat.model.ModelObserver;
-import java.util.Observer;
-import java.util.Observable;
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 import javafx.fxml.FXML;
@@ -15,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.scene.control.*;
+
 /**
  *
  * @author Michael Roussel <rousselm4@gmail.com>
@@ -22,10 +21,9 @@ import javafx.scene.control.*;
 public class ChatController extends Application implements ModelObserver{
     private static final CountDownLatch latch = new CountDownLatch(1);
     private static ChatController instance = null;
-    
+    private AppController appController;
     private Stage primaryStage;
     private BorderPane rootLayout;
-    private AppController appController;
     
     @FXML
     private TextArea messageOutput;
@@ -36,10 +34,10 @@ public class ChatController extends Application implements ModelObserver{
     private final String remoteContact = "Bob"; //Hardcoded
     
     public ChatController(){
-        setup(this);
+        setInstance(this);
     }
     
-    public static void setup(ChatController instance){
+    private static void setInstance(ChatController instance){
         ChatController.instance = instance;
         latch.countDown();
     }
@@ -48,7 +46,6 @@ public class ChatController extends Application implements ModelObserver{
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Chat");
-        this.appController = new AppController();
         initRootLayout();
     }
 
@@ -65,13 +62,10 @@ public class ChatController extends Application implements ModelObserver{
         }
     }
 
-    
-
     @FXML
     private void handleSendButton(){
         displayOwnMessage();
         resetInputField();
-        //TODO hook appController
     }
     
     private void displayOwnMessage(){
@@ -86,13 +80,13 @@ public class ChatController extends Application implements ModelObserver{
         messageInput.setText("");
     }
  
-    
-    public static ChatController getInstance(){
+    public static ChatController getInstance(AppController appController){
         try{
             latch.await();
         }catch(InterruptedException e){
             e.printStackTrace();
         }
+        instance.appController = appController;
         return instance;
     }
 

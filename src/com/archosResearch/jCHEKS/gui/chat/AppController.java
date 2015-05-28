@@ -15,7 +15,7 @@ public class AppController {
     
     public AppController(){
         this.model = new Model();
-        this.chatController = ChatController.getInstance();
+        this.chatController = ChatController.getInstance(this);
         this.model.addObserver(this.chatController);
         //this.model.addContact();
     }
