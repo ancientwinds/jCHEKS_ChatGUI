@@ -20,4 +20,17 @@ public class ModelObservable{
     public void removeObserver(ModelObserver observer){
         this.observers.remove(observer);
     }
+    
+    public void notifyNewMessageSent(Contact contact, Message message){
+        for (ModelObserver observer : observers) {
+            observer.newMessageSent(contact, message);
+        }
+    }
+    
+    public void notifyNewMessageReceived(Message message){
+        for (ModelObserver observer : observers) {
+            observer.newMessageReceived(message);
+        }
+    }
+    
 }
