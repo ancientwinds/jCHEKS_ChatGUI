@@ -1,5 +1,6 @@
-package com.archosResearch.jCHEKS.gui.chat;
+package com.archosResearch.jCHEKS.gui.chat.view;
 
+import com.archosResearch.jCHEKS.gui.chat.AppController;
 import com.archosResearch.jCHEKS.gui.chat.model.Message;
 import com.archosResearch.jCHEKS.gui.chat.model.Contact;
 import java.util.Observer;
@@ -44,7 +45,7 @@ public class ChatController extends Application implements Observer{
     public void initRootLayout() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(ChatController.class.getResource("view/gui.fxml"));
+            loader.setLocation(ChatController.class.getResource("gui.fxml"));
             rootLayout = (BorderPane) loader.load();
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
