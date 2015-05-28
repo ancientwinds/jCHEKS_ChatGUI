@@ -23,6 +23,13 @@ public class ContactCollectionTest {
         assertNotNull(aContactCollection);
     }
     
+    @Test
+    public void constructor_with_contact_array_as_parameter_should_create_the_contact_list(){
+        ContactCollection aContactCollection = null;
+        aContactCollection = new ContactCollection(new Contact[]{new Contact("Alice"), new Contact("Bob")});
+        assertNotNull(aContactCollection);
+    }
+    
     @Test (expected=ContactNotFoundException.class)
     public void testFindByName() throws ContactNotFoundException{
         ContactCollection instance = new ContactCollection();
