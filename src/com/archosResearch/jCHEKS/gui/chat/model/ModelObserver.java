@@ -1,4 +1,4 @@
-package com.archosResearch.jCHEKS.gui.chat;
+package com.archosResearch.jCHEKS.gui.chat.model;
 
 import com.archosResearch.jCHEKS.gui.chat.model.Message;
 /**
