@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 /**
  *
- * @author rousselm4
+ * @author Michael Roussel <rousselm4@gmail.com>
  */
 public class MessageCollection extends Observable{
     private final ArrayList<Message> messages;
@@ -19,5 +19,8 @@ public class MessageCollection extends Observable{
 	this.notifyObservers(aMessage);
     }
     
-    
+    public ArrayList<Message> getAllMessages(){
+        return this.messages;
+    }
+
 }

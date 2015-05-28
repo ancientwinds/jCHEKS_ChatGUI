@@ -28,12 +28,7 @@ public class ChatController extends Application implements Observer{
     @FXML
     private TextArea messageInput;
     
-    /**
-     * HARDCODED VALUES
-     */
-    private final Contact ME = new Contact("Alice");
-    private final Contact HIM = new Contact("Bob");
-
+    private final String remoteContact = "Bob"; //Hardcoded
     
     @Override
     public void start(Stage primaryStage) {
@@ -64,6 +59,7 @@ public class ChatController extends Application implements Observer{
     private void handleSendButton(){
         displayOwnMessage();
         resetInputField();
+        //TODO hook appController
     }
     
     private void displayOwnMessage(){
