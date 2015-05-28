@@ -10,7 +10,7 @@ import com.archosResearch.jCHEKS.gui.chat.view.JavaFxLauncher;
  */
 public class AppController {
     
-    private Model model;
+    private final Model model;
     private final ChatController chatController;
     
     public AppController(){
@@ -28,6 +28,4 @@ public class AppController {
         new JavaFxLauncher();
         new AppController();
     }
-}
-
-                
+}              
