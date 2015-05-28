@@ -8,13 +8,12 @@ import java.util.ArrayList;
 public class ContactCollection {
     private ArrayList<Contact> contacts;
     //TODO Resolve conflict between this two methods
-    /*
     public ContactCollection(Contact... contacts) {
         this.contacts = new ArrayList<Contact>();
         for (Contact contact : contacts) {
             this.contacts.add(contact);
         }
-    }
+    }/*
     public ContactCollection(Contact[] contacts) {
         this.contacts = new ArrayList<Contact>();
         for (Contact contact : contacts) {
