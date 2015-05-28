@@ -2,6 +2,8 @@ package com.archosResearch.jCHEKS.gui.chat;
 
 import com.archosResearch.jCHEKS.gui.chat.model.Message;
 import com.archosResearch.jCHEKS.gui.chat.model.Contact;
+import java.util.Observer;
+import java.util.Observable;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.application.Application;
@@ -14,7 +16,7 @@ import javafx.scene.control.*;
  *
  * @author Michael Roussel <rousselm4@gmail.com>
  */
-public class ChatController extends Application implements ModelObserver{
+public class ChatController extends Application implements Observer{
     private Stage primaryStage;
     private BorderPane rootLayout;
     private AppController appController;
@@ -63,7 +65,11 @@ public class ChatController extends Application implements ModelObserver{
     }
     
     private void displayOwnMessage(){
-         messageOutput.appendText("You >> " + messageInput.getText() + "\n");
+        messageOutput.appendText("You >> " + messageInput.getText() + "\n");
+    }
+    
+    private void displayMessage(Message aMessage){
+        messageOutput.appendText(aMessage.getSenderName() + " >> " + aMessage.getContent() + "\n");
     }
     
     private void resetInputField(){
@@ -71,8 +77,7 @@ public class ChatController extends Application implements ModelObserver{
     }
     
     @Override
-    public void newMessageSent(Message aMessage){
-        System.out.println(aMessage); //Debug purpose
+    public void update(Observable aMessageCollection, Object aMessage) {
+        this.displayMessage((Message)aMessage);
     }
-      
 }
