@@ -87,11 +87,11 @@ public class ChatController extends Application implements ModelObserver{
             }catch(InterruptedException e){
                 e.printStackTrace();
             }
-            instance.appController = appController;
         }
+        instance.appController = appController;
         return instance;
     }
-
+    
     @Override
     public void newMessageSent(Contact contact, Message message) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
