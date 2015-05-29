@@ -81,12 +81,14 @@ public class ChatController extends Application implements ModelObserver{
     }
  
     public static ChatController getInstance(AppController appController){
-        try{
-            latch.await();
-        }catch(InterruptedException e){
-            e.printStackTrace();
+        if(instance.appController == null){
+            try{
+                latch.await();
+            }catch(InterruptedException e){
+                e.printStackTrace();
+            }
+            instance.appController = appController;
         }
-        instance.appController = appController;
         return instance;
     }
 
