@@ -9,8 +9,8 @@ import java.util.Observable;
 public class MessageCollection extends Observable{
     private final ArrayList<Message> messages;
     
-    public MessageCollection(){
-        this.messages = new ArrayList<>();
+    public MessageCollection(ArrayList messages){
+        this.messages = messages;
     }
     
     public void addMessage(Message aMessage){
