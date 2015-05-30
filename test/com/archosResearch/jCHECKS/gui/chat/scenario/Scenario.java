@@ -17,6 +17,11 @@ public class Scenario {
     
     @Test
     public void scenario1() {
-        new AppController(/* new CHECKSEngine(),*/new Model(new ContactCollection(new ArrayList()), new HashMap<>(), new ArrayList()), ViewController.getInstance());
+        ArrayList contactList = new ArrayList();
+        HashMap hashMap = new HashMap<>();
+        ContactCollection contactCollection = new ContactCollection(contactList);
+        Model model = new Model(contactCollection, hashMap, contactList); 
+        ViewController viewController = ViewController.getInstance();
+        new AppController(model, viewController);
     }
 }
