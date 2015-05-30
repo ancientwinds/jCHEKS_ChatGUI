@@ -15,7 +15,15 @@ public class Model extends ModelObservable{
     
     public void addContact(String contactName){
         this.map.put(new Contact(contactName), new MessageCollection());
-        this.contactCollection.add(new Contact(contactName));
+        try{
+            this.contactCollection.add(new Contact(contactName));
+        }
+        catch(ContactAlreadyExist e){
+            e.printStackTrace();
+        }
+        catch(NameOfContactAlreadyExistInContacts e){
+            e.printStackTrace();
+        } 
     }
     
     public void addMessage(Contact contact, Message message){
