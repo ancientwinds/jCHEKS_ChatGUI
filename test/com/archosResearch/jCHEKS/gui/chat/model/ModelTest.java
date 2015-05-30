@@ -1,5 +1,6 @@
 package com.archosResearch.jCHEKS.gui.chat.model;
 
+import java.util.HashMap;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -12,14 +13,14 @@ public class ModelTest {
     @Test
     public void constructor_should_construct_the_model() {
         Model model = null;
-        model = new Model();
+        model = new Model(new ContactCollection(), new HashMap());
         assertNotNull(model);
     }
 
     @Test (expected=ContactAlreadyExistException.class)
     public void addContact_should_throws_ContactAlreadyExistException() {
         String contactName = "Alice";
-        Model model = new Model();
+        Model model = new Model(new ContactCollection(), new HashMap());
         model.addContact(contactName);
         model.addContact(contactName);
     }

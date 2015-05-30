@@ -12,18 +12,16 @@ public class Model extends ModelObservable {
     private final ContactCollection contactCollection;
     private final HashMap<Contact, MessageCollection> map;
 
-    public Model() {
-        this.contactCollection = new ContactCollection();
-        this.map = new HashMap<>();
+    public Model(ContactCollection contactCollection, HashMap map) {
+        this.contactCollection = contactCollection;
+        this.map = map;
     }
 
     public void addContact(String contactName) {
         try {
             this.contactCollection.add(new Contact(contactName));
             this.map.put(new Contact(contactName), new MessageCollection());
-        } catch (ContactAlreadyExistException e) {
-            e.printStackTrace();
-        } catch (NameOfContactAlreadyExistInContactsException e) {
+        } catch (ContactAlreadyExistException | NameOfContactAlreadyExistInContactsException e) {
             e.printStackTrace();
         }
     }
