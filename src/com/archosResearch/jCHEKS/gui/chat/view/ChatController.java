@@ -52,7 +52,7 @@ public class ChatController extends Application implements ModelObserver{
     public void initRootLayout() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(ChatController.class.getResource("gui.fxml"));
+            loader.setLocation(ChatController.class.getResource("chat.fxml"));
             rootLayout = (BorderPane) loader.load();
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
