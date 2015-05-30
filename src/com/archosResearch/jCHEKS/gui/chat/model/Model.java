@@ -12,7 +12,8 @@ public class Model extends ModelObservable {
     private final ContactCollection contactCollection;
     private final HashMap<Contact, MessageCollection> map;
 
-    public Model(ContactCollection contactCollection, HashMap map) {
+    public Model(ContactCollection contactCollection, HashMap map, ArrayList<ModelObserver> observers) {
+        super(observers);
         this.contactCollection = contactCollection;
         this.map = map;
     }

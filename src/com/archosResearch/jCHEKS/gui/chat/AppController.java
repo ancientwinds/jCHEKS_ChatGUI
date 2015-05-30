@@ -33,6 +33,6 @@ public class AppController {
     }
     
     public static void main(String args[]){
-        new AppController(/* new CHECKSEngine(),*/new Model(new ContactCollection(new ArrayList()), new HashMap<>()), ViewController.getInstance());
+        new AppController(/* new CHECKSEngine(),*/new Model(new ContactCollection(new ArrayList()), new HashMap<>(), new ArrayList()), ViewController.getInstance());
     }
 }              

@@ -17,6 +17,6 @@ public class Scenario {
     
     @Test
     public void scenario1() {
-        new AppController(/* new CHECKSEngine(),*/new Model(new ContactCollection(new ArrayList()), new HashMap<>()), ViewController.getInstance());
+        new AppController(/* new CHECKSEngine(),*/new Model(new ContactCollection(new ArrayList()), new HashMap<>(), new ArrayList()), ViewController.getInstance());
     }
 }
