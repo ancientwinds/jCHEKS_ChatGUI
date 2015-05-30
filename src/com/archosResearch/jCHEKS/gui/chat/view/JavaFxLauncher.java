@@ -9,7 +9,7 @@ public class JavaFxLauncher {
         new Thread(){
             @Override
             public void run(){
-                javafx.application.Application.launch(ChatController.class);
+                javafx.application.Application.launch(ViewController.class);
              }
         }.start();
     }
