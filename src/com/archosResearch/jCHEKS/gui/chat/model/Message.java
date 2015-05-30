@@ -6,11 +6,11 @@ package com.archosResearch.jCHEKS.gui.chat.model;
  */
 public class Message {
     private String content;
-    private Contact sender;
+    private String senderName;
     //private EState state; (Enum of state)
     
-    public Message(Contact sender, String content /*, EState state */){
-        this.sender = sender;
+    public Message(String senderName, String content /*, EState state */){
+        this.senderName = senderName;
         this.content = content;
     }
     
@@ -19,6 +19,6 @@ public class Message {
     }
     
     public String getSenderName(){
-        return this.sender.getName();
+        return this.senderName;
     }
 }

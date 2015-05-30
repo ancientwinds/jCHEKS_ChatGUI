@@ -11,16 +11,22 @@ public class AppController {
     
     private final Model model;
     private final ViewController viewController;
+    //private final CHECKSEngine engine;
     
     public AppController(){
         this.model = new Model();
         this.viewController = ViewController.getInstance(this);
         this.model.addObserver(this.viewController);
-        //this.model.addContact();
+        //this.engine = new CHECKSEngine
+        
     }
     
-    public void handleIncomingMessage(Contact contact, Message message){
-        this.model.addMessage(contact, message);
+    public void handleIncomingMessage(Message message){
+        this.model.addIncomingMessage(message);
+    }
+    
+    public void handleOutgoingMessage(Message message){
+        this.model.addOutgoingMessage(message);
     }
     
     public static void main(String args[]){

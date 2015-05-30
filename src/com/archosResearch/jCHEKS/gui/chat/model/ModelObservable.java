@@ -23,13 +23,13 @@ public abstract class ModelObservable{
     
     public void notifyNewMessageSent(Contact contact, Message message){
         for (ModelObserver observer : observers) {
-            observer.newMessageSent(contact, message);
+            observer.messageSent(message);
         }
     }
     
     public void notifyNewMessageReceived(Message message){
         for (ModelObserver observer : observers) {
-            observer.newMessageReceived(message);
+            observer.messageReceived(message);
         }
     }
     

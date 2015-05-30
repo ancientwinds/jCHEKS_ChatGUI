@@ -5,6 +5,7 @@ package com.archosResearch.jCHEKS.gui.chat.model;
  * @author Michael Roussel
  */
 public interface ModelObserver{
-    public void newMessageSent(Contact contact, Message message);
-    public void newMessageReceived(Message message);
+    public void messageSent(Message message);
+    public void messageReceived(Message message);
+    public void addContact(Contact contact);
 }

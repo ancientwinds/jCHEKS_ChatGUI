@@ -25,10 +25,10 @@ public class ContactCollection {
         throw new ContactNotFoundException();
     }
 
-    void add(Contact newContact) throws ContactAlreadyExist, NameOfContactAlreadyExistInContacts {
-        if (contacts.contains(newContact)) throw new ContactAlreadyExist();
+    void add(Contact newContact) throws ContactAlreadyExistException, NameOfContactAlreadyExistInContactsException {
+        if (contacts.contains(newContact)) throw new ContactAlreadyExistException();
         for (Contact aContact : this.contacts) 
-            if (aContact.getName().equals(newContact.getName())) throw new NameOfContactAlreadyExistInContacts();
+            if (aContact.getName().equals(newContact.getName())) throw new NameOfContactAlreadyExistInContactsException();
         this.contacts.add(newContact);
     }
 

@@ -47,12 +47,13 @@ public class ViewController extends Application implements ModelObserver{
     }
     
     @Override
-    public void newMessageSent(Contact contact, Message message) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void messageSent(Message message) {
+        chatController.displayMessage(message);
+        appController.handleOutgoingMessage(message);
     }
 
     @Override
-    public void newMessageReceived(Message message) {
+    public void messageReceived(Message message) {
         chatController.displayMessage(message);    
     }
     
@@ -63,7 +64,7 @@ public class ViewController extends Application implements ModelObserver{
         initRootLayout();
     }
     
-    public void initRootLayout() {
+    private void initRootLayout() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(ChatController.class.getResource("chat.fxml"));
@@ -76,5 +77,9 @@ public class ViewController extends Application implements ModelObserver{
             e.printStackTrace();
         }
     }
-    
+
+    @Override
+    public void addContact(Contact contact) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
