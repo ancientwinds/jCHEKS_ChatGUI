@@ -7,7 +7,7 @@ import java.util.List;
  *
  * @author Michael Roussel <rousselm4@gmail.com>
  */
-public class ModelObservable{
+public abstract class ModelObservable{
     private final List<ModelObserver> observers;
     
     public ModelObservable(){
