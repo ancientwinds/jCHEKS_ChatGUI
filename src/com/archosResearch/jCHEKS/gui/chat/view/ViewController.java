@@ -33,7 +33,7 @@ public class ViewController extends Application implements ModelObserver{
         latch.countDown();
     }
     
-    public static ViewController getInstance(AppController appController){
+    public static ViewController getInstance(){
         if(instance == null){
             try{
                 javafx.application.Application.launch(ViewController.class);
@@ -42,7 +42,6 @@ public class ViewController extends Application implements ModelObserver{
                 e.printStackTrace();
             }
         }
-        instance.appController = appController;
         return instance;
     }
     
@@ -81,5 +80,9 @@ public class ViewController extends Application implements ModelObserver{
     @Override
     public void addContact(Contact contact) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setAppController(AppController appController) {
+        this.appController = appController;
     }
 }

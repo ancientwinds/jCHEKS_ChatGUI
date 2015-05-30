@@ -13,12 +13,13 @@ public class AppController {
     private final ViewController viewController;
     //private final CHECKSEngine engine;
     
-    public AppController(){
-        this.model = new Model();
-        this.viewController = ViewController.getInstance(this);
+    public AppController(/*CHECKSEngine engine, */Model model, ViewController viewController){
+        this.viewController = viewController;
+        this.viewController.setAppController(this);
+        //this.engine = engine;
+        this.model = model;
         this.model.addObserver(this.viewController);
-        //this.engine = new CHECKSEngine
-        
+        //this.model.addObserver(engine);
     }
     
     public void handleIncomingMessage(Message message){
@@ -30,6 +31,6 @@ public class AppController {
     }
     
     public static void main(String args[]){
-        new AppController();
+        new AppController(/* new CHECKSEngine(),*/new Model(), ViewController.getInstance());
     }
 }              
