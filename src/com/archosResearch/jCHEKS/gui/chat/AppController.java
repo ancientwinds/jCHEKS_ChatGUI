@@ -2,7 +2,6 @@ package com.archosResearch.jCHEKS.gui.chat;
 
 import com.archosResearch.jCHEKS.gui.chat.model.*;
 import com.archosResearch.jCHEKS.gui.chat.view.ViewController;
-import com.archosResearch.jCHEKS.gui.chat.view.JavaFxLauncher;
 
 /**
  *
@@ -25,7 +24,6 @@ public class AppController {
     }
     
     public static void main(String args[]){
-        new JavaFxLauncher();
         new AppController();
     }
 }              

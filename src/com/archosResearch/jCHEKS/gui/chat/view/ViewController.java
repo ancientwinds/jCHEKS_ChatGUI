@@ -36,6 +36,7 @@ public class ViewController extends Application implements ModelObserver{
     public static ViewController getInstance(AppController appController){
         if(instance == null){
             try{
+                javafx.application.Application.launch(ViewController.class);
                 latch.await();
             }catch(InterruptedException e){
                 e.printStackTrace();
@@ -75,6 +76,5 @@ public class ViewController extends Application implements ModelObserver{
             e.printStackTrace();
         }
     }
-    
     
 }
