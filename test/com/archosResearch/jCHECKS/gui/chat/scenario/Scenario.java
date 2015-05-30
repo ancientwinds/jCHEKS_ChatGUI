@@ -4,6 +4,7 @@ import com.archosResearch.jCHEKS.gui.chat.AppController;
 import com.archosResearch.jCHEKS.gui.chat.model.ContactCollection;
 import com.archosResearch.jCHEKS.gui.chat.model.Model;
 import com.archosResearch.jCHEKS.gui.chat.view.ViewController;
+import java.util.ArrayList;
 import java.util.HashMap;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -16,6 +17,6 @@ public class Scenario {
     
     @Test
     public void scenario1() {
-        new AppController(/* new CHECKSEngine(),*/new Model(new ContactCollection(), new HashMap<>()), ViewController.getInstance());
+        new AppController(/* new CHECKSEngine(),*/new Model(new ContactCollection(new ArrayList()), new HashMap<>()), ViewController.getInstance());
     }
 }

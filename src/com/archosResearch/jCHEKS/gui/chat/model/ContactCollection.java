@@ -11,9 +11,8 @@ public class ContactCollection {
 
     private final ArrayList<Contact> contacts;
 
-    public ContactCollection(Contact... contacts) {
-        this.contacts = new ArrayList<>();
-        this.contacts.addAll(Arrays.asList(contacts));
+    public ContactCollection(ArrayList contacts) {
+        this.contacts = contacts;
     }
 
     public Contact findByName(String aName) throws ContactNotFoundException {
@@ -25,8 +24,7 @@ public class ContactCollection {
         throw new ContactNotFoundException();
     }
 
-    void add(Contact newContact) throws ContactAlreadyExistException, NameOfContactAlreadyExistInContactsException {
-        if (contacts.contains(newContact)) throw new ContactAlreadyExistException();
+    void add(Contact newContact) throws NameOfContactAlreadyExistInContactsException{
         for (Contact aContact : this.contacts) 
             if (aContact.getName().equals(newContact.getName())) throw new NameOfContactAlreadyExistInContactsException();
         this.contacts.add(newContact);

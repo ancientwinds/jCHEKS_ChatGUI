@@ -17,13 +17,9 @@ public class Model extends ModelObservable {
         this.map = map;
     }
 
-    public void addContact(String contactName) {
-        try {
-            this.contactCollection.add(new Contact(contactName));
-            this.map.put(new Contact(contactName), new MessageCollection());
-        } catch (ContactAlreadyExistException | NameOfContactAlreadyExistInContactsException e) {
-            e.printStackTrace();
-        }
+    public void addContact(String contactName) throws NameOfContactAlreadyExistInContactsException{
+        this.contactCollection.add(new Contact(contactName));
+        this.map.put(new Contact(contactName), new MessageCollection());
     }
 
     public void addIncomingMessage(Message message) {
