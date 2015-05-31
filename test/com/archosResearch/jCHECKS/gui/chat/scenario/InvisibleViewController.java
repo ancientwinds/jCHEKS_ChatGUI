@@ -35,7 +35,7 @@ public class InvisibleViewController implements ViewController{
 
     @Override
     public void messageReceived(Message message) {
-        
+        this.receivedMessages.add(message);
     }
 
     @Override
