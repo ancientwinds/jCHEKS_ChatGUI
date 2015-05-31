@@ -1,6 +1,7 @@
 package com.archosResearch.jCHEKS.gui.chat;
 
 import com.archosResearch.jCHEKS.gui.chat.model.*;
+import com.archosResearch.jCHEKS.gui.chat.view.JavaFxViewController;
 import com.archosResearch.jCHEKS.gui.chat.view.ViewController;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,6 +34,6 @@ public class AppController {
     }
     
     public static void main(String args[]){
-        new AppController(/* new CHECKSEngine(),*/new ModelDefault(new ContactCollectionDefault(new ArrayList()), new HashMap<>(), new ArrayList()), ViewController.getInstance());
+        new AppController(/* new CHECKSEngine(),*/new ModelDefault(new ContactCollectionDefault(new ArrayList()), new HashMap<>(), new ArrayList()), JavaFxViewController.getInstance());
     }
 }              
