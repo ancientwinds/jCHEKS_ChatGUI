@@ -29,8 +29,8 @@ public class AppController {
         this.model.addIncomingMessage(message);
     }
     
-    public void handleOutgoingMessage(Message message){
-        this.model.addOutgoingMessage(message);
+    public void handleOutgoingMessage(String messageContent, String contactName){
+        this.model.addOutgoingMessage(messageContent, contactName);
     }
     
     public static void main(String args[]){

@@ -35,7 +35,12 @@ public class JavaFxViewController extends Application implements ViewController{
     public static JavaFxViewController getInstance(){
         if(instance == null){
             try{
-                javafx.application.Application.launch(JavaFxViewController.class);
+                new Thread() {
+                    @Override
+                    public void run() {
+                        javafx.application.Application.launch(JavaFxViewController.class);
+                    }
+                }.start();
                 latch.await();
             }catch(InterruptedException e){
                 e.printStackTrace();
@@ -47,7 +52,6 @@ public class JavaFxViewController extends Application implements ViewController{
     @Override
     public void messageSent(Message message) {
         chatController.displayMessage(message);
-        appController.handleOutgoingMessage(message);
     }
 
     @Override
@@ -62,12 +66,16 @@ public class JavaFxViewController extends Application implements ViewController{
         initRootLayout();
     }
     
+    public void forwardOutgoingMessageMessage(String messageContent, String contactName){
+        this.appController.handleOutgoingMessage(messageContent, contactName);
+    }
+    
     private void initRootLayout() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(ChatController.class.getResource("chat.fxml"));
             rootLayout = (BorderPane) loader.load();
-             this.chatController = (ChatController) loader.getController();
+            this.chatController = (ChatController) loader.getController();
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
             primaryStage.show();
@@ -81,7 +89,16 @@ public class JavaFxViewController extends Application implements ViewController{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
     public void setAppController(AppController appController) {
         this.appController = appController;
+    }
+
+    @Override
+    public void forwardOutgoingMessage(String messageContent, String contactName) {
+        if(appController==null){
+            System.out.println("NOT WORK!");
+        }
+        appController.handleOutgoingMessage(messageContent, contactName);  
     }
 }

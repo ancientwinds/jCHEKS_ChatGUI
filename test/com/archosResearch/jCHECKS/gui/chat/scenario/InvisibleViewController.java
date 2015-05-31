@@ -30,7 +30,6 @@ public class InvisibleViewController implements ViewController{
 
     @Override
     public void messageSent(Message message) {
-        appController.handleOutgoingMessage(message);
     }
 
     @Override
@@ -42,7 +41,13 @@ public class InvisibleViewController implements ViewController{
     public void addContact(Contact contact) {
     }
     
+    
     public boolean workAsExpected(){
         return this.expectedMessagesToReceive.equals(this.receivedMessages);
+    }
+
+    @Override
+    public void forwardOutgoingMessage(String messageContent, String contactName) {
+        appController.handleOutgoingMessage(messageContent, contactName);    
     }
 }

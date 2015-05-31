@@ -8,4 +8,5 @@ import com.archosResearch.jCHEKS.gui.chat.model.ModelObserver;
  */
 public interface ViewController extends ModelObserver{
     public void setAppController(AppController appController);
+    public void forwardOutgoingMessage(String messageContent, String contactName);
 }
