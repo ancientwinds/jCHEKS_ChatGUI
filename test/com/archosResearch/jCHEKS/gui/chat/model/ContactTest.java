@@ -12,13 +12,13 @@ public class ContactTest {
     @Test
     public void constructor_should_create_a_contact() {
         Contact contact = null;
-        contact = new Contact("Name");
+        contact = new ContactDefault("Name");
         assertNotNull(contact);
     }
     
     @Test
     public void getName_should_return_the_name_of_the_contact() {
-        Contact contact = new Contact("Name");
+        Contact contact = new ContactDefault("Name");
         String expectedResult = "Name";
         String result = contact.getName();
         assertEquals(expectedResult, result);
