@@ -19,15 +19,15 @@ public class ModelDefault extends ModelObservableDefault implements Model{
     }
 
     public void addContact(String contactName) throws NameOfContactAlreadyExistInContactsException{
-        this.contactCollection.add(new ContactDefault(contactName));
-        this.map.put(new ContactDefault(contactName), new MessageCollectionDefault(new ArrayList()));
+        this.contactCollection.add(new Contact(contactName));
+        this.map.put(new Contact(contactName), new MessageCollectionDefault(new ArrayList()));
     }
 
     public void addIncomingMessage(Message message) {
         try {
             Contact contact = contactCollection.findByName(message.getSenderName());
             MessageCollection messageCollection = this.map.get(contact);
-            messageCollection.addMessage(new MessageDefault("Me", message.getContent()));
+            messageCollection.addMessage(new Message("Me", message.getContent()));
         } catch (ContactNotFoundException ex) {
             ex.printStackTrace();
         }
@@ -37,7 +37,7 @@ public class ModelDefault extends ModelObservableDefault implements Model{
         try {
             Contact contact = contactCollection.findByName(message.getSenderName());
             MessageCollection messageCollection = this.map.get(contact);
-            messageCollection.addMessage(new MessageDefault(contact.getName(), message.getContent()));
+            messageCollection.addMessage(new Message(contact.getName(), message.getContent()));
         } catch (ContactNotFoundException ex) {
             ex.printStackTrace();
         }
@@ -48,4 +48,5 @@ public class ModelDefault extends ModelObservableDefault implements Model{
         MessageCollection messageCollection = this.map.get(contact);
         return messageCollection.getAllMessages();
     }
+
 }
