@@ -6,21 +6,8 @@ import java.util.Observable;
  *
  * @author Michael Roussel <rousselm4@gmail.com>
  */
-public class MessageCollection extends Observable{
-    private final ArrayList<Message> messages;
-    
-    public MessageCollection(ArrayList messages){
-        this.messages = messages;
-    }
-    
-    public void addMessage(Message aMessage){
-        this.messages.add(aMessage);
-        this.setChanged();
-	this.notifyObservers(aMessage);
-    }
-    
-    public ArrayList<Message> getAllMessages(){
-        return this.messages;
-    }
+public interface MessageCollection{
+    public void addMessage(Message aMessage);
+    public ArrayList<Message> getAllMessages();
 
 }
