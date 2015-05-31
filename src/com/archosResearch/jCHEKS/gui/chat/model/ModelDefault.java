@@ -23,11 +23,11 @@ public class ModelDefault extends ModelObservableDefault implements Model{
         this.map.put(new Contact(contactName), new MessageCollectionDefault(new ArrayList()));
     }
 
-    public void addIncomingMessage(Message message) {
+    public void addIncomingMessage(String messageContent, String contactName) {
         try {
-            Contact contact = contactCollection.findByName(message.getSenderName());
+            Contact contact = contactCollection.findByName(contactName);
             MessageCollection messageCollection = this.map.get(contact);
-            messageCollection.addMessage(new Message("Me", message.getContent()));
+            messageCollection.addMessage(new Message("Me", messageContent));
         } catch (ContactNotFoundException ex) {
             ex.printStackTrace();
         }

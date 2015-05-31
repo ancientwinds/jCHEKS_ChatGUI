@@ -25,8 +25,8 @@ public class AppController {
         //this.model.addObserver(engine);
     }
     
-    public void handleIncomingMessage(Message message){
-        this.model.addIncomingMessage(message);
+    public void handleIncomingMessage(String messageContent, String contactName){
+        this.model.addIncomingMessage(messageContent, contactName);
     }
     
     public void handleOutgoingMessage(String messageContent, String contactName){
