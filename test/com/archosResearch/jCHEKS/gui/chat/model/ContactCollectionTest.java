@@ -13,7 +13,7 @@ public class ContactCollectionTest {
     @Test
     public void constructor_should_create_the_contact_collection() throws Exception {
         ContactCollection aContactCollection = null;
-        aContactCollection = new ContactCollection(new ArrayList());
+        aContactCollection = new ContactCollectionDefault(new ArrayList());
         assertNotNull(aContactCollection);
     }
     
@@ -23,7 +23,7 @@ public class ContactCollectionTest {
         ArrayList<Contact> contacts = new ArrayList();
         contacts.add(new ContactDefault("Alice"));
         contacts.add(new ContactDefault("Bob"));
-        aContactCollection = new ContactCollection(contacts);
+        aContactCollection = new ContactCollectionDefault(contacts);
         assertNotNull(aContactCollection);
     }
     
@@ -33,13 +33,13 @@ public class ContactCollectionTest {
         ArrayList<Contact> contacts = new ArrayList();
         contacts.add(new ContactDefault("Alice"));
         contacts.add(new ContactDefault("Bob"));
-        aContactCollection = new ContactCollection(contacts);
+        aContactCollection = new ContactCollectionDefault(contacts);
         assertNotNull(aContactCollection);
     }
     
     @Test (expected=ContactNotFoundException.class)
     public void findByName_Should_throw_an_exception_when_we_search_for_a_unexisting_contact() throws ContactNotFoundException{
-        ContactCollection instance = new ContactCollection(new ArrayList());
+        ContactCollection instance = new ContactCollectionDefault(new ArrayList());
         String aName = "Alice";
         Contact result = instance.findByName(aName);
     }

@@ -2,6 +2,7 @@ package com.archosResearch.jCHECKS.gui.chat.scenario;
 
 import com.archosResearch.jCHEKS.gui.chat.AppController;
 import com.archosResearch.jCHEKS.gui.chat.model.ContactCollection;
+import com.archosResearch.jCHEKS.gui.chat.model.ContactCollectionDefault;
 import com.archosResearch.jCHEKS.gui.chat.model.Model;
 import com.archosResearch.jCHEKS.gui.chat.model.ModelDefault;
 import com.archosResearch.jCHEKS.gui.chat.view.ViewController;
@@ -20,7 +21,7 @@ public class Scenario {
     public void scenario1() {
         ArrayList contactList = new ArrayList();
         HashMap hashMap = new HashMap<>();
-        ContactCollection contactCollection = new ContactCollection(contactList);
+        ContactCollection contactCollection = new ContactCollectionDefault(contactList);
         Model model = new ModelDefault(contactCollection, hashMap, contactList); 
         ViewController viewController = ViewController.getInstance();
         new AppController(model, viewController);
