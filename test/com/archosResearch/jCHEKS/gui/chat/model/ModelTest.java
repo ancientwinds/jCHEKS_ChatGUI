@@ -14,14 +14,14 @@ public class ModelTest {
     @Test
     public void constructor_should_construct_the_model() {
         Model model = null;
-        model = new Model(new ContactCollection(new ArrayList()), new HashMap(), new ArrayList());
+        model = new ModelDefault(new ContactCollection(new ArrayList()), new HashMap(), new ArrayList());
         assertNotNull(model);
     }
 
     @Test (expected=NameOfContactAlreadyExistInContactsException.class)
     public void addContact_should_throws_NameOfContactAlreadyExistInContactsException() throws NameOfContactAlreadyExistInContactsException {
         String contactName = "Alice";
-        Model model = new Model(new ContactCollection(new ArrayList()), new HashMap(), new ArrayList());
+        Model model = new ModelDefault(new ContactCollection(new ArrayList()), new HashMap(), new ArrayList());
         model.addContact(contactName);
         model.addContact(contactName);
     }
