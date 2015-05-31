@@ -1,12 +1,11 @@
 package com.archosResearch.jCHEKS.gui.chat.model;
 
 import java.util.ArrayList;
-import java.util.Observable;
 /**
  *
  * @author Michael Roussel <rousselm4@gmail.com>
  */
-public class MessageCollectionDefault extends Observable implements MessageCollection{
+public class MessageCollectionDefault implements MessageCollection{
     private final ArrayList<Message> messages;
     
     public MessageCollectionDefault(ArrayList messages){
@@ -15,8 +14,6 @@ public class MessageCollectionDefault extends Observable implements MessageColle
     
     public void addMessage(Message aMessage){
         this.messages.add(aMessage);
-        this.setChanged();
-	this.notifyObservers(aMessage);
     }
     
     public ArrayList<Message> getAllMessages(){
