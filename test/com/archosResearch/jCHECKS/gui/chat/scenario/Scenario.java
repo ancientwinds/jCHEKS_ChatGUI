@@ -1,6 +1,7 @@
 package com.archosResearch.jCHECKS.gui.chat.scenario;
 
 import com.archosResearch.jCHEKS.gui.chat.AppController;
+import com.archosResearch.jCHEKS.gui.chat.AppControllerDefault;
 import com.archosResearch.jCHEKS.gui.chat.model.ContactCollection;
 import com.archosResearch.jCHEKS.gui.chat.model.ContactCollectionDefault;
 import com.archosResearch.jCHEKS.gui.chat.model.Message;
@@ -29,7 +30,7 @@ public class Scenario {
         ArrayList<Message> messagesFromBob = new ArrayList();
         
         InvisibleViewController viewController = new InvisibleViewController();
-        AppController appController = new AppController(model, viewController);
+        AppController appController = new AppControllerDefault(model, viewController);
         
         //assertTrue(viewController.workAsExpected());
     }
