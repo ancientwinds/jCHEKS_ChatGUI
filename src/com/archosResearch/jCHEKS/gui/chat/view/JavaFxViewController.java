@@ -66,10 +66,6 @@ public class JavaFxViewController extends Application implements ViewController{
         initRootLayout();
     }
     
-    public void forwardOutgoingMessageMessage(String messageContent, String contactName){
-        this.appController.handleOutgoingMessage(messageContent, contactName);
-    }
-    
     private void initRootLayout() {
         try {
             FXMLLoader loader = new FXMLLoader();

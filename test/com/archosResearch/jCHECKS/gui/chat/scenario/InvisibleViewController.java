@@ -17,10 +17,11 @@ public class InvisibleViewController implements ViewController{
     ArrayList<Message> receivedMessages;
     ArrayList<Message> expectedMessagesToReceive;
     
-    public InvisibleViewController(ArrayList expectedMessagesToReceive, ArrayList messagesToSend){
-        this.expectedMessagesToReceive = expectedMessagesToReceive;
-        this.receivedMessages = new ArrayList();
+    public InvisibleViewController(/*ArrayList expectedMessagesToReceive, ArrayList messagesToSend*/){
+        /*this.expectedMessagesToReceive = expectedMessagesToReceive;
         this.messagesToSend = messagesToSend;
+        this.receivedMessages = new ArrayList();*/
+        
     }
     
     @Override
@@ -30,11 +31,13 @@ public class InvisibleViewController implements ViewController{
 
     @Override
     public void messageSent(Message message) {
+        System.out.println("messageReceived");
     }
 
     @Override
     public void messageReceived(Message message) {
-        this.receivedMessages.add(message);
+        System.out.println("messageReceived");
+        //this.receivedMessages.add(message);
     }
 
     @Override
