@@ -16,7 +16,4 @@ public class IncomingMessage extends Message{
     public String getContent(){
         return this.senderName + " said: "+ super.getContent();
     }
-    public String getSenderName(){
-        return this.senderName;
-    }
 }

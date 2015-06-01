@@ -32,11 +32,12 @@ public class AppControllerDefaultTest {
     }
 
     @Test
-    public void testHandleOutgoingMessage() {
+    public void testHandleOutgoingMessage() throws NameOfContactAlreadyExistInContactsException {
         String messageContent = "";
         String contactName = "";
-        AppControllerDefault instance = null;
-        instance.handleOutgoingMessage(messageContent, contactName);
+        Model fakeModel = new FakeModelToTestAppController();
+        ViewController fakeViewController = new FakeViewControllerToTestAppController();
+        AppController appController = new AppControllerDefault(fakeModel, fakeViewController, "Bob");
+        appController.handleOutgoingMessage(messageContent, contactName);
     }
-    
 }
