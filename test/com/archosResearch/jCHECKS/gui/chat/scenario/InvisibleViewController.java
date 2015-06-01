@@ -41,7 +41,7 @@ public class InvisibleViewController implements ViewController{
     }
 
     @Override
-    public void addContact(Contact contact) {
+    public void contactAdded(Contact contact) {
     }
     
     

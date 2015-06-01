@@ -83,7 +83,7 @@ public class JavaFxViewController extends Application implements ViewController{
     }
 
     @Override
-    public void addContact(Contact contact) {
+    public void contactAdded(Contact contact) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

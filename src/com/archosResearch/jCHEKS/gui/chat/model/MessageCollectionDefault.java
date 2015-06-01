@@ -12,8 +12,8 @@ public class MessageCollectionDefault implements MessageCollection{
         this.messages = messages;
     }
     
-    public void add(Message aMessage){
-        this.messages.add(aMessage);
+    public void add(Message message){
+        this.messages.add(message);
     }
     
     public ArrayList<Message> getAllMessages(){
