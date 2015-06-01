@@ -1,8 +1,13 @@
 package com.archosResearch.jCHEKS.gui.chat.view;
 
 import com.archosResearch.jCHEKS.gui.chat.model.Message;
+import java.io.IOException;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 /**
  *
@@ -22,6 +27,20 @@ public class ChatController {
         
         JavaFxViewController viewController = JavaFxViewController.getInstance();
         viewController.forwardOutgoingMessage(messageInput.getText(), "Bob");
+    }
+    
+    private void handleAboutButton(){
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(ChatController.class.getResource("Chat.fxml"));
+            BorderPane aboutLayout = (BorderPane) loader.load();
+            Scene scene = new Scene(aboutLayout);
+            JavaFxViewController viewController = JavaFxViewController.getInstance();
+            viewController.showScene(scene);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     
     private void displayOwnMessage(){

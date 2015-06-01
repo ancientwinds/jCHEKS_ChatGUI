@@ -3,6 +3,8 @@ package com.archosResearch.jCHEKS.gui.chat.view;
 import com.archosResearch.jCHEKS.gui.chat.AppController;
 import com.archosResearch.jCHEKS.gui.chat.model.Contact;
 import com.archosResearch.jCHEKS.gui.chat.model.Message;
+import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
+import com.sun.javafx.application.HostServicesDelegate;
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 import javafx.application.Application;
@@ -69,12 +71,12 @@ public class JavaFxViewController extends Application implements ViewController{
     private void initRootLayout() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(ChatController.class.getResource("chat.fxml"));
-            rootLayout = (BorderPane) loader.load();
-            this.chatController = (ChatController) loader.getController();
-            Scene scene = new Scene(rootLayout);
-            primaryStage.setScene(scene);
-            primaryStage.show();
+            loader.setLocation(ViewController.class.getResource("Chat.fxml"));
+            this.rootLayout = (BorderPane) loader.load();
+            this.chatController = loader.getController();
+            Scene scene = new Scene(this.rootLayout);
+            this.primaryStage.setScene(scene);
+            this.primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -92,9 +94,16 @@ public class JavaFxViewController extends Application implements ViewController{
 
     @Override
     public void forwardOutgoingMessage(String messageContent, String contactName) {
-        if(appController==null){
-            System.out.println("NOT WORK!");
-        }
-        appController.handleOutgoingMessage(messageContent, contactName);  
+        this.appController.handleOutgoingMessage(messageContent, contactName);  
+    }
+    
+    void openInBrowser(String url){
+        HostServicesDelegate hostServices = HostServicesFactory.getInstance(this);
+        hostServices.showDocument(url);
+    }
+    
+    void showScene(Scene scene){
+        this.primaryStage.setScene(scene);
+        this.primaryStage.show();
     }
 }

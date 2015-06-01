@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.archosResearch.jCHEKS.gui.chat.view.ChatController">
+   <center>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <Label text="This is the CHECKS project. This is a temp text. You can find more information on the project by following this link." textAlignment="CENTER" wrapText="true" />
+            <Hyperlink fx:id="link" onAction="#handleLink" text="www.archos-research.com/en/cheks.html" wrapText="true" />
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <Button fx:id="closeButton" mnemonicParsing="false" text="Close" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>
