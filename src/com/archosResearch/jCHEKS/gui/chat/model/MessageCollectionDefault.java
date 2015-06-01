@@ -12,7 +12,7 @@ public class MessageCollectionDefault implements MessageCollection{
         this.messages = messages;
     }
     
-    public void addMessage(Message aMessage){
+    public void add(Message aMessage){
         this.messages.add(aMessage);
     }
     

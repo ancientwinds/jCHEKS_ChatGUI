@@ -7,6 +7,6 @@ package com.archosResearch.jCHEKS.gui.chat.model;
 public interface ModelObservable{
     public void addObserver(ModelObserver observer);
     public void removeObserver(ModelObserver observer);
-    public void notifyNewMessageSent(Contact contact, Message message);
-    public void notifyNewMessageReceived(Message message);
+    public void broadcastMessageSent(Message message);
+    public void broadcastMessageReceived(Message message);
 }

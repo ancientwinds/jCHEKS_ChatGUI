@@ -21,17 +21,25 @@ public class Scenario {
     
     @Test
     public void scenario1() throws NameOfContactAlreadyExistInContactsException {
+        //Init
         ArrayList contactList = new ArrayList();
+        ArrayList observers = new ArrayList();
         HashMap hashMap = new HashMap<>();
         ContactCollection contactCollection = new ContactCollectionDefault(contactList);
-        Model model = new ModelDefault(contactCollection, hashMap, contactList);
+        Model model = new ModelDefault(contactCollection, hashMap, observers);
         model.addContact("Bob");
         ArrayList<Message> messagesFromAlice = new ArrayList();
         ArrayList<Message> messagesFromBob = new ArrayList();
-        
         InvisibleViewController viewController = new InvisibleViewController();
         AppController appController = new AppControllerDefault(model, viewController);
         
+        //Messages
+        appController.handleIncomingMessage("Hello!", "Bob");
+        viewController.forwardOutgoingMessage("Hi", "Bob");
+        appController.handleIncomingMessage("How are you?", "Bob");
+        viewController.forwardOutgoingMessage("Good, and you?", "Bob");
+        appController.handleIncomingMessage("Fine. Goodbye!", "Bob");
+        viewController.forwardOutgoingMessage("Bye!", "Bob");
         //assertTrue(viewController.workAsExpected());
     }
     

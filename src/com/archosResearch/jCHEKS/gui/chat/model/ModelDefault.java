@@ -19,25 +19,30 @@ public class ModelDefault extends ModelObservableDefault implements Model{
     }
 
     public void addContact(String contactName) throws NameOfContactAlreadyExistInContactsException{
-        this.contactCollection.add(new Contact(contactName));
-        this.map.put(new Contact(contactName), new MessageCollectionDefault(new ArrayList()));
-    }
-
-    public void addIncomingMessage(String messageContent, String contactName) {
-        try {
-            Contact contact = contactCollection.findByName(contactName);
-            MessageCollection messageCollection = this.map.get(contact);
-            messageCollection.addMessage(new Message("Me", messageContent));
-        } catch (ContactNotFoundException ex) {
-            ex.printStackTrace();
-        }
+        Contact contact = new Contact(contactName);
+        this.contactCollection.add(contact);
+        this.map.put(contact, new MessageCollectionDefault(new ArrayList()));
     }
 
     public void addOutgoingMessage(String messageContent, String contactName) {
         try {
             Contact contact = contactCollection.findByName(contactName);
             MessageCollection messageCollection = this.map.get(contact);
-            messageCollection.addMessage(new Message(contact.getName(), messageContent));
+            Message message = new Message("Me", messageContent);
+            messageCollection.add(message);
+            this.broadcastMessageReceived(message);
+        } catch (ContactNotFoundException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void addIncomingMessage(String messageContent, String contactName) {
+        try {
+            Contact contact = contactCollection.findByName(contactName);
+            MessageCollection messageCollection = this.map.get(contact);
+            Message message = new Message(contactName, messageContent);
+            messageCollection.add(message);
+            this.broadcastMessageReceived(message);
         } catch (ContactNotFoundException ex) {
             ex.printStackTrace();
         }

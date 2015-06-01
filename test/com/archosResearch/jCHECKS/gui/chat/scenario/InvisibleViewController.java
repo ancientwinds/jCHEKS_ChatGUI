@@ -31,12 +31,12 @@ public class InvisibleViewController implements ViewController{
 
     @Override
     public void messageSent(Message message) {
-        System.out.println("messageReceived");
+        System.out.println("Message from " + message.getSenderName() + ": " +message.getContent());
     }
 
     @Override
     public void messageReceived(Message message) {
-        System.out.println("messageReceived");
+        System.out.println("Message from " + message.getSenderName() + ": " +message.getContent());
         //this.receivedMessages.add(message);
     }
 
