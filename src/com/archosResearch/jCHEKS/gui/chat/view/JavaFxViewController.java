@@ -25,8 +25,17 @@ public class JavaFxViewController extends Application implements ViewController{
     private BorderPane rootLayout;
     private ChatController chatController;
     
-    public JavaFxViewController(){
-        setInstance(this);
+    /**
+     *  Should never be called. Call getInstance().
+     */
+    public JavaFxViewController() throws Exception{ 
+        if(instance == null){
+            setInstance(this);
+        }
+        else{
+            //TODO Change exception type
+            throw new Exception();
+        }
     }
     
     private static void setInstance(JavaFxViewController instance){
@@ -97,11 +106,13 @@ public class JavaFxViewController extends Application implements ViewController{
         this.appController.handleOutgoingMessage(messageContent, contactName);  
     }
     
+    //Package private
     void openInBrowser(String url){
         HostServicesDelegate hostServices = HostServicesFactory.getInstance(this);
         hostServices.showDocument(url);
     }
     
+    //Package private
     void showScene(Scene scene){
         this.primaryStage.setScene(scene);
         this.primaryStage.show();

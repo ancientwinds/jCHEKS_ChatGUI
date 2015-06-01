@@ -9,6 +9,11 @@ public class Message{
     private String senderName;
     //private EState state; (Enum of state)
     
+    public Message(String content /*, EState state */){
+        this.senderName = "Me"; //TODO Rethink how to manage this: polymorphism?
+        this.content = content;
+    }
+    
     public Message(String senderName, String content /*, EState state */){
         this.senderName = senderName;
         this.content = content;

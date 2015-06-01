@@ -34,6 +34,9 @@ public class AppControllerDefault implements AppController{
     }
     
     public static void main(String args[]){
+        String remoteIp = args[0];
+        String remotePort = args[1];
+        String remoteContactName = args[2];
         new AppControllerDefault(/* new CHECKSEngine(),*/new ModelDefault(new ContactCollectionDefault(new ArrayList()), new HashMap<>(), new ArrayList()), JavaFxViewController.getInstance());
     }
 }              

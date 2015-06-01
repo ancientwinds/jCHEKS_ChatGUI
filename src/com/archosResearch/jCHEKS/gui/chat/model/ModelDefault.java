@@ -28,7 +28,7 @@ public class ModelDefault extends ModelObservableDefault implements Model{
         try {
             Contact contact = contactCollection.findByName(contactName);
             MessageCollection messageCollection = this.map.get(contact);
-            Message message = new Message("Me", messageContent);
+            Message message = new Message(messageContent);
             messageCollection.add(message);
             this.broadcastMessageReceived(message);
         } catch (ContactNotFoundException ex) {
