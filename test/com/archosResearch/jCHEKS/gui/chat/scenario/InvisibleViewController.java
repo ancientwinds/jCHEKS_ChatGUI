@@ -1,4 +1,4 @@
-package com.archosResearch.jCHECKS.gui.chat.scenario;
+package com.archosResearch.jCHEKS.gui.chat.scenario;
 
 import com.archosResearch.jCHEKS.gui.chat.AppController;
 import com.archosResearch.jCHEKS.gui.chat.model.Contact;
@@ -31,12 +31,12 @@ public class InvisibleViewController implements ViewController{
 
     @Override
     public void messageSent(Message message) {
-        System.out.println("Message from " + message.getSenderName() + ": " +message.getContent());
+        System.out.println("Message from " + message.getContent());
     }
 
     @Override
     public void messageReceived(Message message) {
-        System.out.println("Message from " + message.getSenderName() + ": " +message.getContent());
+        System.out.println("Message from " + message.getContent());
         //this.receivedMessages.add(message);
     }
 

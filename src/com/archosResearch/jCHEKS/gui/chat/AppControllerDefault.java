@@ -16,11 +16,12 @@ public class AppControllerDefault implements AppController{
     private final ViewController viewController;
     //private final CHECKSEngine engine;
     
-    public AppControllerDefault(/*CHECKSEngine engine, */Model model, ViewController viewController){
+    public AppControllerDefault(/*CHECKSEngine engine, */Model model, ViewController viewController, String remoteContactName) throws NameOfContactAlreadyExistInContactsException{
         this.viewController = viewController;
         this.viewController.setAppController(this);
         //this.engine = engine;
         this.model = model;
+        this.model.addContact(remoteContactName);
         this.model.addObserver(this.viewController);
         //this.model.addObserver(engine);
     }
@@ -33,10 +34,11 @@ public class AppControllerDefault implements AppController{
         this.model.addOutgoingMessage(messageContent, contactName);
     }
     
-    public static void main(String args[]){
+    public static void main(String args[]) throws NameOfContactAlreadyExistInContactsException{
         String remoteIp = args[0];
         String remotePort = args[1];
         String remoteContactName = args[2];
-        new AppControllerDefault(/* new CHECKSEngine(),*/new ModelDefault(new ContactCollectionDefault(new ArrayList()), new HashMap<>(), new ArrayList()), JavaFxViewController.getInstance());
+        System.out.println(args[2]);
+        new AppControllerDefault(/* new CHECKSEngine(remoteIp, remotePort),*/new ModelDefault(new ContactCollectionDefault(new ArrayList()), new HashMap<>(), new ArrayList()), JavaFxViewController.getInstance(), remoteContactName);
     }
-}              
+}

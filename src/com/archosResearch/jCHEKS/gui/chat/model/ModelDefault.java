@@ -28,7 +28,7 @@ public class ModelDefault extends ModelObservableDefault implements Model{
         try {
             Contact contact = contactCollection.findByName(contactName);
             MessageCollection messageCollection = this.map.get(contact);
-            Message message = new Message(messageContent);
+            Message message = new OutgoingMessage(messageContent);
             messageCollection.add(message);
             this.broadcastMessageReceived(message);
         } catch (ContactNotFoundException ex) {
@@ -40,7 +40,7 @@ public class ModelDefault extends ModelObservableDefault implements Model{
         try {
             Contact contact = contactCollection.findByName(contactName);
             MessageCollection messageCollection = this.map.get(contact);
-            Message message = new Message(contactName, messageContent);
+            Message message = new IncomingMessage(contactName, messageContent);
             messageCollection.add(message);
             this.broadcastMessageReceived(message);
         } catch (ContactNotFoundException ex) {

@@ -11,24 +11,24 @@ public class MessageTest {
     
     @Test
     public void constructor_should_create_the_message() {
-        Message aMessage = null;
-        aMessage = new Message("Alice", "Content of the message.");
-        assertNotNull(aMessage);
+        Message message = null;
+        message = new IncomingMessage("Alice", "Content of the message.");
+        assertNotNull(message);
     }
-
+    
     @Test
-    public void getSenderName_should_return_the_name_of_the_sender() {
-        Message aMessage = new Message("Alice", "Content of the message.");
-        String expResult = "Alice";
-        String result = aMessage.getSenderName();
+    public void getContent_should_return_the_content_of_the_incomingMessage() {
+        Message message = new IncomingMessage("Alice", "Content of the message.");
+        String expResult = "Alice said: Content of the message.";
+        String result = message.getContent();
         assertEquals(expResult, result);
     }
     
     @Test
-    public void getContent_should_return_the_content_of_the_message() {
-        Message aMessage = new Message("Alice", "Content of the message.");
-        String expResult = "Content of the message.";
-        String result = aMessage.getContent();
+    public void getContent_should_return_the_content_of_the_outgoingMmessage() {
+        Message message = new OutgoingMessage("Content of the message.");
+        String expResult = "I said: Content of the message.";
+        String result = message.getContent();
         assertEquals(expResult, result);
     }
     

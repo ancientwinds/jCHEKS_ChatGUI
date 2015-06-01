@@ -22,9 +22,7 @@ public class ChatController {
    
     @FXML
     private void handleSendButton(){
-        displayOwnMessage();
         resetInputField();
-        
         JavaFxViewController viewController = JavaFxViewController.getInstance();
         viewController.forwardOutgoingMessage(messageInput.getText(), "Bob");
     }
@@ -48,8 +46,8 @@ public class ChatController {
         messageOutput.appendText("You >> " + messageInput.getText() + "\n");
     }
     
-    void displayMessage(Message aMessage){
-        messageOutput.appendText(aMessage.getSenderName() + " >> " + aMessage.getContent() + "\n");
+    void displayMessage(Message message){
+        messageOutput.appendText(message.getContent() + "\n");
     }
     
     private void resetInputField(){

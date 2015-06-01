@@ -1,6 +1,7 @@
 package com.archosResearch.jCHEKS.gui.chat;
 
 import com.archosResearch.jCHEKS.gui.chat.model.Model;
+import com.archosResearch.jCHEKS.gui.chat.model.NameOfContactAlreadyExistInContactsException;
 import com.archosResearch.jCHEKS.gui.chat.view.ViewController;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -12,21 +13,21 @@ import static org.junit.Assert.*;
 public class AppControllerDefaultTest {
 
     @Test 
-    public void constructor_should_construct_the_object(){
+    public void constructor_should_construct_the_object() throws NameOfContactAlreadyExistInContactsException{
         AppController appController = null;
         Model fakeModel = new FakeModelToTestAppController();
         ViewController fakeViewController = new FakeViewControllerToTestAppController();
-        appController = new AppControllerDefault(fakeModel, fakeViewController);
+        appController = new AppControllerDefault(fakeModel, fakeViewController, "Bob");
         assertNotNull(appController);
     }
     
     @Test
-    public void testHandleIncomingMessage() {
+    public void testHandleIncomingMessage() throws NameOfContactAlreadyExistInContactsException {
         String messageContent = "This is a test message";
         String contactName = "Bob";
         Model fakeModel = new FakeModelToTestAppController();
         ViewController fakeViewController = new FakeViewControllerToTestAppController();
-        AppController appController = new AppControllerDefault(fakeModel, fakeViewController);
+        AppController appController = new AppControllerDefault(fakeModel, fakeViewController, "Bob");
         appController.handleIncomingMessage(messageContent, contactName);
     }
 

@@ -1,4 +1,4 @@
-package com.archosResearch.jCHECKS.gui.chat.scenario;
+package com.archosResearch.jCHEKS.gui.chat.scenario;
 
 import com.archosResearch.jCHEKS.gui.chat.AppController;
 import com.archosResearch.jCHEKS.gui.chat.AppControllerDefault;
@@ -27,11 +27,10 @@ public class Scenario {
         HashMap hashMap = new HashMap<>();
         ContactCollection contactCollection = new ContactCollectionDefault(contactList);
         Model model = new ModelDefault(contactCollection, hashMap, observers);
-        model.addContact("Bob");
         ArrayList<Message> messagesFromAlice = new ArrayList();
         ArrayList<Message> messagesFromBob = new ArrayList();
         InvisibleViewController viewController = new InvisibleViewController();
-        AppController appController = new AppControllerDefault(model, viewController);
+        AppController appController = new AppControllerDefault(model, viewController, "Bob");
         
         //Messages
         appController.handleIncomingMessage("Hello!", "Bob");
