@@ -29,10 +29,11 @@ public class ChatController {
         viewController.forwardOutgoingMessage(messageInput.getText(), "Bob");
     }
     
+    @FXML
     private void handleAboutButton(){
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(ChatController.class.getResource("Chat.fxml"));
+            loader.setLocation(ViewController.class.getResource("About.fxml"));
             BorderPane aboutLayout = (BorderPane) loader.load();
             Scene scene = new Scene(aboutLayout);
             JavaFxViewController viewController = JavaFxViewController.getInstance();

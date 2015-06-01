@@ -19,7 +19,7 @@ public class AboutController {
     private Hyperlink link;
    
     @FXML
-    private void handleLinkClick(){
+    private void handleLink(){
         JavaFxViewController viewController = JavaFxViewController.getInstance();
         viewController.openInBrowser("http://www.archos-research.com/en/cheks.html");
     }
