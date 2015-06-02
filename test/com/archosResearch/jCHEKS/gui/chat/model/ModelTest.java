@@ -19,10 +19,12 @@ public class ModelTest {
     }
     
     @Test
-    public void testAddContact() throws Exception {
+    public void addContact_should_call_addContact_in_contactCollection() throws Exception {
         String contactName = "";
-        Model model = new ModelDefault(new SimpleContactCollectionToTestModel(), new HashMap(), new ArrayList());
+        SimpleContactCollectionToTestModel contactCollection = new SimpleContactCollectionToTestModel();
+        Model model = new ModelDefault(contactCollection, new HashMap(), new ArrayList());
         model.addContact(contactName);
+        assertEquals(contactCollection.contacts.get(0).getName(), contactName);
     }
 
     @Test

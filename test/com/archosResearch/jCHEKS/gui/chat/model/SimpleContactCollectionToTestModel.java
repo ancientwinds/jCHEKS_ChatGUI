@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public class SimpleContactCollectionToTestModel implements ContactCollection{
 
-    private final ArrayList<Contact> contacts;
+    public final ArrayList<Contact> contacts;
 
     public SimpleContactCollectionToTestModel() {
         this.contacts = new ArrayList();
