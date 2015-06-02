@@ -49,6 +49,7 @@ public class ContactCollectionTest {
         ContactCollection contactCollection = new ContactCollectionDefault(new ArrayList());
         Contact contact = new Contact("Alice");
         contactCollection.add(contact);
+        contactCollection.add(contact);
     }
             
 }
