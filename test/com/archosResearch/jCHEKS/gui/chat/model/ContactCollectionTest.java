@@ -62,6 +62,7 @@ public class ContactCollectionTest {
     public void addContact_should_add_a_contact_in_contact_collect() throws NameOfContactAlreadyExistInContactsException, ContactNotFoundException{
         ContactCollection contactCollection = new ContactCollectionDefault(new ArrayList());
         Contact contact = new Contact("Alice");
+        contactCollection.add(new Contact("Bob"));
         contactCollection.add(contact);
         Contact result = contactCollection.findByName("Alice");
         assertEquals(result, contact);
