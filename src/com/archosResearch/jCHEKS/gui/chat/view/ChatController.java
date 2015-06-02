@@ -1,13 +1,14 @@
 package com.archosResearch.jCHEKS.gui.chat.view;
 
-import com.archosResearch.jCHEKS.gui.chat.model.Message;
+import com.archosResearch.jCHEKS.gui.chat.model.Contact;
+import com.archosResearch.jCHEKS.gui.chat.model.IncomingMessage;
+import com.archosResearch.jCHEKS.gui.chat.model.OutgoingMessage;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
 
 /**
  *
@@ -46,8 +47,11 @@ public class ChatController {
         messageOutput.appendText("You >> " + messageInput.getText() + "\n");
     }
     
-    void displayMessage(Message message){
-        messageOutput.appendText(message.getContent() + "\n");
+    void displayOutgoingMessage(OutgoingMessage message){
+        messageOutput.appendText("I said: " + message.getContent().split("~")[0] + "\n");
+    }
+    void displayIncomingMessage(IncomingMessage message, Contact contact){
+        messageOutput.appendText(contact.getName() + " said: " + message.getContent().split("~")[0] + "\n");
     }
     
     private void resetInputField(){

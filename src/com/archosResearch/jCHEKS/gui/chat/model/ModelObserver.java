@@ -6,7 +6,7 @@ package com.archosResearch.jCHEKS.gui.chat.model;
  */
 public interface ModelObserver{
     //TODO Should we separate this into multiple interface?
-    public void messageSent(Message message, Contact contact);
-    public void messageReceived(Message message);
+    public void messageSent(OutgoingMessage message, Contact contact);
+    public void messageReceived(IncomingMessage message, Contact contact);
     public void contactAdded(Contact contact);
 }

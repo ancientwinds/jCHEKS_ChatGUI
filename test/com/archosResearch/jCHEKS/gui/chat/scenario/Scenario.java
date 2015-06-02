@@ -29,11 +29,11 @@ public class Scenario {
         viewController.setSelectedContact(contact);
         
         //Messages
-        appController.handleIncomingMessage("Hello!", "Bob");
+        appController.handleIncomingMessage("Hello!", contact);
         viewController.forwardOutgoingMessage("Hi");
-        appController.handleIncomingMessage("How are you?", "Bob");
+        appController.handleIncomingMessage("How are you?", contact);
         viewController.forwardOutgoingMessage("Good, and you?");
-        appController.handleIncomingMessage("Fine. Goodbye!", "Bob");
+        appController.handleIncomingMessage("Fine. Goodbye!", contact);
         viewController.forwardOutgoingMessage("Bye!");
         //assertTrue(viewController.workAsExpected());
     }

@@ -2,10 +2,12 @@ package com.archosResearch.jCHEKS.gui.chat;
 
 import com.archosResearch.jCHEKS.gui.chat.model.Contact;
 import com.archosResearch.jCHEKS.gui.chat.model.ContactNotFoundException;
+import com.archosResearch.jCHEKS.gui.chat.model.IncomingMessage;
 import com.archosResearch.jCHEKS.gui.chat.model.Message;
 import com.archosResearch.jCHEKS.gui.chat.model.Model;
 import com.archosResearch.jCHEKS.gui.chat.model.ModelObserver;
 import com.archosResearch.jCHEKS.gui.chat.model.NameOfContactAlreadyExistInContactsException;
+import com.archosResearch.jCHEKS.gui.chat.model.OutgoingMessage;
 import java.util.ArrayList;
 
 /**
@@ -22,7 +24,7 @@ public class FakeModelToTestAppController implements Model{
 
     }
 
-    public void addIncomingMessage(String messageContent, String contactName) {
+    public void addIncomingMessage(String messageContent, Contact contact) {
 
     }
 
@@ -41,12 +43,12 @@ public class FakeModelToTestAppController implements Model{
     }
 
     @Override
-    public void broadcastMessageSent(Message message, Contact contact) {
+    public void broadcastMessageSent(OutgoingMessage message, Contact contact) {
         
     }
 
     @Override
-    public void broadcastMessageReceived(Message message) {
+    public void broadcastMessageReceived(IncomingMessage message, Contact contact) {
         
     }
 

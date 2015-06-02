@@ -21,15 +21,15 @@ public abstract class ModelObservableDefault implements ModelObservable{
         this.observers.remove(observer);
     }
     
-    public void broadcastMessageSent(Message message, Contact contact){
+    public void broadcastMessageSent(OutgoingMessage message, Contact contact){
         for (ModelObserver observer : this.observers) {
             observer.messageSent(message, contact);
         }
     }
     
-    public void broadcastMessageReceived(Message message){
+    public void broadcastMessageReceived(IncomingMessage message, Contact contact){
         for (ModelObserver observer : this.observers) {
-            observer.messageReceived(message);
+            observer.messageReceived(message, contact);
         }
     }
     

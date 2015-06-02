@@ -28,7 +28,7 @@ public class ModelDefault extends ModelObservableDefault implements Model{
         try {
             contactCollection.findByName(contact.getName());
             MessageCollection messageCollection = this.map.get(contact);
-            Message message = new OutgoingMessage(messageContent);
+            OutgoingMessage message = new OutgoingMessage(messageContent);
             messageCollection.add(message);
             this.broadcastMessageSent(message, contact);
         } catch (ContactNotFoundException ex) {
@@ -37,13 +37,13 @@ public class ModelDefault extends ModelObservableDefault implements Model{
     }
 
     @Override
-    public void addIncomingMessage(String messageContent, String contactName) {
+    public void addIncomingMessage(String messageContent, Contact contact) {
         try {
-            Contact contact = contactCollection.findByName(contactName);
+            contactCollection.findByName(contact.getName());
             MessageCollection messageCollection = this.map.get(contact);
-            Message message = new IncomingMessage(messageContent);
+            IncomingMessage message = new IncomingMessage(messageContent);
             messageCollection.add(message);
-            this.broadcastMessageReceived(message);
+            this.broadcastMessageReceived(message, contact);
         } catch (ContactNotFoundException ex) {
             ex.printStackTrace();
         }

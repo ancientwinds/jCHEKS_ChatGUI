@@ -2,7 +2,9 @@ package com.archosResearch.jCHEKS.gui.chat.view;
 
 import com.archosResearch.jCHEKS.gui.chat.AppController;
 import com.archosResearch.jCHEKS.gui.chat.model.Contact;
+import com.archosResearch.jCHEKS.gui.chat.model.IncomingMessage;
 import com.archosResearch.jCHEKS.gui.chat.model.Message;
+import com.archosResearch.jCHEKS.gui.chat.model.OutgoingMessage;
 import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
 import com.sun.javafx.application.HostServicesDelegate;
 import java.io.IOException;
@@ -62,13 +64,13 @@ public class JavaFxViewController extends Application implements ViewController{
     }
     
     @Override
-    public void messageSent(Message message, Contact contact) {
-        chatController.displayMessage(message);
+    public void messageSent(OutgoingMessage message, Contact contact) {
+        chatController.displayOutgoingMessage(message);
     }
 
     @Override
-    public void messageReceived(Message message) {
-        chatController.displayMessage(message);    
+    public void messageReceived(IncomingMessage message, Contact contact) {
+        chatController.displayIncomingMessage(message, contact);    
     }
     
     @Override

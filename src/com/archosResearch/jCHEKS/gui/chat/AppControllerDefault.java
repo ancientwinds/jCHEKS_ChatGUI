@@ -21,8 +21,8 @@ public class AppControllerDefault implements AppController{
         this.model.addObserver(this.viewController);
     }
     
-    public void handleIncomingMessage(String messageContent, String contactName){
-        this.model.addIncomingMessage(messageContent, contactName);
+    public void handleIncomingMessage(String messageContent, Contact contact){
+        this.model.addIncomingMessage(messageContent, contact);
     }
     
     public void handleOutgoingMessage(String messageContent, Contact contact){

@@ -26,7 +26,7 @@ public class ModelTest {
         model.addContact(contact);
         assertEquals(contactCollection.contacts.get(0).getName(), contact.getName());
     }
-
+/*
     @Test
     public void testAddOutgoingMessage() {
         String messageContent = "";
@@ -65,19 +65,19 @@ public class ModelTest {
         ModelObservableDefault model = null;
         model.removeObserver(observer);
     }
-/*
+
     @Test
     public void testBroadcastMessageSent() {
         Message message = null;
         ModelObservableDefault model = null;
         model.broadcastMessageSent(message, );
     }
-*/
+
     @Test
     public void testBroadcastMessageReceived() {
         Message message = null;
         ModelObservableDefault model = null;
         model.broadcastMessageReceived(message);
-    }
+    }*/
     
 }
