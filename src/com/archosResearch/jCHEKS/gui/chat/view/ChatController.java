@@ -48,10 +48,10 @@ public class ChatController {
     }
     
     void displayOutgoingMessage(OutgoingMessage message){
-        messageOutput.appendText("I said: " + message.getContent().split("~")[0] + "\n");
+        messageOutput.appendText("I said: " + message.getContent() + "\n");
     }
     void displayIncomingMessage(IncomingMessage message, Contact contact){
-        messageOutput.appendText(contact.getName() + " said: " + message.getContent().split("~")[0] + "\n");
+        messageOutput.appendText(contact.getName() + " said: " + message.getContent() + "\n");
     }
     
     private void resetInputField(){
