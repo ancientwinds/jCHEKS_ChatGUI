@@ -2,6 +2,7 @@ package com.archosResearch.jCHEKS.gui.chat.scenario;
 
 import com.archosResearch.jCHEKS.gui.chat.AppController;
 import com.archosResearch.jCHEKS.gui.chat.AppControllerDefault;
+import com.archosResearch.jCHEKS.gui.chat.MockEngine;
 import com.archosResearch.jCHEKS.gui.chat.model.ContactCollection;
 import com.archosResearch.jCHEKS.gui.chat.model.ContactCollectionDefault;
 import com.archosResearch.jCHEKS.gui.chat.model.Message;
@@ -22,15 +23,10 @@ public class Scenario {
     @Test
     public void scenario1() throws NameOfContactAlreadyExistInContactsException {
         //Init
-        ArrayList contactList = new ArrayList();
-        ArrayList observers = new ArrayList();
-        HashMap hashMap = new HashMap<>();
-        ContactCollection contactCollection = new ContactCollectionDefault(contactList);
-        Model model = new ModelDefault(contactCollection, hashMap, observers);
-        ArrayList<Message> messagesFromAlice = new ArrayList();
-        ArrayList<Message> messagesFromBob = new ArrayList();
+        ContactCollection contactCollection = new ContactCollectionDefault();
+        Model model = new ModelDefault(contactCollection);
         InvisibleViewController viewController = new InvisibleViewController();
-        AppController appController = new AppControllerDefault(model, viewController, "Bob");
+        AppController appController = new AppControllerDefault(new MockEngine(), model, viewController, "Bob");
         
         //Messages
         appController.handleIncomingMessage("Hello!", "Bob");

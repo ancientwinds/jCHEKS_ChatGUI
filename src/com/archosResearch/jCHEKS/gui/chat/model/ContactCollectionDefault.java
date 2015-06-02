@@ -10,8 +10,8 @@ public class ContactCollectionDefault implements ContactCollection{
 
     private final ArrayList<Contact> contacts;
 
-    public ContactCollectionDefault(ArrayList contacts) {
-        this.contacts = contacts;
+    public ContactCollectionDefault() {
+        this.contacts = new ArrayList();
     }
 
     public Contact findByName(String aName) throws ContactNotFoundException {

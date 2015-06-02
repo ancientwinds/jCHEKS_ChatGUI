@@ -17,7 +17,7 @@ public class AppControllerDefaultTest {
         AppController appController = null;
         Model fakeModel = new FakeModelToTestAppController();
         ViewController fakeViewController = new FakeViewControllerToTestAppController();
-        appController = new AppControllerDefault(fakeModel, fakeViewController, "Bob");
+        appController = new AppControllerDefault(new MockEngine(), fakeModel, fakeViewController, "Bob");
         assertNotNull(appController);
     }
     
@@ -27,7 +27,7 @@ public class AppControllerDefaultTest {
         String contactName = "Bob";
         Model fakeModel = new FakeModelToTestAppController();
         ViewController fakeViewController = new FakeViewControllerToTestAppController();
-        AppController appController = new AppControllerDefault(fakeModel, fakeViewController, "Bob");
+        AppController appController = new AppControllerDefault(new MockEngine(), fakeModel, fakeViewController, "Bob");
         appController.handleIncomingMessage(messageContent, contactName);
     }
 
@@ -37,7 +37,7 @@ public class AppControllerDefaultTest {
         String contactName = "";
         Model fakeModel = new FakeModelToTestAppController();
         ViewController fakeViewController = new FakeViewControllerToTestAppController();
-        AppController appController = new AppControllerDefault(fakeModel, fakeViewController, "Bob");
+        AppController appController = new AppControllerDefault(new MockEngine(), fakeModel, fakeViewController, "Bob");
         appController.handleOutgoingMessage(messageContent, contactName);
     }
 }

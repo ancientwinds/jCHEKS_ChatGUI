@@ -10,8 +10,8 @@ import java.util.List;
 public abstract class ModelObservableDefault implements ModelObservable{
     private final List<ModelObserver> observers;
     
-    public ModelObservableDefault(ArrayList observers){
-        this.observers  = observers;
+    public ModelObservableDefault(){
+        this.observers  = new ArrayList();
     }
     public void addObserver(ModelObserver observer){
         this.observers.add(observer);

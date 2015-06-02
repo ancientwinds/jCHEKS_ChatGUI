@@ -1,10 +1,9 @@
 package com.archosResearch.jCHEKS.gui.chat;
 
+import com.archosResearch.jCHEKS.concept.engine.AbstractEngine;
 import com.archosResearch.jCHEKS.gui.chat.model.*;
 import com.archosResearch.jCHEKS.gui.chat.view.JavaFxViewController;
 import com.archosResearch.jCHEKS.gui.chat.view.ViewController;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  *
@@ -16,7 +15,7 @@ public class AppControllerDefault implements AppController{
     private final ViewController viewController;
     //private final CHECKSEngine engine;
     
-    public AppControllerDefault(/*CHECKSEngine engine, */Model model, ViewController viewController, String remoteContactName) throws NameOfContactAlreadyExistInContactsException{
+    public AppControllerDefault(AbstractEngine engine, Model model, ViewController viewController, String remoteContactName) throws NameOfContactAlreadyExistInContactsException{
         this.viewController = viewController;
         this.viewController.setAppController(this);
         //this.engine = engine;

@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public class MessageCollectionDefault implements MessageCollection{
     private final ArrayList<Message> messages;
     
-    public MessageCollectionDefault(ArrayList messages){
-        this.messages = messages;
+    public MessageCollectionDefault(){
+        this.messages = new ArrayList();
     }
     
     public void add(Message message){

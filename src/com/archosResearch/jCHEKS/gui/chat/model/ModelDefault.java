@@ -12,18 +12,19 @@ public class ModelDefault extends ModelObservableDefault implements Model{
     private final ContactCollection contactCollection;
     private final HashMap<Contact, MessageCollection> map;
 
-    public ModelDefault(ContactCollection contactCollection, HashMap map, ArrayList<ModelObserver> observers) {
-        super(observers);
+    public ModelDefault(ContactCollection contactCollection) {
         this.contactCollection = contactCollection;
-        this.map = map;
+        this.map = new HashMap();
     }
 
+    @Override
     public void addContact(String contactName) throws NameOfContactAlreadyExistInContactsException{
         Contact contact = new Contact(contactName);
         this.contactCollection.add(contact);
-        this.map.put(contact, new MessageCollectionDefault(new ArrayList()));
+        this.map.put(contact, new MessageCollectionDefault());
     }
 
+    @Override
     public void addOutgoingMessage(String messageContent, String contactName) {
         try {
             Contact contact = contactCollection.findByName(contactName);
@@ -36,6 +37,7 @@ public class ModelDefault extends ModelObservableDefault implements Model{
         }
     }
 
+    @Override
     public void addIncomingMessage(String messageContent, String contactName) {
         try {
             Contact contact = contactCollection.findByName(contactName);
@@ -48,6 +50,7 @@ public class ModelDefault extends ModelObservableDefault implements Model{
         }
     }
 
+    @Override
     public ArrayList<Message> findMessagesByContact(String contactName) throws ContactNotFoundException {
         Contact contact = contactCollection.findByName(contactName);
         MessageCollection messageCollection = this.map.get(contact);
