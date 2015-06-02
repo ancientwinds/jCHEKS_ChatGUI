@@ -22,9 +22,9 @@ public class ChatController {
    
     @FXML
     private void handleSendButton(){
-        resetInputField();
         JavaFxViewController viewController = JavaFxViewController.getInstance();
         viewController.forwardOutgoingMessage(messageInput.getText());
+        resetInputField();
     }
     
     @FXML
