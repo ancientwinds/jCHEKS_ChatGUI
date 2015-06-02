@@ -19,7 +19,7 @@ public class MessageTest {
     @Test
     public void getContent_should_return_the_content_of_the_incomingMessage() {
         Message message = new IncomingMessage("Content of the message.");
-        String expResult = "Alice said: Content of the message.";
+        String expResult = "Content of the message.";
         String result = message.getContent();
         assertEquals(expResult, result);
     }
@@ -27,7 +27,7 @@ public class MessageTest {
     @Test
     public void getContent_should_return_the_content_of_the_outgoingMmessage() {
         Message message = new OutgoingMessage("Content of the message.");
-        String expResult = "I said: Content of the message.";
+        String expResult = "Content of the message.";
         String result = message.getContent();
         assertEquals(expResult, result);
     }
