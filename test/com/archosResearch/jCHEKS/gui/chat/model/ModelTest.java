@@ -12,30 +12,71 @@ import static org.junit.Assert.*;
 public class ModelTest {
     
     @Test
-    public void constructor_should_construct_the_model() {
+    public void constructor_should_construct_the_object(){
         Model model = null;
-        model = new ModelDefault(new ContactCollectionDefault(new ArrayList()), new HashMap(), new ArrayList());
+        model = new ModelDefault(new SimpleContactCollectionToTestModel(), new HashMap(), new ArrayList());
         assertNotNull(model);
-    }
-
-    @Test (expected=NameOfContactAlreadyExistInContactsException.class)
-    public void addContact_should_throws_NameOfContactAlreadyExistInContactsException() throws NameOfContactAlreadyExistInContactsException {
-        String contactName = "Alice";
-        Model model = new ModelDefault(new ContactCollectionDefault(new ArrayList()), new HashMap(), new ArrayList());
-        model.addContact(contactName);
-        model.addContact(contactName);
-    }
-/*
-    @Test
-    public void addIncomingMessage_should_add_the_message_in_the_collection() {
-        Model model = new Model();
-        model.addIncomingMessage(new Message());
     }
     
     @Test
-    public void addOutgoingMessage_should_add_the_message_in_the_collection() {
-        Model model = new Model();
-        model.addOutgoingMessage(new Message());
+    public void testAddContact() throws Exception {
+        String contactName = "";
+        Model model = null;
+        model.addContact(contactName);
     }
-    */
+
+    @Test
+    public void testAddOutgoingMessage() {
+        String messageContent = "";
+        String contactName = "";
+        Model model = null;
+        model.addOutgoingMessage(messageContent, contactName);
+    }
+
+    @Test
+    public void testAddIncomingMessage() {
+        String messageContent = "";
+        String contactName = "";
+        Model model = null;
+        model.addIncomingMessage(messageContent, contactName);
+    }
+
+    @Test
+    public void testFindMessagesByContact() throws Exception {
+        System.out.println("findMessagesByContact");
+        String contactName = "";
+        Model model = null;
+        ArrayList<Message> expResult = null;
+        ArrayList<Message> result = model.findMessagesByContact(contactName);
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testAddObserver() {
+        ModelObserver observer = null;
+        ModelObservableDefault model = null;
+        model.addObserver(observer);
+    }
+
+    @Test
+    public void testRemoveObserver() {
+        ModelObserver observer = null;
+        ModelObservableDefault model = null;
+        model.removeObserver(observer);
+    }
+
+    @Test
+    public void testBroadcastMessageSent() {
+        Message message = null;
+        ModelObservableDefault model = null;
+        model.broadcastMessageSent(message);
+    }
+
+    @Test
+    public void testBroadcastMessageReceived() {
+        Message message = null;
+        ModelObservableDefault model = null;
+        model.broadcastMessageReceived(message);
+    }
+    
 }
