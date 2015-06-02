@@ -34,6 +34,16 @@ public class ContactCollectionTest {
         Contact result = contactCollection.findByName(name);
     }
     
+    @Test
+    public void findByName_return_the_good_contact_it_is_possible() throws ContactNotFoundException, NameOfContactAlreadyExistInContactsException{
+        ContactCollection contactCollection = new ContactCollectionDefault(new ArrayList());
+        Contact contact = new Contact("Alice");
+        contactCollection.add(contact);
+        String name = "Alice";
+        Contact result = contactCollection.findByName(name);
+        assertEquals(result, contact);
+    }
+    
     @Test (expected=NameOfContactAlreadyExistInContactsException.class)
     public void addContact_should_throw_an_exception_() throws NameOfContactAlreadyExistInContactsException{
         ContactCollection contactCollection = new ContactCollectionDefault(new ArrayList());
