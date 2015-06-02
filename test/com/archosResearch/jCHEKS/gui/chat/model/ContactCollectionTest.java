@@ -18,16 +18,6 @@ public class ContactCollectionTest {
     }
     
     @Test
-    public void constructor_with_contacts_as_parameters_should_create_the_contact_collection(){
-        ContactCollection contactCollection = null;
-        ArrayList<Contact> contacts = new ArrayList();
-        contacts.add(new Contact("Alice"));
-        contacts.add(new Contact("Bob"));
-        contactCollection = new ContactCollectionDefault(contacts);
-        assertNotNull(contactCollection);
-    }
-    
-    @Test
     public void constructor_with_contact_array_as_parameter_should_create_the_contact_collection(){
         ContactCollection contactCollection = null;
         ArrayList<Contact> contacts = new ArrayList();
