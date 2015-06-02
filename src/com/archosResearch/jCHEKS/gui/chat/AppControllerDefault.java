@@ -33,12 +33,4 @@ public class AppControllerDefault implements AppController{
     public void handleOutgoingMessage(String messageContent, String contactName){
         this.model.addOutgoingMessage(messageContent, contactName);
     }
-    
-    public static void main(String args[]) throws NameOfContactAlreadyExistInContactsException{
-        String remoteIp = args[0];
-        String remotePort = args[1];
-        String remoteContactName = args[2];
-        System.out.println(args[2]);
-        new AppControllerDefault(/* new CHECKSEngine(remoteIp, remotePort),*/new ModelDefault(new ContactCollectionDefault(new ArrayList()), new HashMap<>(), new ArrayList()), JavaFxViewController.getInstance(), remoteContactName);
-    }
 }
