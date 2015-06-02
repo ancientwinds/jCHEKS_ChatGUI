@@ -52,7 +52,7 @@ public class InvisibleViewController implements ViewController{
 
     @Override
     public void forwardOutgoingMessage(String messageContent) {
-        this.appController.handleOutgoingMessage(messageContent, this.contact.getName());
+        this.appController.handleOutgoingMessage(messageContent, this.contact);
     }
 
     @Override

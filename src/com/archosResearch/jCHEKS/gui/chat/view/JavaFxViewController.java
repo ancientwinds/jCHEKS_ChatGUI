@@ -104,7 +104,7 @@ public class JavaFxViewController extends Application implements ViewController{
 
     @Override
     public void forwardOutgoingMessage(String messageContent) {
-        this.appController.handleOutgoingMessage(messageContent, this.selectedContact.getName());  
+        this.appController.handleOutgoingMessage(messageContent, this.selectedContact);  
     }
     
     //Package private

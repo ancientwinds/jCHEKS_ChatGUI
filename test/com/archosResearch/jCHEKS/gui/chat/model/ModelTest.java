@@ -30,9 +30,8 @@ public class ModelTest {
     @Test
     public void testAddOutgoingMessage() {
         String messageContent = "";
-        String contactName = "";
         Model model = null;
-        model.addOutgoingMessage(messageContent, contactName);
+        model.addOutgoingMessage(messageContent, new Contact("", new StubCommunicator()));
     }
 
     @Test

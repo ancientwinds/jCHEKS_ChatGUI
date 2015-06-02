@@ -25,7 +25,7 @@ public class AppControllerDefault implements AppController{
         this.model.addIncomingMessage(messageContent, contactName);
     }
     
-    public void handleOutgoingMessage(String messageContent, String contactName){
-        this.model.addOutgoingMessage(messageContent, contactName);
+    public void handleOutgoingMessage(String messageContent, Contact contact){
+        this.model.addOutgoingMessage(messageContent, contact);
     }
 }

@@ -18,7 +18,7 @@ public class FakeModelToTestAppController implements Model{
 
     }
 
-    public void addOutgoingMessage(String messageContent, String contactName) {
+    public void addOutgoingMessage(String messageContent, Contact contact) {
 
     }
 

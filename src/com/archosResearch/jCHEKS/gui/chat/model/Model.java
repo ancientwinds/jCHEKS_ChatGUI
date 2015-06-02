@@ -9,6 +9,6 @@ import java.util.ArrayList;
 public interface Model extends ModelObservable{
     public void addContact(Contact contact) throws NameOfContactAlreadyExistInContactsException;
     public void addIncomingMessage(String messageContent, String contactName);
-    public void addOutgoingMessage(String messageContent, String contactName);
+    public void addOutgoingMessage(String messageContent, Contact contact);
     public ArrayList<Message> findMessagesByContact(String contactName) throws ContactNotFoundException;
 }

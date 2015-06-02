@@ -1,7 +1,9 @@
 package com.archosResearch.jCHEKS.gui.chat;
 
+import com.archosResearch.jCHEKS.gui.chat.model.Contact;
 import com.archosResearch.jCHEKS.gui.chat.model.Model;
 import com.archosResearch.jCHEKS.gui.chat.model.NameOfContactAlreadyExistInContactsException;
+import com.archosResearch.jCHEKS.gui.chat.model.StubCommunicator;
 import com.archosResearch.jCHEKS.gui.chat.view.ViewController;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -38,6 +40,6 @@ public class AppControllerDefaultTest {
         Model fakeModel = new FakeModelToTestAppController();
         ViewController fakeViewController = new FakeViewControllerToTestAppController();
         AppController appController = new AppControllerDefault(fakeModel, fakeViewController);
-        appController.handleOutgoingMessage(messageContent, contactName);
+        appController.handleOutgoingMessage(messageContent, new Contact("Test message", new StubCommunicator()));
     }
 }

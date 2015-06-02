@@ -24,9 +24,9 @@ public class ModelDefault extends ModelObservableDefault implements Model{
     }
 
     @Override
-    public void addOutgoingMessage(String messageContent, String contactName) {
+    public void addOutgoingMessage(String messageContent, Contact contact) {
         try {
-            Contact contact = contactCollection.findByName(contactName);
+            contactCollection.findByName(contact.getName());
             MessageCollection messageCollection = this.map.get(contact);
             Message message = new OutgoingMessage(messageContent);
             messageCollection.add(message);
