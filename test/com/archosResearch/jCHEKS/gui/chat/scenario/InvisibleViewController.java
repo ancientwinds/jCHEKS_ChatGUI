@@ -31,7 +31,7 @@ public class InvisibleViewController implements ViewController{
     }
 
     @Override
-    public void messageSent(Message message) {
+    public void messageSent(Message message, Contact contact) {
         System.out.println("Message from " + message.getContent());
     }
 

@@ -41,7 +41,7 @@ public class FakeModelToTestAppController implements Model{
     }
 
     @Override
-    public void broadcastMessageSent(Message message) {
+    public void broadcastMessageSent(Message message, Contact contact) {
         
     }
 

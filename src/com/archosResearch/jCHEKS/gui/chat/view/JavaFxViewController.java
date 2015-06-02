@@ -62,7 +62,7 @@ public class JavaFxViewController extends Application implements ViewController{
     }
     
     @Override
-    public void messageSent(Message message) {
+    public void messageSent(Message message, Contact contact) {
         chatController.displayMessage(message);
     }
 
