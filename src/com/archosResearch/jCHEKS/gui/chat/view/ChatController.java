@@ -24,7 +24,7 @@ public class ChatController {
     private void handleSendButton(){
         resetInputField();
         JavaFxViewController viewController = JavaFxViewController.getInstance();
-        viewController.forwardOutgoingMessage(messageInput.getText(), "Bob");
+        viewController.forwardOutgoingMessage(messageInput.getText());
     }
     
     @FXML

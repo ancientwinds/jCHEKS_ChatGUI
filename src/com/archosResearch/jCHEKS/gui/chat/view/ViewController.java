@@ -1,5 +1,6 @@
 package com.archosResearch.jCHEKS.gui.chat.view;
 import com.archosResearch.jCHEKS.gui.chat.AppController;
+import com.archosResearch.jCHEKS.gui.chat.model.Contact;
 import com.archosResearch.jCHEKS.gui.chat.model.ModelObserver;
 
 /**
@@ -8,5 +9,6 @@ import com.archosResearch.jCHEKS.gui.chat.model.ModelObserver;
  */
 public interface ViewController extends ModelObserver{
     public void setAppController(AppController appController);
-    public void forwardOutgoingMessage(String messageContent, String contactName);
+    public void forwardOutgoingMessage(String messageContent);
+    public void setSelectedContact(Contact contact);
 }

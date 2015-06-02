@@ -14,9 +14,9 @@ public class ContactCollectionDefault implements ContactCollection{
         this.contacts = new ArrayList();
     }
 
-    public Contact findByName(String aName) throws ContactNotFoundException {
+    public Contact findByName(String name) throws ContactNotFoundException {
         for (Contact contact : this.contacts) {
-            if (contact.getName().equals(aName)) {
+            if (contact.getName().equals(name)) {
                 return contact;
             }
         }
@@ -24,8 +24,8 @@ public class ContactCollectionDefault implements ContactCollection{
     }
 
     public void add(Contact newContact) throws NameOfContactAlreadyExistInContactsException{
-        for (Contact aContact : this.contacts) 
-            if (aContact.getName().equals(newContact.getName())) throw new NameOfContactAlreadyExistInContactsException();
+        for (Contact contact : this.contacts) 
+            if (contact.getName().equals(newContact.getName())) throw new NameOfContactAlreadyExistInContactsException();
         this.contacts.add(newContact);
     }
 

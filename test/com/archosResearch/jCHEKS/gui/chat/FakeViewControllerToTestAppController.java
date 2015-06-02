@@ -30,4 +30,13 @@ public class FakeViewControllerToTestAppController implements ViewController{
     public void contactAdded(Contact contact) {
         
     }
+
+    @Override
+    public void forwardOutgoingMessage(String messageContent) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setSelectedContact(Contact contact) {
+    }
 }

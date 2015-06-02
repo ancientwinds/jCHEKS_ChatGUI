@@ -16,6 +16,7 @@ public class InvisibleViewController implements ViewController{
     ArrayList<Message> messagesToSend;
     ArrayList<Message> receivedMessages;
     ArrayList<Message> expectedMessagesToReceive;
+    Contact contact;
     
     public InvisibleViewController(/*ArrayList expectedMessagesToReceive, ArrayList messagesToSend*/){
         /*this.expectedMessagesToReceive = expectedMessagesToReceive;
@@ -50,7 +51,12 @@ public class InvisibleViewController implements ViewController{
     }
 
     @Override
-    public void forwardOutgoingMessage(String messageContent, String contactName) {
-        appController.handleOutgoingMessage(messageContent, contactName);    
+    public void forwardOutgoingMessage(String messageContent) {
+        this.appController.handleOutgoingMessage(messageContent, this.contact.getName());
+    }
+
+    @Override
+    public void setSelectedContact(Contact contact) {
+        this.contact = contact;
     }
 }

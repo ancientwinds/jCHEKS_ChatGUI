@@ -24,6 +24,7 @@ public class JavaFxViewController extends Application implements ViewController{
     private Stage primaryStage;
     private BorderPane rootLayout;
     private ChatController chatController;
+    private Contact selectedContact;
     
     /**
      *  Should never be called. Call getInstance().
@@ -102,8 +103,8 @@ public class JavaFxViewController extends Application implements ViewController{
     }
 
     @Override
-    public void forwardOutgoingMessage(String messageContent, String contactName) {
-        this.appController.handleOutgoingMessage(messageContent, contactName);  
+    public void forwardOutgoingMessage(String messageContent) {
+        this.appController.handleOutgoingMessage(messageContent, this.selectedContact.getName());  
     }
     
     //Package private
@@ -116,5 +117,10 @@ public class JavaFxViewController extends Application implements ViewController{
     void showScene(Scene scene){
         this.primaryStage.setScene(scene);
         this.primaryStage.show();
+    }
+    
+    @Override
+    public void setSelectedContact(Contact contact){
+        this.selectedContact = contact;
     }
 }
