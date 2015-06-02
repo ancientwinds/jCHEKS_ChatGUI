@@ -58,34 +58,18 @@ public class ModelTest {
         ArrayList<Message> result = model.findMessagesByContact(contact.getName());
         assertEquals(result.get(0).getContent(), "This is a test message");
     }
-    /*
+    
     
     @Test
-    public void testAddObserver() {
-        ModelObserver observer = null;
-        ModelObservableDefault model = null;
+    public void addIncomingMessage_should_not_broadcast_message_received_when_observer_has_been_removed() throws NameOfContactAlreadyExistInContactsException {
+        Model model = new ModelDefault(new ContactCollectionDefault());
+        ObserverMock observer = new ObserverMock();
+        Contact contact = new Contact("Bob", new StubCommunicator());
+        model.addContact(contact);
         model.addObserver(observer);
-    }
-
-    @Test
-    public void testRemoveObserver() {
-        ModelObserver observer = null;
-        ModelObservableDefault model = null;
         model.removeObserver(observer);
+        model.addIncomingMessage("Test message", contact);
+        assertNull(observer.lastMessageReceived);
     }
-
-    @Test
-    public void testBroadcastMessageSent() {
-        Message message = null;
-        ModelObservableDefault model = null;
-        model.broadcastMessageSent(message, );
-    }
-
-    @Test
-    public void testBroadcastMessageReceived() {
-        Message message = null;
-        ModelObservableDefault model = null;
-        model.broadcastMessageReceived(message);
-    }*/
     
 }
