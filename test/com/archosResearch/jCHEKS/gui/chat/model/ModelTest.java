@@ -26,31 +26,39 @@ public class ModelTest {
         model.addContact(contact);
         assertEquals(contactCollection.contacts.get(0).getName(), contact.getName());
     }
-/*
+
     @Test
-    public void testAddOutgoingMessage() {
-        String messageContent = "";
-        Model model = null;
-        model.addOutgoingMessage(messageContent, new Contact("", new StubCommunicator()));
+    public void addOutgoingMessage_should_broadcast_message_sent() throws NameOfContactAlreadyExistInContactsException {
+        Model model = new ModelDefault(new ContactCollectionDefault());
+        ObserverMock observer = new ObserverMock();
+        Contact contact = new Contact("Bob", new StubCommunicator());
+        model.addContact(contact);
+        model.addObserver(observer);
+        model.addOutgoingMessage("Test message", contact);
+        assertEquals("Test message", observer.lastMessageSent.getContent());
     }
 
     @Test
-    public void testAddIncomingMessage() {
-        String messageContent = "";
-        String contactName = "";
-        Model model = null;
-        model.addIncomingMessage(messageContent, contactName);
+    public void addIncomingMessage_should_broadcast_message_received() throws NameOfContactAlreadyExistInContactsException {
+        Model model = new ModelDefault(new ContactCollectionDefault());
+        ObserverMock observer = new ObserverMock();
+        Contact contact = new Contact("Bob", new StubCommunicator());
+        model.addContact(contact);
+        model.addObserver(observer);
+        model.addIncomingMessage("Test message", contact);
+        assertEquals("Test message", observer.lastMessageReceived.getContent());
     }
 
     @Test
-    public void testFindMessagesByContact() throws Exception {
-        System.out.println("findMessagesByContact");
-        String contactName = "";
-        Model model = null;
-        ArrayList<Message> expResult = null;
-        ArrayList<Message> result = model.findMessagesByContact(contactName);
-        assertEquals(expResult, result);
+    public void findMessagesByContact_should_return_message_sent() throws Exception {
+        Model model = new ModelDefault(new ContactCollectionDefault());
+        Contact contact = new Contact("Bob", new StubCommunicator());
+        model.addContact(contact);
+        model.addOutgoingMessage("This is a test message", contact);
+        ArrayList<Message> result = model.findMessagesByContact(contact.getName());
+        assertEquals(result.get(0).getContent(), "This is a test message");
     }
+    /*
     
     @Test
     public void testAddObserver() {
