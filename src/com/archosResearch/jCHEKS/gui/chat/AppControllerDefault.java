@@ -13,16 +13,12 @@ public class AppControllerDefault implements AppController{
     
     private final Model model;
     private final ViewController viewController;
-    //private final CHECKSEngine engine;
     
-    public AppControllerDefault(AbstractEngine engine, Model model, ViewController viewController, String remoteContactName) throws NameOfContactAlreadyExistInContactsException{
+    public AppControllerDefault(Model model, ViewController viewController) throws NameOfContactAlreadyExistInContactsException{
         this.viewController = viewController;
         this.viewController.setAppController(this);
-        //this.engine = engine;
         this.model = model;
-        this.model.addContact(remoteContactName);
         this.model.addObserver(this.viewController);
-        //this.model.addObserver(engine);
     }
     
     public void handleIncomingMessage(String messageContent, String contactName){

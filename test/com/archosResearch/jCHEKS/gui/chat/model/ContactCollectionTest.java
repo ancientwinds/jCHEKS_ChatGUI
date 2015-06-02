@@ -20,7 +20,7 @@ public class ContactCollectionTest {
     @Test (expected=ContactNotFoundException.class)
     public void findByName_should_throw_an_exception_when_we_search_and_no_contact_exist() throws ContactNotFoundException, NameOfContactAlreadyExistInContactsException{
         ContactCollection contactCollection = new ContactCollectionDefault();
-        contactCollection.add(new Contact("Alice"));
+        contactCollection.add(new Contact("Alice", new StubCommunicator()));
         contactCollection.findByName("Bob");
     }
     
@@ -33,7 +33,7 @@ public class ContactCollectionTest {
     @Test
     public void findByName_return_the_good_contact_it_is_possible() throws ContactNotFoundException, NameOfContactAlreadyExistInContactsException{
         ContactCollection contactCollection = new ContactCollectionDefault();
-        Contact contact = new Contact("Alice");
+        Contact contact = new Contact("Alice", new StubCommunicator());
         contactCollection.add(contact);
         String name = "Alice";
         Contact result = contactCollection.findByName(name);
@@ -43,7 +43,7 @@ public class ContactCollectionTest {
     @Test (expected=NameOfContactAlreadyExistInContactsException.class)
     public void addContact_should_throw_an_exception() throws NameOfContactAlreadyExistInContactsException{
         ContactCollection contactCollection = new ContactCollectionDefault();
-        Contact contact = new Contact("Alice");
+        Contact contact = new Contact("Alice", new StubCommunicator());
         contactCollection.add(contact);
         contactCollection.add(contact);
     }
@@ -51,8 +51,8 @@ public class ContactCollectionTest {
         @Test 
     public void addContact_should_add_a_contact_in_contact_collect() throws NameOfContactAlreadyExistInContactsException, ContactNotFoundException{
         ContactCollection contactCollection = new ContactCollectionDefault();
-        Contact contact = new Contact("Alice");
-        contactCollection.add(new Contact("Bob"));
+        Contact contact = new Contact("Alice", new StubCommunicator());
+        contactCollection.add(new Contact("Bob", new StubCommunicator()));
         contactCollection.add(contact);
         Contact result = contactCollection.findByName("Alice");
         assertEquals(result, contact);

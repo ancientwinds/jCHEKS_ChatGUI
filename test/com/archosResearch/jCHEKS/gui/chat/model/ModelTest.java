@@ -20,11 +20,11 @@ public class ModelTest {
     
     @Test
     public void addContact_should_call_addContact_in_contactCollection() throws Exception {
-        String contactName = "";
+        Contact contact = new Contact("", new StubCommunicator());
         SimpleContactCollectionToTestModel contactCollection = new SimpleContactCollectionToTestModel();
         Model model = new ModelDefault(contactCollection);
-        model.addContact(contactName);
-        assertEquals(contactCollection.contacts.get(0).getName(), contactName);
+        model.addContact(contact);
+        assertEquals(contactCollection.contacts.get(0).getName(), contact.getName());
     }
 
     @Test

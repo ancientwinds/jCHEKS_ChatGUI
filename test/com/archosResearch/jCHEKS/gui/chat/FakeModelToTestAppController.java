@@ -1,5 +1,6 @@
 package com.archosResearch.jCHEKS.gui.chat;
 
+import com.archosResearch.jCHEKS.gui.chat.model.Contact;
 import com.archosResearch.jCHEKS.gui.chat.model.ContactNotFoundException;
 import com.archosResearch.jCHEKS.gui.chat.model.Message;
 import com.archosResearch.jCHEKS.gui.chat.model.Model;
@@ -13,11 +14,7 @@ import java.util.ArrayList;
  */
 public class FakeModelToTestAppController implements Model{
 
-    public FakeModelToTestAppController() {
-        
-    }
-
-    public void addContact(String contactName) throws NameOfContactAlreadyExistInContactsException{
+    public void addContact(Contact contact) throws NameOfContactAlreadyExistInContactsException{
 
     }
 

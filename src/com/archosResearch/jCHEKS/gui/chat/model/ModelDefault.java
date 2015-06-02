@@ -18,8 +18,7 @@ public class ModelDefault extends ModelObservableDefault implements Model{
     }
 
     @Override
-    public void addContact(String contactName) throws NameOfContactAlreadyExistInContactsException{
-        Contact contact = new Contact(contactName);
+    public void addContact(Contact contact) throws NameOfContactAlreadyExistInContactsException{
         this.contactCollection.add(contact);
         this.map.put(contact, new MessageCollectionDefault());
     }
