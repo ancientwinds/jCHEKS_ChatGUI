@@ -12,10 +12,6 @@ public class OutgoingMessage extends Message{
         super(content);
     }
     
-    @Override
-    public String getContent(){
-        return "I said: "+ super.getContent();
-    }
     //public getState(){ return state; }
     
 }

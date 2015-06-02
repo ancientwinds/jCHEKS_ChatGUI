@@ -12,13 +12,13 @@ public class MessageTest {
     @Test
     public void constructor_should_create_the_message() {
         Message message = null;
-        message = new IncomingMessage("Alice", "Content of the message.");
+        message = new IncomingMessage("Content of the message.");
         assertNotNull(message);
     }
     
     @Test
     public void getContent_should_return_the_content_of_the_incomingMessage() {
-        Message message = new IncomingMessage("Alice", "Content of the message.");
+        Message message = new IncomingMessage("Content of the message.");
         String expResult = "Alice said: Content of the message.";
         String result = message.getContent();
         assertEquals(expResult, result);
