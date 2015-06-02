@@ -28,10 +28,16 @@ public class ContactCollectionTest {
     }
     
     @Test (expected=ContactNotFoundException.class)
-    public void findByName_Should_throw_an_exception_when_we_search_for_a_unexisting_contact() throws ContactNotFoundException{
+    public void findByName_should_throw_an_exception_when_we_search_and_no_contact_exist() throws ContactNotFoundException, NameOfContactAlreadyExistInContactsException{
         ContactCollection contactCollection = new ContactCollectionDefault(new ArrayList());
-        String name = "Alice";
-        Contact result = contactCollection.findByName(name);
+        contactCollection.add(new Contact("Alice"));
+        contactCollection.findByName("Bob");
+    }
+    
+    @Test (expected=ContactNotFoundException.class)
+    public void findByName_should_throw_an_exception_when_we_search_for_a_unexisting_contact() throws ContactNotFoundException{
+        ContactCollection contactCollection = new ContactCollectionDefault(new ArrayList());
+        contactCollection.findByName("Alice");
     }
     
     @Test
