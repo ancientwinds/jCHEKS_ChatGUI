@@ -51,11 +51,20 @@ public class ContactCollectionTest {
     }
     
     @Test (expected=NameOfContactAlreadyExistInContactsException.class)
-    public void addContact_should_throw_an_exception_() throws NameOfContactAlreadyExistInContactsException{
+    public void addContact_should_throw_an_exception() throws NameOfContactAlreadyExistInContactsException{
         ContactCollection contactCollection = new ContactCollectionDefault(new ArrayList());
         Contact contact = new Contact("Alice");
         contactCollection.add(contact);
         contactCollection.add(contact);
+    }
+    
+        @Test 
+    public void addContact_should_add_a_contact_in_contact_collect() throws NameOfContactAlreadyExistInContactsException, ContactNotFoundException{
+        ContactCollection contactCollection = new ContactCollectionDefault(new ArrayList());
+        Contact contact = new Contact("Alice");
+        contactCollection.add(contact);
+        Contact result = contactCollection.findByName("Alice");
+        assertEquals(result, contact);
     }
             
 }
