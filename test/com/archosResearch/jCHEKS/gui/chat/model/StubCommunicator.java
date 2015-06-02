@@ -1,7 +1,7 @@
 package com.archosResearch.jCHEKS.gui.chat.model;
 
+import com.archosResearch.jCheks.concept.communicator.AbstractCommunication;
 import com.archosResearch.jCheks.concept.communicator.AbstractCommunicator;
-import com.archosResearch.jCheks.concept.communicator.Communication;
 
 /**
  *
@@ -10,6 +10,6 @@ import com.archosResearch.jCheks.concept.communicator.Communication;
 public class StubCommunicator extends AbstractCommunicator{
 
     @Override
-    public void sendCommunication(Communication aCommunication) {}
+    public void sendCommunication(AbstractCommunication aCommunication) {}
     
 }
