@@ -21,7 +21,7 @@ public class ModelTest {
     @Test
     public void testAddContact() throws Exception {
         String contactName = "";
-        Model model = null;
+        Model model = new ModelDefault(new SimpleContactCollectionToTestModel(), new HashMap(), new ArrayList());
         model.addContact(contactName);
     }
 

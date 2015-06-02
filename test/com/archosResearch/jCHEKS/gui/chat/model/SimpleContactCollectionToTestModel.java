@@ -14,16 +14,18 @@ public class SimpleContactCollectionToTestModel implements ContactCollection{
         this.contacts = new ArrayList();
     }
 
-    public Contact findByName(String aName){
+    public Contact findByName(String aName) throws ContactNotFoundException {
         for (Contact contact : this.contacts) {
             if (contact.getName().equals(aName)) {
                 return contact;
             }
         }
-        return new Contact("Alice");
+        throw new ContactNotFoundException();
     }
 
-    public void add(Contact newContact){
+    public void add(Contact newContact) throws NameOfContactAlreadyExistInContactsException{
+        for (Contact aContact : this.contacts) 
+            if (aContact.getName().equals(newContact.getName())) throw new NameOfContactAlreadyExistInContactsException();
         this.contacts.add(newContact);
     }
 
