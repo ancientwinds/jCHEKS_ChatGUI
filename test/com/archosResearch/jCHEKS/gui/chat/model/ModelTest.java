@@ -1,5 +1,8 @@
 package com.archosResearch.jCHEKS.gui.chat.model;
 
+import mock.SimpleContactCollectionToTestModel;
+import mock.StubCommunicator;
+import mock.ObserverMock;
 import java.util.ArrayList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

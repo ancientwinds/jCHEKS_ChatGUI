@@ -1,5 +1,6 @@
 package com.archosResearch.jCHEKS.gui.chat.model;
 
+import mock.StubCommunicator;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import org.junit.Test;

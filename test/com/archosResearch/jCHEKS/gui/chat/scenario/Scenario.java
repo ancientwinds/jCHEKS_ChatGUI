@@ -1,5 +1,6 @@
 package com.archosResearch.jCHEKS.gui.chat.scenario;
 
+import mock.InvisibleViewController;
 import com.archosResearch.jCHEKS.gui.chat.AppController;
 import com.archosResearch.jCHEKS.gui.chat.AppControllerDefault;
 import com.archosResearch.jCHEKS.gui.chat.model.Contact;
@@ -8,7 +9,7 @@ import com.archosResearch.jCHEKS.gui.chat.model.ContactCollectionDefault;
 import com.archosResearch.jCHEKS.gui.chat.model.Model;
 import com.archosResearch.jCHEKS.gui.chat.model.ModelDefault;
 import com.archosResearch.jCHEKS.gui.chat.model.NameOfContactAlreadyExistInContactsException;
-import com.archosResearch.jCHEKS.gui.chat.model.StubCommunicator;
+import mock.StubCommunicator;
 import org.junit.Test;
 
 /**
@@ -35,7 +36,6 @@ public class Scenario {
         viewController.forwardOutgoingMessage("Good, and you?");
         appController.handleIncomingMessage("Fine. Goodbye!", contact);
         viewController.forwardOutgoingMessage("Bye!");
-        //assertTrue(viewController.workAsExpected());
     }
 
 }

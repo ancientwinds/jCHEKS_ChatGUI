@@ -1,5 +1,6 @@
-package com.archosResearch.jCHEKS.gui.chat;
+package mock;
 
+import com.archosResearch.jCHEKS.gui.chat.AppController;
 import com.archosResearch.jCHEKS.gui.chat.model.Contact;
 import com.archosResearch.jCHEKS.gui.chat.model.IncomingMessage;
 import com.archosResearch.jCHEKS.gui.chat.model.OutgoingMessage;

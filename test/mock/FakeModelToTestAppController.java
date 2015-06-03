@@ -1,4 +1,4 @@
-package com.archosResearch.jCHEKS.gui.chat;
+package mock;
 
 import com.archosResearch.jCHEKS.gui.chat.model.Contact;
 import com.archosResearch.jCHEKS.gui.chat.model.ContactNotFoundException;

@@ -1,5 +1,9 @@
-package com.archosResearch.jCHEKS.gui.chat.model;
+package mock;
 
+import com.archosResearch.jCHEKS.gui.chat.model.Contact;
+import com.archosResearch.jCHEKS.gui.chat.model.ContactCollection;
+import com.archosResearch.jCHEKS.gui.chat.model.ContactNotFoundException;
+import com.archosResearch.jCHEKS.gui.chat.model.NameOfContactAlreadyExistInContactsException;
 import java.util.ArrayList;
 
 /**

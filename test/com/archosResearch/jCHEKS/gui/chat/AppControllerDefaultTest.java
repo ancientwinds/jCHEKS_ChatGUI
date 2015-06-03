@@ -1,10 +1,17 @@
 package com.archosResearch.jCHEKS.gui.chat;
 
+import com.archosResearch.jCHEKS.gui.chat.AppController;
+import com.archosResearch.jCHEKS.gui.chat.AppControllerDefault;
+import mock.FakeModelToTestAppController;
+import mock.FakeViewControllerToTestAppController;
 import com.archosResearch.jCHEKS.gui.chat.model.Contact;
 import com.archosResearch.jCHEKS.gui.chat.model.Model;
 import com.archosResearch.jCHEKS.gui.chat.model.NameOfContactAlreadyExistInContactsException;
-import com.archosResearch.jCHEKS.gui.chat.model.StubCommunicator;
+import mock.StubCommunicator;
 import com.archosResearch.jCHEKS.gui.chat.view.ViewController;
+import mock.FakeModelToTestAppController;
+import mock.FakeViewControllerToTestAppController;
+import mock.StubCommunicator;
 import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
 
