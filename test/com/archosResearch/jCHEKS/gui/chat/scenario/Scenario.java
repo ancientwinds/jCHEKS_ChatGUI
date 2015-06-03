@@ -10,6 +10,7 @@ import com.archosResearch.jCHEKS.gui.chat.model.Model;
 import com.archosResearch.jCHEKS.gui.chat.model.ModelDefault;
 import com.archosResearch.jCHEKS.gui.chat.model.NameOfContactAlreadyExistInContactsException;
 import mock.StubCommunicator;
+import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
@@ -26,16 +27,28 @@ public class Scenario {
         Contact contact = new Contact("Bob", new StubCommunicator());
         model.addContact(contact);
         InvisibleViewController viewController = new InvisibleViewController();
+        model.addObserver(viewController);
         AppController appController = new AppControllerDefault(model, viewController);
         viewController.setSelectedContact(contact);
 
         //Messages
         appController.handleIncomingMessage("Hello!", contact);
-        viewController.forwardOutgoingMessage("Hi");
+        assertEquals(viewController.lastMessageReceived.getContent(),"Hello!");
+        
+        viewController.forwardOutgoingMessage("Hi!");
+        assertEquals(viewController.lastMessageSent.getContent(),"Hi!");
+        
         appController.handleIncomingMessage("How are you?", contact);
+        assertEquals(viewController.lastMessageReceived.getContent(),"How are you?");
+        
         viewController.forwardOutgoingMessage("Good, and you?");
+        assertEquals(viewController.lastMessageSent.getContent(),"Good, and you?");
+        
         appController.handleIncomingMessage("Fine. Goodbye!", contact);
+        assertEquals(viewController.lastMessageReceived.getContent(),"Fine. Goodbye!");
+        
         viewController.forwardOutgoingMessage("Bye!");
+        assertEquals(viewController.lastMessageSent.getContent(),"Bye!");
     }
 
 }
