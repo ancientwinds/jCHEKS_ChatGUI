@@ -1,8 +1,10 @@
 package com.archosResearch.jCHEKS.gui.chat.model;
 
+import com.archosResearch.jCHEKS.gui.chat.model.message.AbstractMessage;
 import com.archosResearch.jCHEKS.gui.chat.model.message.IncomingMessage;
 import com.archosResearch.jCHEKS.gui.chat.model.message.OutgoingMessage;
 import java.util.HashMap;
+import java.util.HashSet;
 
 /**
  *
@@ -11,7 +13,7 @@ import java.util.HashMap;
 public class Model extends AbstractModel {
 
     private final ContactCollection contactCollection;
-    private final HashMap<Contact, MessageCollection> messages;
+    private final HashMap<Contact, HashSet<AbstractMessage>> messages;
 
     public Model(ContactCollection contacts) {
         this.contactCollection = contacts;
@@ -21,16 +23,16 @@ public class Model extends AbstractModel {
     @Override
     public void addContact(Contact contact) throws NameOfContactAlreadyExistInContactsException {
         this.contactCollection.add(contact);
-        this.messages.put(contact, new MessageCollectionDefault());
+        this.messages.put(contact, new HashSet());
     }
 
     @Override
     public void addOutgoingMessage(String messageContent, String contactName) {
         try {
             Contact contact = contactCollection.findByName(contactName);
-            MessageCollection messageCollection = this.messages.get(contact);
+            HashSet messages = this.messages.get(contact);
             OutgoingMessage message = new OutgoingMessage(messageContent);
-            messageCollection.add(message);
+            messages.add(message);
             this.notifyMessageSent(message, contactName);
         } catch (ContactNotFoundException ex) {
             ex.printStackTrace();
@@ -41,9 +43,9 @@ public class Model extends AbstractModel {
     public void addIncomingMessage(String messageContent, Contact contact) {
         try {
             contactCollection.findByName(contact.getName());
-            MessageCollection messageCollection = this.messages.get(contact);
+            HashSet messages = this.messages.get(contact);
             IncomingMessage message = new IncomingMessage(messageContent);
-            messageCollection.add(message);
+            messages.add(message);
             this.notifyMessageReceived(message, contact.getName());
         } catch (ContactNotFoundException ex) {
             ex.printStackTrace();
