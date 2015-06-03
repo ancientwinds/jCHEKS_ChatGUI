@@ -8,8 +8,8 @@ import java.util.ArrayList;
  */
 public interface MessageCollection {
 
-    public void add(Message message);
+    public void add(AbstractMessage message);
 
-    public ArrayList<Message> getAllMessages();
+    public ArrayList<AbstractMessage> getAllMessages();
 
 }

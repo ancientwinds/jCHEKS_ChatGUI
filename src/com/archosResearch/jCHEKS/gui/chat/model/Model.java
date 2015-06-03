@@ -14,5 +14,5 @@ public interface Model extends ModelObservable {
 
     public void addOutgoingMessage(String messageContent, Contact contact);
 
-    public ArrayList<Message> findMessagesByContact(String contactName) throws ContactNotFoundException;
+    public ArrayList<AbstractMessage> findMessagesByContact(String contactName) throws ContactNotFoundException;
 }

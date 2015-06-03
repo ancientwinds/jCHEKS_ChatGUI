@@ -12,14 +12,14 @@ public class MessageTest {
 
     @Test
     public void constructor_should_create_the_message() {
-        Message message = null;
+        AbstractMessage message = null;
         message = new IncomingMessage("Content of the message.");
         assertNotNull(message);
     }
 
     @Test
     public void getContent_should_return_the_content_of_the_incomingMessage() {
-        Message message = new IncomingMessage("Content of the message.");
+        AbstractMessage message = new IncomingMessage("Content of the message.");
         String expResult = "Content of the message.";
         String result = message.getContent();
         assertEquals(expResult, result);
@@ -27,7 +27,7 @@ public class MessageTest {
 
     @Test
     public void getContent_should_return_the_content_of_the_outgoingMmessage() {
-        Message message = new OutgoingMessage("Content of the message.");
+        AbstractMessage message = new OutgoingMessage("Content of the message.");
         String expResult = "Content of the message.";
         String result = message.getContent();
         assertEquals(expResult, result);

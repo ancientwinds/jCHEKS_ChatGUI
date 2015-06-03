@@ -50,7 +50,7 @@ public class ModelDefault extends ModelObservableDefault implements Model {
     }
 
     @Override
-    public ArrayList<Message> findMessagesByContact(String contactName) throws ContactNotFoundException {
+    public ArrayList<AbstractMessage> findMessagesByContact(String contactName) throws ContactNotFoundException {
         Contact contact = contactCollection.findByName(contactName);
         MessageCollection messageCollection = this.map.get(contact);
         return messageCollection.getAllMessages();

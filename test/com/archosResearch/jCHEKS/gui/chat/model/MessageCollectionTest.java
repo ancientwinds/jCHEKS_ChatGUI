@@ -20,9 +20,9 @@ public class MessageCollectionTest {
 
     @Test
     public void getAllMessage_should_return_a_void_arrayList_if_there_is_no_message() throws Exception {
-        ArrayList<Message> expectedResult = new ArrayList();
+        ArrayList<AbstractMessage> expectedResult = new ArrayList();
         MessageCollection messageCollection = new MessageCollectionDefault();
-        ArrayList<Message> result = null;
+        ArrayList<AbstractMessage> result = null;
         result = messageCollection.getAllMessages();
         assertEquals(result, expectedResult);
     }
@@ -30,12 +30,12 @@ public class MessageCollectionTest {
     @Test
     public void addMessage_should_add_a_message_in_the_message_collection() throws Exception {
 
-        Message messageToAdd = new OutgoingMessage("This is a test message.");
-        ArrayList<Message> expectedResult = new ArrayList();
+        AbstractMessage messageToAdd = new OutgoingMessage("This is a test message.");
+        ArrayList<AbstractMessage> expectedResult = new ArrayList();
         expectedResult.add(messageToAdd);
         MessageCollection messageCollection = new MessageCollectionDefault();
         messageCollection.add(messageToAdd);
-        ArrayList<Message> result = null;
+        ArrayList<AbstractMessage> result = null;
         result = messageCollection.getAllMessages();
         assertEquals(result, expectedResult);
     }

@@ -4,12 +4,12 @@ package com.archosResearch.jCHEKS.gui.chat.model;
  *
  * @author Michael Roussel <rousselm4@gmail.com>
  */
-public abstract class Message {
+public abstract class AbstractMessage {
 
     private final String content;
     //private EState state; (Enum of state)
 
-    public Message(String content) {
+    public AbstractMessage(String content) {
         this.content = content;
     }
 

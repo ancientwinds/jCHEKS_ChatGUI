@@ -59,7 +59,7 @@ public class ModelTest {
         Contact contact = new Contact("Bob", new StubCommunicator());
         model.addContact(contact);
         model.addOutgoingMessage("This is a test message", contact);
-        ArrayList<Message> result = model.findMessagesByContact(contact.getName());
+        ArrayList<AbstractMessage> result = model.findMessagesByContact(contact.getName());
         assertEquals(result.get(0).getContent(), "This is a test message");
     }
 

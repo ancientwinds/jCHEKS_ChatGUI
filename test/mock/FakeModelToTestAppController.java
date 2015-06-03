@@ -3,7 +3,7 @@ package mock;
 import com.archosResearch.jCHEKS.gui.chat.model.Contact;
 import com.archosResearch.jCHEKS.gui.chat.model.ContactNotFoundException;
 import com.archosResearch.jCHEKS.gui.chat.model.IncomingMessage;
-import com.archosResearch.jCHEKS.gui.chat.model.Message;
+import com.archosResearch.jCHEKS.gui.chat.model.AbstractMessage;
 import com.archosResearch.jCHEKS.gui.chat.model.Model;
 import com.archosResearch.jCHEKS.gui.chat.model.ModelObserver;
 import com.archosResearch.jCHEKS.gui.chat.model.NameOfContactAlreadyExistInContactsException;
@@ -28,7 +28,7 @@ public class FakeModelToTestAppController implements Model {
 
     }
 
-    public ArrayList<Message> findMessagesByContact(String contactName) throws ContactNotFoundException {
+    public ArrayList<AbstractMessage> findMessagesByContact(String contactName) throws ContactNotFoundException {
         return null;
     }
 
