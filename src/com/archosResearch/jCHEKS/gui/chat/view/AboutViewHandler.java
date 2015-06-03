@@ -8,7 +8,7 @@ import javafx.scene.control.Hyperlink;
  *
  * @author Michael Roussel <rousselm4@gmail.com>
  */
-public class AboutController {
+public class AboutViewHandler {
 
     @FXML
     private Button closeButton;

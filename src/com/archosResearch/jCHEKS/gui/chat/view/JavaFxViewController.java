@@ -24,7 +24,7 @@ public class JavaFxViewController extends Application implements ViewController 
     private AbstractEngine engine;
     private Stage primaryStage;
     private BorderPane rootLayout;
-    private ChatController chatController;
+    private ChatViewHandler chatController;
     private String selectedContactName;
 
     /**

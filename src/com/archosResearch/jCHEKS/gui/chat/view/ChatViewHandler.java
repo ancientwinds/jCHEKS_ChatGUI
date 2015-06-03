@@ -13,7 +13,7 @@ import javafx.scene.layout.BorderPane;
  *
  * @author Michael Roussel <rousselm4@gmail.com>
  */
-public class ChatController {
+public class ChatViewHandler {
 
     @FXML
     private TextArea messageOutput;
