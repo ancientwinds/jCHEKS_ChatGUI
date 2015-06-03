@@ -1,6 +1,6 @@
 package com.archosResearch.jCHEKS.gui.chat.view;
 
-import com.archosResearch.jCHEKS.gui.chat.AppController;
+import com.archosResearch.jCHEKS.concept.engine.AbstractEngine;
 import com.archosResearch.jCHEKS.gui.chat.model.Contact;
 import com.archosResearch.jCHEKS.gui.chat.model.message.IncomingMessage;
 import com.archosResearch.jCHEKS.gui.chat.model.message.OutgoingMessage;
@@ -22,11 +22,11 @@ public class JavaFxViewController extends Application implements ViewController 
 
     private static final CountDownLatch latch = new CountDownLatch(1);
     private static JavaFxViewController instance = null;
-    private AppController appController;
+    private AbstractEngine engine;
     private Stage primaryStage;
     private BorderPane rootLayout;
     private ChatController chatController;
-    private Contact selectedContact;
+    private String selectedContactName;
 
     /**
      * Should never be called. Call getInstance().
@@ -99,13 +99,13 @@ public class JavaFxViewController extends Application implements ViewController 
     }
 
     @Override
-    public void setAppController(AppController appController) {
-        this.appController = appController;
+    public void setEngine(AbstractEngine engine) {
+        this.engine = engine;
     }
 
     @Override
     public void forwardOutgoingMessage(String messageContent) {
-        this.appController.handleOutgoingMessage(messageContent, this.selectedContact);
+        this.engine.handleOutgoingMessage(messageContent, this.selectedContactName);
     }
 
     //Package private
@@ -120,8 +120,9 @@ public class JavaFxViewController extends Application implements ViewController 
         this.primaryStage.show();
     }
 
+    //TEMP
     @Override
-    public void setSelectedContact(Contact contact) {
-        this.selectedContact = contact;
+    public void setSelectedContactName(String name) {
+        this.selectedContactName = name;
     }
 }

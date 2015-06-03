@@ -1,7 +1,6 @@
 package com.archosResearch.jCHEKS.gui.chat.view;
 
-import com.archosResearch.jCHEKS.gui.chat.AppController;
-import com.archosResearch.jCHEKS.gui.chat.model.Contact;
+import com.archosResearch.jCHEKS.concept.engine.AbstractEngine;
 import com.archosResearch.jCHEKS.gui.chat.model.ModelObserver;
 
 /**
@@ -12,9 +11,9 @@ import com.archosResearch.jCHEKS.gui.chat.model.ModelObserver;
 //Todo In concept project?
 public interface ViewController extends ModelObserver {
 
-    public void setAppController(AppController appController);
+    public void setEngine(AbstractEngine engine);
 
     public void forwardOutgoingMessage(String messageContent);
 
-    public void setSelectedContact(Contact contact);
+    public void setSelectedContactName(String name);
 }

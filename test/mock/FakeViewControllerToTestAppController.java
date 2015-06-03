@@ -1,6 +1,6 @@
 package mock;
 
-import com.archosResearch.jCHEKS.gui.chat.AppController;
+import com.archosResearch.jCHEKS.concept.engine.AbstractEngine;
 import com.archosResearch.jCHEKS.gui.chat.model.Contact;
 import com.archosResearch.jCHEKS.gui.chat.model.message.IncomingMessage;
 import com.archosResearch.jCHEKS.gui.chat.model.message.OutgoingMessage;
@@ -12,7 +12,7 @@ import com.archosResearch.jCHEKS.gui.chat.view.ViewController;
  */
 public class FakeViewControllerToTestAppController implements ViewController {
 
-    public void setAppController(AppController appController) {
+    public void setEngine(AbstractEngine engine) {
 
     }
 
@@ -41,6 +41,6 @@ public class FakeViewControllerToTestAppController implements ViewController {
     }
 
     @Override
-    public void setSelectedContact(Contact contact) {
+    public void setSelectedContactName(String name) {
     }
 }
