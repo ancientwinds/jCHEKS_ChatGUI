@@ -13,20 +13,20 @@ public class ObserverMock implements ModelObserver {
 
     public OutgoingMessage lastMessageSent;
     public IncomingMessage lastMessageReceived;
-    public Contact destinationContactOflastMessageSent;
-    public Contact senderOflastMessageReceived;
+    public String destinationContactOflastMessageSent;
+    public String senderOflastMessageReceived;
     public Contact lastContactAdded;
 
     @Override
-    public void messageSent(OutgoingMessage message, Contact contact) {
+    public void messageSent(OutgoingMessage message, String contactName) {
         lastMessageSent = message;
-        destinationContactOflastMessageSent = contact;
+        destinationContactOflastMessageSent = contactName;
     }
 
     @Override
-    public void messageReceived(IncomingMessage message, Contact contact) {
+    public void messageReceived(IncomingMessage message, String contactName) {
         lastMessageReceived = message;
-        senderOflastMessageReceived = contact;
+        senderOflastMessageReceived = contactName;
     }
 
     @Override

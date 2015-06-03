@@ -63,13 +63,13 @@ public class JavaFxViewController extends Application implements ViewController 
     }
 
     @Override
-    public void messageSent(OutgoingMessage message, Contact contact) {
+    public void messageSent(OutgoingMessage message, String contactName) {
         chatController.displayOutgoingMessage(message);
     }
 
     @Override
-    public void messageReceived(IncomingMessage message, Contact contact) {
-        chatController.displayIncomingMessage(message, contact);
+    public void messageReceived(IncomingMessage message, String contactName) {
+        chatController.displayIncomingMessage(message, contactName);
     }
 
     @Override

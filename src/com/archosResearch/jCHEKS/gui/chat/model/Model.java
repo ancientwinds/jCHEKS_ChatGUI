@@ -25,13 +25,13 @@ public class Model extends AbstractModel {
     }
 
     @Override
-    public void addOutgoingMessage(String messageContent, Contact contact) {
+    public void addOutgoingMessage(String messageContent, String contactName) {
         try {
-            contactCollection.findByName(contact.getName());
-            MessageCollection messageCollection = this.messages.get(contact);
+            contactCollection.findByName(contactName);
+            MessageCollection messageCollection = this.messages.get(contactName);
             OutgoingMessage message = new OutgoingMessage(messageContent);
             messageCollection.add(message);
-            this.notifyMessageSent(message, contact);
+            this.notifyMessageSent(message, contactName);
         } catch (ContactNotFoundException ex) {
             ex.printStackTrace();
         }
@@ -44,7 +44,7 @@ public class Model extends AbstractModel {
             MessageCollection messageCollection = this.messages.get(contact);
             IncomingMessage message = new IncomingMessage(messageContent);
             messageCollection.add(message);
-            this.notifyMessageReceived(message, contact);
+            this.notifyMessageReceived(message, contact.getName());
         } catch (ContactNotFoundException ex) {
             ex.printStackTrace();
         }

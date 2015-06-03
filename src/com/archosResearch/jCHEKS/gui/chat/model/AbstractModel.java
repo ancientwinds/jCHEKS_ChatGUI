@@ -12,5 +12,5 @@ public abstract class AbstractModel extends ModelObservable {
 
     public abstract void addIncomingMessage(String messageContent, Contact contact);
 
-    public abstract void addOutgoingMessage(String messageContent, Contact contact);
+    public abstract void addOutgoingMessage(String messageContent, String contactName);
 }

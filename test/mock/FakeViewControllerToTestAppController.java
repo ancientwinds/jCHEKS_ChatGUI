@@ -21,12 +21,12 @@ public class FakeViewControllerToTestAppController implements ViewController {
     }
 
     @Override
-    public void messageSent(OutgoingMessage message, Contact contact) {
+    public void messageSent(OutgoingMessage message, String contactName) {
 
     }
 
     @Override
-    public void messageReceived(IncomingMessage message, Contact contact) {
+    public void messageReceived(IncomingMessage message, String contactName) {
 
     }
 

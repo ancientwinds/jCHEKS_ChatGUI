@@ -25,15 +25,15 @@ public abstract class ModelObservable /* extends AbstractObservable*/{
         this.observers.remove(observer);
     }
 
-    public void notifyMessageSent(OutgoingMessage message, Contact contact) {
+    public void notifyMessageSent(OutgoingMessage message, String contactName) {
         for (ModelObserver observer : this.observers) {
-            observer.messageSent(message, contact);
+            observer.messageSent(message, contactName);
         }
     }
 
-    public void notifyMessageReceived(IncomingMessage message, Contact contact) {
+    public void notifyMessageReceived(IncomingMessage message, String contactName) {
         for (ModelObserver observer : this.observers) {
-            observer.messageReceived(message, contact);
+            observer.messageReceived(message, contactName);
         }
     }
 }
