@@ -46,21 +46,19 @@ public class JavaFxViewController extends Application implements ViewController 
 
     public static JavaFxViewController getInstance() {
         if (instance == null) {
-            try {
-                new Thread() {
-                    @Override
-                    public void run() {
-                        javafx.application.Application.launch(JavaFxViewController.class);
-                    }
-                }.start();
+            createInstance();
+        }
+        return instance;
+    }
+    private static void createInstance(){
+        try {
+                Runnable launchJavaFx = () -> { javafx.application.Application.launch(JavaFxViewController.class); };
+                new Thread(launchJavaFx).start();
                 latch.await();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }
-        return instance;
     }
-
     @Override
     public void messageSent(OutgoingMessage message, String contactName) {
         chatController.displayOutgoingMessage(message);
