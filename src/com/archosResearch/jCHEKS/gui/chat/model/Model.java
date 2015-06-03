@@ -27,8 +27,8 @@ public class Model extends AbstractModel {
     @Override
     public void addOutgoingMessage(String messageContent, String contactName) {
         try {
-            contactCollection.findByName(contactName);
-            MessageCollection messageCollection = this.messages.get(contactName);
+            Contact contact = contactCollection.findByName(contactName);
+            MessageCollection messageCollection = this.messages.get(contact);
             OutgoingMessage message = new OutgoingMessage(messageContent);
             messageCollection.add(message);
             this.notifyMessageSent(message, contactName);
