@@ -8,6 +8,8 @@ import com.archosResearch.jCHEKS.gui.chat.model.ModelObserver;
  *
  * @author Michael Roussel <rousselm4@gmail.com>
  */
+
+//Todo In concept project?
 public interface ViewController extends ModelObserver {
 
     public void setAppController(AppController appController);

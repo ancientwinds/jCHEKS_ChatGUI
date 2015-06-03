@@ -1,5 +1,8 @@
 package com.archosResearch.jCHEKS.gui.chat.model;
 
+import com.archosResearch.jCHEKS.gui.chat.model.message.IncomingMessage;
+import com.archosResearch.jCHEKS.gui.chat.model.message.OutgoingMessage;
+
 /**
  *
  * @author Michael Roussel

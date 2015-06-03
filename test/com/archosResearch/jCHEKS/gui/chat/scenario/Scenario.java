@@ -6,8 +6,8 @@ import com.archosResearch.jCHEKS.gui.chat.AppControllerDefault;
 import com.archosResearch.jCHEKS.gui.chat.model.Contact;
 import com.archosResearch.jCHEKS.gui.chat.model.ContactCollection;
 import com.archosResearch.jCHEKS.gui.chat.model.ContactCollectionDefault;
+import com.archosResearch.jCHEKS.gui.chat.model.AbstractModel;
 import com.archosResearch.jCHEKS.gui.chat.model.Model;
-import com.archosResearch.jCHEKS.gui.chat.model.ModelDefault;
 import com.archosResearch.jCHEKS.gui.chat.model.NameOfContactAlreadyExistInContactsException;
 import mock.StubCommunicator;
 import static org.junit.Assert.*;
@@ -23,7 +23,7 @@ public class Scenario {
     public void scenario1() throws NameOfContactAlreadyExistInContactsException {
         //Init
         ContactCollection contactCollection = new ContactCollectionDefault();
-        Model model = new ModelDefault(contactCollection);
+        AbstractModel model = new Model(contactCollection);
         Contact contact = new Contact("Bob", new StubCommunicator());
         model.addContact(contact);
         InvisibleViewController viewController = new InvisibleViewController();

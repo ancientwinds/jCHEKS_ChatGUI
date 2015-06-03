@@ -1,4 +1,4 @@
-package com.archosResearch.jCHEKS.gui.chat.model;
+package com.archosResearch.jCHEKS.gui.chat.model.message;
 
 /**
  *
@@ -7,7 +7,6 @@ package com.archosResearch.jCHEKS.gui.chat.model;
 public abstract class AbstractMessage {
 
     private final String content;
-    //private EState state; (Enum of state)
 
     public AbstractMessage(String content) {
         this.content = content;
@@ -16,4 +15,6 @@ public abstract class AbstractMessage {
     public String getContent() {
         return this.content;
     }
+    
+    //public ... polymorphicMethod(){}
 }

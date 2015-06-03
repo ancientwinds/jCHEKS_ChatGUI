@@ -2,19 +2,19 @@ package mock;
 
 import com.archosResearch.jCHEKS.gui.chat.model.Contact;
 import com.archosResearch.jCHEKS.gui.chat.model.ContactNotFoundException;
-import com.archosResearch.jCHEKS.gui.chat.model.IncomingMessage;
-import com.archosResearch.jCHEKS.gui.chat.model.AbstractMessage;
-import com.archosResearch.jCHEKS.gui.chat.model.Model;
+import com.archosResearch.jCHEKS.gui.chat.model.message.IncomingMessage;
+import com.archosResearch.jCHEKS.gui.chat.model.message.AbstractMessage;
+import com.archosResearch.jCHEKS.gui.chat.model.AbstractModel;
 import com.archosResearch.jCHEKS.gui.chat.model.ModelObserver;
 import com.archosResearch.jCHEKS.gui.chat.model.NameOfContactAlreadyExistInContactsException;
-import com.archosResearch.jCHEKS.gui.chat.model.OutgoingMessage;
+import com.archosResearch.jCHEKS.gui.chat.model.message.OutgoingMessage;
 import java.util.ArrayList;
 
 /**
  *
  * @author Michael Roussel <rousselm4@gmail.com>
- */
-public class FakeModelToTestAppController implements Model {
+ *//*
+public class FakeModelToTestAppController implements AbstractModel {
 
     public void addContact(Contact contact) throws NameOfContactAlreadyExistInContactsException {
 
@@ -43,13 +43,14 @@ public class FakeModelToTestAppController implements Model {
     }
 
     @Override
-    public void broadcastMessageSent(OutgoingMessage message, Contact contact) {
+    public void notifyMessageSent(OutgoingMessage message, Contact contact) {
 
     }
 
     @Override
-    public void broadcastMessageReceived(IncomingMessage message, Contact contact) {
+    public void notifyMessageReceived(IncomingMessage message, Contact contact) {
 
     }
 
 }
+*/

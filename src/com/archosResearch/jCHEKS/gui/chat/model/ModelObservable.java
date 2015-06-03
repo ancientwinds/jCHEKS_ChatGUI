@@ -1,16 +1,39 @@
 package com.archosResearch.jCHEKS.gui.chat.model;
 
+import com.archosResearch.jCHEKS.gui.chat.model.message.IncomingMessage;
+import com.archosResearch.jCHEKS.gui.chat.model.message.OutgoingMessage;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Michael Roussel <rousselm4@gmail.com>
  */
-public interface ModelObservable {
+public abstract class ModelObservable /* extends AbstractObservable*/{
 
-    public void addObserver(ModelObserver observer);
+    private final List<ModelObserver> observers;
 
-    public void removeObserver(ModelObserver observer);
+    public ModelObservable() {
+        this.observers = new ArrayList();
+    }
 
-    public void broadcastMessageSent(OutgoingMessage message, Contact contact);
+    public void addObserver(ModelObserver observer) {
+        this.observers.add(observer);
+    }
 
-    public void broadcastMessageReceived(IncomingMessage message, Contact contact);
+    public void removeObserver(ModelObserver observer) {
+        this.observers.remove(observer);
+    }
+
+    public void notifyMessageSent(OutgoingMessage message, Contact contact) {
+        for (ModelObserver observer : this.observers) {
+            observer.messageSent(message, contact);
+        }
+    }
+
+    public void notifyMessageReceived(IncomingMessage message, Contact contact) {
+        for (ModelObserver observer : this.observers) {
+            observer.messageReceived(message, contact);
+        }
+    }
 }

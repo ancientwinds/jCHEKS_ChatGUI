@@ -1,8 +1,8 @@
 package com.archosResearch.jCHEKS.gui.chat.view;
 
 import com.archosResearch.jCHEKS.gui.chat.model.Contact;
-import com.archosResearch.jCHEKS.gui.chat.model.IncomingMessage;
-import com.archosResearch.jCHEKS.gui.chat.model.OutgoingMessage;
+import com.archosResearch.jCHEKS.gui.chat.model.message.IncomingMessage;
+import com.archosResearch.jCHEKS.gui.chat.model.message.OutgoingMessage;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -41,10 +41,6 @@ public class ChatController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    private void displayOwnMessage() {
-        messageOutput.appendText("You >> " + messageInput.getText() + "\n");
     }
 
     void displayOutgoingMessage(OutgoingMessage message) {

@@ -1,4 +1,4 @@
-package com.archosResearch.jCHEKS.gui.chat.model;
+package com.archosResearch.jCHEKS.gui.chat.model.message;
 
 /**
  *
@@ -9,4 +9,5 @@ public class IncomingMessage extends AbstractMessage {
     public IncomingMessage(String content /*, EState state */) {
         super(content);
     }
+
 }
