@@ -1,8 +1,9 @@
 package com.archosResearch.jCHEKS.gui.chat.model;
 
 import com.archosResearch.jCheks.concept.communicator.AbstractCommunicator;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -16,7 +17,7 @@ public class ContactTest {
         contact = new Contact("Name", new StubCommunicator());
         assertNotNull(contact);
     }
-    
+
     @Test
     public void getName_should_return_the_name_of_the_contact() {
         Contact contact = new Contact("Name", new StubCommunicator());
@@ -24,7 +25,7 @@ public class ContactTest {
         String result = contact.getName();
         assertEquals(expectedResult, result);
     }
-    
+
     @Test
     public void getCommunicator_should_return_the_communicator_of_the_contact() {
         AbstractCommunicator communicator = new StubCommunicator();

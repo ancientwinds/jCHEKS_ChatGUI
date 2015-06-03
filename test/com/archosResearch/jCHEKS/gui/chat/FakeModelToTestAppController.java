@@ -14,9 +14,9 @@ import java.util.ArrayList;
  *
  * @author Michael Roussel <rousselm4@gmail.com>
  */
-public class FakeModelToTestAppController implements Model{
+public class FakeModelToTestAppController implements Model {
 
-    public void addContact(Contact contact) throws NameOfContactAlreadyExistInContactsException{
+    public void addContact(Contact contact) throws NameOfContactAlreadyExistInContactsException {
 
     }
 
@@ -34,22 +34,22 @@ public class FakeModelToTestAppController implements Model{
 
     @Override
     public void addObserver(ModelObserver observer) {
-        
+
     }
 
     @Override
     public void removeObserver(ModelObserver observer) {
-        
+
     }
 
     @Override
     public void broadcastMessageSent(OutgoingMessage message, Contact contact) {
-        
+
     }
 
     @Override
     public void broadcastMessageReceived(IncomingMessage message, Contact contact) {
-        
+
     }
 
 }

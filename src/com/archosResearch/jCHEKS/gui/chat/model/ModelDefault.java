@@ -7,7 +7,7 @@ import java.util.HashMap;
  *
  * @author Michael Roussel <rousselm4@gmail.com>
  */
-public class ModelDefault extends ModelObservableDefault implements Model{
+public class ModelDefault extends ModelObservableDefault implements Model {
 
     private final ContactCollection contactCollection;
     private final HashMap<Contact, MessageCollection> map;
@@ -18,7 +18,7 @@ public class ModelDefault extends ModelObservableDefault implements Model{
     }
 
     @Override
-    public void addContact(Contact contact) throws NameOfContactAlreadyExistInContactsException{
+    public void addContact(Contact contact) throws NameOfContactAlreadyExistInContactsException {
         this.contactCollection.add(contact);
         this.map.put(contact, new MessageCollectionDefault());
     }

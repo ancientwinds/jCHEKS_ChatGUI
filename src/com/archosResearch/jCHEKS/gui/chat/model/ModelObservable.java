@@ -4,9 +4,13 @@ package com.archosResearch.jCHEKS.gui.chat.model;
  *
  * @author Michael Roussel <rousselm4@gmail.com>
  */
-public interface ModelObservable{
+public interface ModelObservable {
+
     public void addObserver(ModelObserver observer);
+
     public void removeObserver(ModelObserver observer);
+
     public void broadcastMessageSent(OutgoingMessage message, Contact contact);
+
     public void broadcastMessageReceived(IncomingMessage message, Contact contact);
 }

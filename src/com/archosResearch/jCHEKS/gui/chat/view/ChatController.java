@@ -7,7 +7,7 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 
 /**
@@ -17,19 +17,19 @@ import javafx.scene.layout.BorderPane;
 public class ChatController {
 
     @FXML
-    private TextArea messageOutput; 
+    private TextArea messageOutput;
     @FXML
     private TextArea messageInput;
-   
+
     @FXML
-    private void handleSendButton(){
+    private void handleSendButton() {
         JavaFxViewController viewController = JavaFxViewController.getInstance();
         viewController.forwardOutgoingMessage(messageInput.getText());
         resetInputField();
     }
-    
+
     @FXML
-    private void handleAboutButton(){
+    private void handleAboutButton() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(ViewController.class.getResource("About.fxml"));
@@ -37,24 +37,25 @@ public class ChatController {
             Scene scene = new Scene(aboutLayout);
             JavaFxViewController viewController = JavaFxViewController.getInstance();
             viewController.showScene(scene);
-            
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
-    private void displayOwnMessage(){
+
+    private void displayOwnMessage() {
         messageOutput.appendText("You >> " + messageInput.getText() + "\n");
     }
-    
-    void displayOutgoingMessage(OutgoingMessage message){
+
+    void displayOutgoingMessage(OutgoingMessage message) {
         messageOutput.appendText("I said: " + message.getContent() + "\n");
     }
-    void displayIncomingMessage(IncomingMessage message, Contact contact){
+
+    void displayIncomingMessage(IncomingMessage message, Contact contact) {
         messageOutput.appendText(contact.getName() + " said: " + message.getContent() + "\n");
     }
-    
-    private void resetInputField(){
+
+    private void resetInputField() {
         messageInput.setText("");
     }
 }

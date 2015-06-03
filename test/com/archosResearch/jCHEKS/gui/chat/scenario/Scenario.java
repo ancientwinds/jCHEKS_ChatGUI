@@ -16,7 +16,7 @@ import org.junit.Test;
  * @author Michael Roussel <rousselm4@gmail.com>
  */
 public class Scenario {
-    
+
     @Test
     public void scenario1() throws NameOfContactAlreadyExistInContactsException {
         //Init
@@ -27,7 +27,7 @@ public class Scenario {
         InvisibleViewController viewController = new InvisibleViewController();
         AppController appController = new AppControllerDefault(model, viewController);
         viewController.setSelectedContact(contact);
-        
+
         //Messages
         appController.handleIncomingMessage("Hello!", contact);
         viewController.forwardOutgoingMessage("Hi");
@@ -37,5 +37,5 @@ public class Scenario {
         viewController.forwardOutgoingMessage("Bye!");
         //assertTrue(viewController.workAsExpected());
     }
-    
+
 }

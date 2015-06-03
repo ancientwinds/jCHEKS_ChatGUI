@@ -6,7 +6,7 @@ import java.util.ArrayList;
  *
  * @author Michael Roussel <rousselm4@gmail.com>
  */
-public class ContactCollectionDefault implements ContactCollection{
+public class ContactCollectionDefault implements ContactCollection {
 
     private final ArrayList<Contact> contacts;
 
@@ -23,9 +23,12 @@ public class ContactCollectionDefault implements ContactCollection{
         throw new ContactNotFoundException();
     }
 
-    public void add(Contact newContact) throws NameOfContactAlreadyExistInContactsException{
-        for (Contact contact : this.contacts) 
-            if (contact.getName().equals(newContact.getName())) throw new NameOfContactAlreadyExistInContactsException();
+    public void add(Contact newContact) throws NameOfContactAlreadyExistInContactsException {
+        for (Contact contact : this.contacts) {
+            if (contact.getName().equals(newContact.getName())) {
+                throw new NameOfContactAlreadyExistInContactsException();
+            }
+        }
         this.contacts.add(newContact);
     }
 

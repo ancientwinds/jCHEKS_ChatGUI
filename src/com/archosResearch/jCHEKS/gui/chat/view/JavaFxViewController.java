@@ -3,7 +3,6 @@ package com.archosResearch.jCHEKS.gui.chat.view;
 import com.archosResearch.jCHEKS.gui.chat.AppController;
 import com.archosResearch.jCHEKS.gui.chat.model.Contact;
 import com.archosResearch.jCHEKS.gui.chat.model.IncomingMessage;
-import com.archosResearch.jCHEKS.gui.chat.model.Message;
 import com.archosResearch.jCHEKS.gui.chat.model.OutgoingMessage;
 import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
 import com.sun.javafx.application.HostServicesDelegate;
@@ -19,7 +18,8 @@ import javafx.stage.Stage;
  *
  * @author Michael Roussel <rousselm4@gmail.com>
  */
-public class JavaFxViewController extends Application implements ViewController{
+public class JavaFxViewController extends Application implements ViewController {
+
     private static final CountDownLatch latch = new CountDownLatch(1);
     private static JavaFxViewController instance = null;
     private AppController appController;
@@ -27,28 +27,27 @@ public class JavaFxViewController extends Application implements ViewController{
     private BorderPane rootLayout;
     private ChatController chatController;
     private Contact selectedContact;
-    
+
     /**
-     *  Should never be called. Call getInstance().
+     * Should never be called. Call getInstance().
      */
-    public JavaFxViewController() throws Exception{ 
-        if(instance == null){
+    public JavaFxViewController() throws Exception {
+        if (instance == null) {
             setInstance(this);
-        }
-        else{
+        } else {
             //TODO Change exception type
             throw new Exception();
         }
     }
-    
-    private static void setInstance(JavaFxViewController instance){
+
+    private static void setInstance(JavaFxViewController instance) {
         JavaFxViewController.instance = instance;
         latch.countDown();
     }
-    
-    public static JavaFxViewController getInstance(){
-        if(instance == null){
-            try{
+
+    public static JavaFxViewController getInstance() {
+        if (instance == null) {
+            try {
                 new Thread() {
                     @Override
                     public void run() {
@@ -56,13 +55,13 @@ public class JavaFxViewController extends Application implements ViewController{
                     }
                 }.start();
                 latch.await();
-            }catch(InterruptedException e){
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
         return instance;
     }
-    
+
     @Override
     public void messageSent(OutgoingMessage message, Contact contact) {
         chatController.displayOutgoingMessage(message);
@@ -70,16 +69,16 @@ public class JavaFxViewController extends Application implements ViewController{
 
     @Override
     public void messageReceived(IncomingMessage message, Contact contact) {
-        chatController.displayIncomingMessage(message, contact);    
+        chatController.displayIncomingMessage(message, contact);
     }
-    
+
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Chat");
         initRootLayout();
     }
-    
+
     private void initRootLayout() {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -106,23 +105,23 @@ public class JavaFxViewController extends Application implements ViewController{
 
     @Override
     public void forwardOutgoingMessage(String messageContent) {
-        this.appController.handleOutgoingMessage(messageContent, this.selectedContact);  
+        this.appController.handleOutgoingMessage(messageContent, this.selectedContact);
     }
-    
+
     //Package private
-    void openInBrowser(String url){
+    void openInBrowser(String url) {
         HostServicesDelegate hostServices = HostServicesFactory.getInstance(this);
         hostServices.showDocument(url);
     }
-    
+
     //Package private
-    void showScene(Scene scene){
+    void showScene(Scene scene) {
         this.primaryStage.setScene(scene);
         this.primaryStage.show();
     }
-    
+
     @Override
-    public void setSelectedContact(Contact contact){
+    public void setSelectedContact(Contact contact) {
         this.selectedContact = contact;
     }
 }

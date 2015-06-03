@@ -1,23 +1,24 @@
 package com.archosResearch.jCHEKS.gui.chat.model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
  * @author Michael Roussel <rousselm4@gmail.com>
  */
 public class ModelTest {
-    
+
     @Test
-    public void constructor_should_construct_the_object(){
+    public void constructor_should_construct_the_object() {
         Model model = null;
         model = new ModelDefault(new SimpleContactCollectionToTestModel());
         assertNotNull(model);
     }
-    
+
     @Test
     public void addContact_should_call_addContact_in_contactCollection() throws Exception {
         Contact contact = new Contact("", new StubCommunicator());
@@ -58,8 +59,7 @@ public class ModelTest {
         ArrayList<Message> result = model.findMessagesByContact(contact.getName());
         assertEquals(result.get(0).getContent(), "This is a test message");
     }
-    
-    
+
     @Test
     public void addIncomingMessage_should_not_broadcast_message_received_when_observer_has_been_removed() throws NameOfContactAlreadyExistInContactsException {
         Model model = new ModelDefault(new ContactCollectionDefault());
@@ -71,5 +71,5 @@ public class ModelTest {
         model.addIncomingMessage("Test message", contact);
         assertNull(observer.lastMessageReceived);
     }
-    
+
 }

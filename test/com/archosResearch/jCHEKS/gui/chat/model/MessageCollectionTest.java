@@ -1,8 +1,9 @@
 package com.archosResearch.jCHEKS.gui.chat.model;
 
 import java.util.ArrayList;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -28,7 +29,7 @@ public class MessageCollectionTest {
 
     @Test
     public void addMessage_should_add_a_message_in_the_message_collection() throws Exception {
-        
+
         Message messageToAdd = new OutgoingMessage("This is a test message.");
         ArrayList<Message> expectedResult = new ArrayList();
         expectedResult.add(messageToAdd);

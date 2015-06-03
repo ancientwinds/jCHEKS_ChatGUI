@@ -9,15 +9,15 @@
 <?import javafx.scene.layout.*?>
 
 <BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.archosResearch.jCHEKS.gui.chat.view.AboutController">
-   <center>
-      <VBox BorderPane.alignment="CENTER">
-         <children>
-            <Label text="This is a part of the CHECKS project. This is a temporary text. You can find more information about the project by following this link." textAlignment="CENTER" wrapText="true" />
-            <Hyperlink fx:id="link" onAction="#handleLink" text="www.archos-research.com/en/cheks.html" wrapText="true" />
-         </children>
-      </VBox>
-   </center>
-   <bottom>
-      <Button fx:id="closeButton" mnemonicParsing="false" text="Close" BorderPane.alignment="CENTER" />
-   </bottom>
+    <center>
+        <VBox BorderPane.alignment="CENTER">
+            <children>
+                <Label text="This is a part of the CHECKS project. This is a temporary text. You can find more information about the project by following this link." textAlignment="CENTER" wrapText="true" />
+                <Hyperlink fx:id="link" onAction="#handleLink" text="www.archos-research.com/en/cheks.html" wrapText="true" />
+            </children>
+        </VBox>
+    </center>
+    <bottom>
+        <Button fx:id="closeButton" mnemonicParsing="false" text="Close" BorderPane.alignment="CENTER" />
+    </bottom>
 </BorderPane>
