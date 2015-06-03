@@ -1,9 +1,9 @@
 package com.archosResearch.jCHEKS.gui.chat.scenario;
 
 import com.archosResearch.jCHEKS.concept.engine.AbstractEngine;
-import com.archosResearch.jCHEKS.gui.chat.model.Contact;
-import com.archosResearch.jCHEKS.gui.chat.model.ContactCollection;
-import com.archosResearch.jCHEKS.gui.chat.model.ContactCollection;
+import com.archosResearch.jCHEKS.gui.chat.model.contact.Contact;
+import com.archosResearch.jCHEKS.gui.chat.model.contact.ContactCollection;
+import com.archosResearch.jCHEKS.gui.chat.model.contact.ContactCollection;
 import com.archosResearch.jCHEKS.gui.chat.model.AbstractModel;
 import com.archosResearch.jCHEKS.gui.chat.model.Model;
 import com.archosResearch.jCHEKS.gui.chat.model.NameOfContactAlreadyExistInContactsException;

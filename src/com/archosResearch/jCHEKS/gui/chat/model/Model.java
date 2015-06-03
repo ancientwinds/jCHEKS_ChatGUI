@@ -1,5 +1,8 @@
 package com.archosResearch.jCHEKS.gui.chat.model;
 
+import com.archosResearch.jCHEKS.gui.chat.model.contact.ContactNotFoundException;
+import com.archosResearch.jCHEKS.gui.chat.model.contact.Contact;
+import com.archosResearch.jCHEKS.gui.chat.model.contact.ContactCollection;
 import com.archosResearch.jCHEKS.gui.chat.model.message.AbstractMessage;
 import com.archosResearch.jCHEKS.gui.chat.model.message.IncomingMessage;
 import com.archosResearch.jCHEKS.gui.chat.model.message.OutgoingMessage;

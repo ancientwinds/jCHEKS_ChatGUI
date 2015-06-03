@@ -1,5 +1,6 @@
 package com.archosResearch.jCHEKS.gui.chat.model;
 
+import com.archosResearch.jCHEKS.gui.chat.model.contact.Contact;
 import java.util.ArrayList;
 
 /**
