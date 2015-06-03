@@ -1,6 +1,6 @@
 package com.archosResearch.jCHEKS.gui.chat.model;
 
-import com.archosResearch.jCHEKS.gui.chat.model.contact.Contact;
+import com.archosResearch.jCHEKS.engine.model.contact.Contact;
 import mock.StubCommunicator;
 import com.archosResearch.jCheks.concept.communicator.AbstractCommunicator;
 import static org.junit.Assert.assertEquals;

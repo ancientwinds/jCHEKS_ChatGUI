@@ -1,6 +1,6 @@
 package com.archosResearch.jCHEKS.gui.chat.model;
 
-import com.archosResearch.jCHEKS.gui.chat.model.message.AbstractMessage;
+import com.archosResearch.jCHEKS.engine.model.message.AbstractMessage;
 import mock.SimpleContactCollectionToTestModel;
 import mock.StubCommunicator;
 import mock.ObserverMock;

@@ -1,7 +1,7 @@
 package com.archosResearch.jCHEKS.gui.chat.view;
 
 import com.archosResearch.jCHEKS.concept.engine.AbstractEngine;
-import com.archosResearch.jCHEKS.gui.chat.model.ModelObserver;
+import com.archosResearch.jCHEKS.concept.engine.ModelObserver;
 
 /**
  *

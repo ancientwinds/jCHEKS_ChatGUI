@@ -1,13 +1,13 @@
 package mock;
 
-import com.archosResearch.jCHEKS.gui.chat.model.contact.Contact;
-import com.archosResearch.jCHEKS.gui.chat.model.contact.ContactNotFoundException;
-import com.archosResearch.jCHEKS.gui.chat.model.message.IncomingMessage;
-import com.archosResearch.jCHEKS.gui.chat.model.message.AbstractMessage;
-import com.archosResearch.jCHEKS.gui.chat.model.AbstractModel;
-import com.archosResearch.jCHEKS.gui.chat.model.ModelObserver;
-import com.archosResearch.jCHEKS.gui.chat.model.NameOfContactAlreadyExistInContactsException;
-import com.archosResearch.jCHEKS.gui.chat.model.message.OutgoingMessage;
+import com.archosResearch.jCHEKS.engine.model.contact.Contact;
+import com.archosResearch.jCHEKS.engine.model.contact.ContactNotFoundException;
+import com.archosResearch.jCHEKS.engine.model.message.IncomingMessage;
+import com.archosResearch.jCHEKS.engine.model.message.AbstractMessage;
+import com.archosResearch.jCHEKS.engine.model.AbstractModel;
+import com.archosResearch.jCHEKS.engine.model.ModelObserver;
+import com.archosResearch.jCHEKS.engine.model.NameOfContactAlreadyExistInContactsException;
+import com.archosResearch.jCHEKS.engine.model.message.OutgoingMessage;
 import java.util.ArrayList;
 
 /**

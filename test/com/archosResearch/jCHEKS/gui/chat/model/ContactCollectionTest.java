@@ -1,8 +1,9 @@
 package com.archosResearch.jCHEKS.gui.chat.model;
 
-import com.archosResearch.jCHEKS.gui.chat.model.contact.ContactNotFoundException;
-import com.archosResearch.jCHEKS.gui.chat.model.contact.ContactCollection;
-import com.archosResearch.jCHEKS.gui.chat.model.contact.Contact;
+import com.archosResearch.jCHEKS.engine.model.NameOfContactAlreadyExistInContactsException;
+import com.archosResearch.jCHEKS.engine.model.contact.ContactNotFoundException;
+import com.archosResearch.jCHEKS.engine.model.contact.ContactCollection;
+import com.archosResearch.jCHEKS.engine.model.contact.Contact;
 import mock.StubCommunicator;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

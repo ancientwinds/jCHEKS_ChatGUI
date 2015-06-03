@@ -1,9 +1,8 @@
 package com.archosResearch.jCHEKS.gui.chat.view;
 
 import com.archosResearch.jCHEKS.concept.engine.AbstractEngine;
-import com.archosResearch.jCHEKS.gui.chat.model.contact.Contact;
-import com.archosResearch.jCHEKS.gui.chat.model.message.IncomingMessage;
-import com.archosResearch.jCHEKS.gui.chat.model.message.OutgoingMessage;
+import com.archosResearch.jCHEKS.concept.engine.message.IncomingMessage;
+import com.archosResearch.jCHEKS.concept.engine.message.OutgoingMessage;
 import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
 import com.sun.javafx.application.HostServicesDelegate;
 import java.io.IOException;
@@ -94,7 +93,7 @@ public class JavaFxViewController extends Application implements ViewController 
     }
 
     @Override
-    public void contactAdded(Contact contact) {
+    public void contactAdded(String contactName) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

@@ -1,7 +1,7 @@
 package com.archosResearch.jCHEKS.gui.chat.model;
 
-import com.archosResearch.jCHEKS.gui.chat.model.message.OutgoingMessage;
-import com.archosResearch.jCHEKS.gui.chat.model.message.AbstractMessage;
+import com.archosResearch.jCHEKS.engine.model.message.OutgoingMessage;
+import com.archosResearch.jCHEKS.engine.model.message.AbstractMessage;
 import java.util.ArrayList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

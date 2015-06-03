@@ -1,8 +1,7 @@
 package com.archosResearch.jCHEKS.gui.chat.view;
 
-import com.archosResearch.jCHEKS.gui.chat.model.contact.Contact;
-import com.archosResearch.jCHEKS.gui.chat.model.message.IncomingMessage;
-import com.archosResearch.jCHEKS.gui.chat.model.message.OutgoingMessage;
+import com.archosResearch.jCHEKS.concept.engine.message.IncomingMessage;
+import com.archosResearch.jCHEKS.concept.engine.message.OutgoingMessage;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

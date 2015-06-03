@@ -1,12 +1,12 @@
 package com.archosResearch.jCHEKS.gui.chat.scenario;
 
 import com.archosResearch.jCHEKS.concept.engine.AbstractEngine;
-import com.archosResearch.jCHEKS.gui.chat.model.contact.Contact;
-import com.archosResearch.jCHEKS.gui.chat.model.contact.ContactCollection;
-import com.archosResearch.jCHEKS.gui.chat.model.contact.ContactCollection;
-import com.archosResearch.jCHEKS.gui.chat.model.AbstractModel;
-import com.archosResearch.jCHEKS.gui.chat.model.Model;
-import com.archosResearch.jCHEKS.gui.chat.model.NameOfContactAlreadyExistInContactsException;
+import com.archosResearch.jCHEKS.engine.model.contact.Contact;
+import com.archosResearch.jCHEKS.engine.model.contact.ContactCollection;
+import com.archosResearch.jCHEKS.engine.model.contact.ContactCollection;
+import com.archosResearch.jCHEKS.engine.model.AbstractModel;
+import com.archosResearch.jCHEKS.engine.model.Model;
+import com.archosResearch.jCHEKS.engine.model.NameOfContactAlreadyExistInContactsException;
 import mock.StubCommunicator;
 import static org.junit.Assert.*;
 import org.junit.Test;
