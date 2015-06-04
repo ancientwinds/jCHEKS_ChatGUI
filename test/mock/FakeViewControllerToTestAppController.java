@@ -4,13 +4,13 @@ import com.archosResearch.jCHEKS.concept.engine.AbstractEngine;
 import com.archosResearch.jCHEKS.engine.model.contact.Contact;
 import com.archosResearch.jCHEKS.engine.model.message.IncomingMessage;
 import com.archosResearch.jCHEKS.engine.model.message.OutgoingMessage;
-import com.archosResearch.jCHEKS.gui.chat.view.ViewController;
+import com.archosResearch.jCHEKS.gui.chat.view.InputOutputManager;
 
 /**
  *
  * @author Michael Roussel <rousselm4@gmail.com>
  */
-public class FakeViewControllerToTestAppController implements ViewController {
+public class FakeViewControllerToTestAppController implements InputOutputManager {
 
     public void setEngine(AbstractEngine engine) {
 

@@ -9,7 +9,7 @@ import com.archosResearch.jCHEKS.concept.engine.ModelObserver;
  */
 
 //Todo In concept project?
-public interface ViewController extends ModelObserver {
+public interface InputOutputManager extends ModelObserver {
 
     public void setEngine(AbstractEngine engine);
 

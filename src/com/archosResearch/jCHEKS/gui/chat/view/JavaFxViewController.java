@@ -17,7 +17,7 @@ import javafx.stage.Stage;
  *
  * @author Michael Roussel <rousselm4@gmail.com>
  */
-public class JavaFxViewController extends Application implements ViewController {
+public class JavaFxViewController extends Application implements InputOutputManager {
 
     private static final CountDownLatch latch = new CountDownLatch(1);
     private static JavaFxViewController instance = null;
@@ -79,7 +79,7 @@ public class JavaFxViewController extends Application implements ViewController 
     private void initRootLayout() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(ViewController.class.getResource("Chat.fxml"));
+            loader.setLocation(InputOutputManager.class.getResource("Chat.fxml"));
             this.rootLayout = (BorderPane) loader.load();
             this.chatController = loader.getController();
             Scene scene = new Scene(this.rootLayout);

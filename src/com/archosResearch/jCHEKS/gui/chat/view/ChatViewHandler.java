@@ -31,7 +31,7 @@ public class ChatViewHandler {
     private void handleAboutButton() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(ViewController.class.getResource("About.fxml"));
+            loader.setLocation(InputOutputManager.class.getResource("About.fxml"));
             BorderPane aboutLayout = (BorderPane) loader.load();
             Scene scene = new Scene(aboutLayout);
             JavaFxViewController viewController = JavaFxViewController.getInstance();
