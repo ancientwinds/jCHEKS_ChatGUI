@@ -3,7 +3,7 @@ package mock;
 import com.archosResearch.jCHEKS.engine.model.contact.Contact;
 import com.archosResearch.jCHEKS.engine.model.message.IncomingMessage;
 import com.archosResearch.jCHEKS.engine.model.message.OutgoingMessage;
-import com.archosResearch.jCHEKS.gui.chat.view.InputOutputManager;
+import com.archosResearch.jCheks.concept.ioManager.InputOutputManager;
 
 /**
  *
