@@ -80,7 +80,7 @@ public class JavaFxViewController extends Application implements InputOutputMana
     private void initRootLayout() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(InputOutputManager.class.getResource("Chat.fxml"));
+            loader.setLocation(ChatViewHandler.class.getResource("Chat.fxml"));
             this.rootLayout = (BorderPane) loader.load();
             this.chatController = loader.getController();
             Scene scene = new Scene(this.rootLayout);
