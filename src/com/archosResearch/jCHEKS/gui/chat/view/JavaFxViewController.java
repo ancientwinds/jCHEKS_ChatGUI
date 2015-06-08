@@ -92,7 +92,7 @@ public class JavaFxViewController extends Application implements InputOutputMana
 
     @Override
     public void contactAdded(String contactName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    //TODO
     }
 
     @Override
