@@ -2,8 +2,7 @@ package com.archosResearch.jCHEKS.gui.chat.view;
 
 import com.archosResearch.jCHEKS.concept.ioManager.InputOutputManager;
 import com.archosResearch.jCHEKS.concept.engine.AbstractEngine;
-import com.archosResearch.jCHEKS.concept.engine.message.IncomingMessage;
-import com.archosResearch.jCHEKS.concept.engine.message.OutgoingMessage;
+import com.archosResearch.jCHEKS.concept.engine.message.*;
 import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
 import com.sun.javafx.application.HostServicesDelegate;
 import java.io.IOException;

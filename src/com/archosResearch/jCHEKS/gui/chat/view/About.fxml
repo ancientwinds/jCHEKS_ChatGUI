@@ -13,7 +13,7 @@
         <VBox BorderPane.alignment="CENTER">
             <children>
                 <Label text="This is a part of the CHECKS project. This is a temporary text. You can find more information about the project by following this link." textAlignment="CENTER" wrapText="true" />
-                <Hyperlink fx:id="link" onAction="#handleLink" text="www.archos-research.com/en/cheks.html" wrapText="true" />
+                <Hyperlink fx:id="link" onAction="#handleLink" text="http://www.archos-research.com/en/cheks.html" wrapText="true" />
             </children>
         </VBox>
     </center>
