@@ -1,6 +1,6 @@
 package com.archosResearch.jCHEKS.gui.chat.view;
 
-import com.archosResearch.jCheks.concept.ioManager.InputOutputManager;
+import com.archosResearch.jCHEKS.concept.ioManager.InputOutputManager;
 import com.archosResearch.jCHEKS.concept.engine.message.IncomingMessage;
 import com.archosResearch.jCHEKS.concept.engine.message.OutgoingMessage;
 import java.io.IOException;
