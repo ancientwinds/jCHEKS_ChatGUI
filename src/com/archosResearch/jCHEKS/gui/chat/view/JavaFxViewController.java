@@ -9,8 +9,10 @@ import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -112,14 +114,31 @@ public class JavaFxViewController extends Application implements InputOutputMana
     }
 
     //Package private
-    void showScene(Scene scene) {
-        this.primaryStage.setScene(scene);
-        this.primaryStage.show();
+    void addPopup(Scene popup, String title) {
+        Stage stage = new Stage();
+        stage.setTitle(title);
+        stage.initOwner(this.primaryStage);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(popup);
+        stage.show();
     }
-
+    
+    //Package private
+    Node loadFxml(String path) throws IOException{
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(JavaFxViewController.class.getResource(path));
+        return loader.load();
+    }
+    
     //TEMP
     @Override
     public void setSelectedContactName(String name) {
         this.selectedContactName = name;
     }
+
+    void sendNewContactRequest(String name, String address, String port) {
+        //TODO ask for a contact to engine
+        this.chatController.addPaneForContact(name);
+    }
+    
 }
