@@ -1,18 +1,12 @@
 package com.archosResearch.jCHEKS.gui.chat.view;
 
-import com.archosResearch.jCHEKS.concept.ioManager.InputOutputManager;
 import com.archosResearch.jCHEKS.concept.engine.message.*;
-import javafx.scene.input.KeyEvent;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.event.EventHandler;
 import javafx.fxml.*;
 import javafx.geometry.Insets;
 import javafx.scene.*;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 
 /**
@@ -22,7 +16,6 @@ import javafx.scene.layout.*;
 public class ChatViewHandler {
     
     private final JavaFxViewController mainController;
-    
     
     HashMap<String, Tab> tabsMap = new HashMap();
     
@@ -35,14 +28,7 @@ public class ChatViewHandler {
     public ChatViewHandler(){
         this.mainController = JavaFxViewController.getInstance();
     }
-    
-    @FXML
-    private void handleSendButton() {
-        /*JavaFxViewController viewController = JavaFxViewController.getInstance();
-        viewController.forwardOutgoingMessage(messageInput.getText());
-        resetInputField();*/
-    }
-
+   
     @FXML
     private void handleAboutButton() {
         try {

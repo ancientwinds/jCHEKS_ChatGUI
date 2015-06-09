@@ -27,7 +27,6 @@ public class ChatTab extends Tab{
             if (event.getCode() == KeyCode.ENTER) {
                 displayMessage(inputField.getText());
                 resetInputField();
-                this.setText(new StringBuilder(this.getText()).reverse().toString());
                 //TODO call javaFxViewController
             }
         });
