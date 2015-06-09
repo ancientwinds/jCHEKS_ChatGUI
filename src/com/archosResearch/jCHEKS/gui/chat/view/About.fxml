@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
@@ -8,16 +9,28 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.archosResearch.jCHEKS.gui.chat.view.AboutViewHandler">
+<BorderPane xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.archosResearch.jCHEKS.gui.chat.view.AboutViewHandler">
     <center>
         <VBox BorderPane.alignment="CENTER">
             <children>
-                <Label text="This is a part of the CHECKS project. This is a temporary text. You can find more information about the project by following this link." textAlignment="CENTER" wrapText="true" />
-                <Hyperlink fx:id="link" onAction="#handleLink" text="http://www.archos-research.com/en/cheks.html" wrapText="true" />
+                <Label text="This is a part of the CHECKS project. This is a temporary text. You can find more information about the project by following this link." textAlignment="CENTER" wrapText="true">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding></Label>
+                <Hyperlink fx:id="link" onAction="#handleLink" text="http://www.archos-research.com/en/cheks.html" wrapText="true">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin></Hyperlink>
             </children>
         </VBox>
     </center>
-    <bottom>
-        <Button fx:id="closeButton" mnemonicParsing="false" text="Close" BorderPane.alignment="CENTER" />
-    </bottom>
 </BorderPane>
