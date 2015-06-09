@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
@@ -7,30 +8,32 @@
 <?import javafx.scene.layout.*?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.archosResearch.jCHEKS.gui.chat.view.ChatViewHandler">
-    <bottom>
-        <HBox prefHeight="61.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-            <children>
-                <TextArea fx:id="messageInput" prefHeight="44.0" prefWidth="535.0" promptText="Write your message here..." />
-                <Button mnemonicParsing="false" onAction="#handleSendButton" prefHeight="102.0" prefWidth="64.0" text="Send" />
-            </children>
-        </HBox>
-    </bottom>
-    <center>
-        <TextArea fx:id="messageOutput" editable="false" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-            <cursor>
-                <Cursor fx:constant="DEFAULT" />
-            </cursor>
-        </TextArea>
-    </center>
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <menus>
+            <Menu mnemonicParsing="false" text="Edit">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#handleNewContactButton" text="Add new contact" />
+              </items>
+            </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
-                        <MenuItem disable="true" mnemonicParsing="false" onAction="#handleAboutButton" text="About" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleAboutButton" text="About" />
                     </items>
                 </Menu>
+            <Menu mnemonicParsing="false" text="Tests menu">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#test_createTab" text="Add new tab" />
+                  <MenuItem mnemonicParsing="false" onAction="#test_deleteAllTab" text="Remove all tab" />
+                  <MenuItem mnemonicParsing="false" onAction="#test_createTabGroups" text="Add some tabs" />
+                  <MenuItem mnemonicParsing="false" onAction="#test_invertSelTab" text="invert name of selected tab" />
+                  <MenuItem mnemonicParsing="false" onAction="#test_write" text="write test message" />
+               </items>
+            </Menu>
             </menus>
         </MenuBar>
     </top>
+   <center>
+      <TabPane fx:id="mainTabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="ALL_TABS" BorderPane.alignment="CENTER" />
+   </center>
 </BorderPane>
