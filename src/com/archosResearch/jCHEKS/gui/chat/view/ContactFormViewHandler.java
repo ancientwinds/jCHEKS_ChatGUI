@@ -1,7 +1,7 @@
 package com.archosResearch.jCHEKS.gui.chat.view;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 /**
@@ -19,9 +19,10 @@ public class ContactFormViewHandler {
     @FXML
     private TextField portField;
 
+
     @FXML
     private void handleCreateContact() {
-        JavaFxViewController.getInstance().sendNewContactRequest(nameField.getText(), addressField.getText(), portField.getText());
+        JavaFxViewController.getInstance().sendNewContactRequest(nameField.getText(), addressField.getText(), Integer.parseInt(portField.getText()));
         Stage stage = (Stage) nameField.getScene().getWindow(); 
         stage.close();
     }

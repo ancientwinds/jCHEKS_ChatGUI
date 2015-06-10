@@ -26,7 +26,7 @@ public class JavaFxViewController extends Application implements InputOutputMana
     private AbstractEngine engine;
     private Stage primaryStage;
     private BorderPane rootLayout;
-    private ChatViewHandler chatController;
+    private ChatViewHandler chatViewHandler;
     private String selectedContactName;
 
     /**
@@ -63,12 +63,12 @@ public class JavaFxViewController extends Application implements InputOutputMana
     }
     @Override
     public void messageSent(OutgoingMessage message, String contactName) {
-        chatController.displayOutgoingMessage(message);
+        chatViewHandler.displayOutgoingMessage(message);
     }
 
     @Override
     public void messageReceived(IncomingMessage message, String contactName) {
-        chatController.displayIncomingMessage(message, contactName);
+        chatViewHandler.displayIncomingMessage(message, contactName);
     }
 
     @Override
@@ -83,7 +83,7 @@ public class JavaFxViewController extends Application implements InputOutputMana
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(ChatViewHandler.class.getResource("Chat.fxml"));
             this.rootLayout = (BorderPane) loader.load();
-            this.chatController = loader.getController();
+            this.chatViewHandler = loader.getController();
             Scene scene = new Scene(this.rootLayout);
             this.primaryStage.setScene(scene);
             this.primaryStage.show();
@@ -94,7 +94,7 @@ public class JavaFxViewController extends Application implements InputOutputMana
 
     @Override
     public void contactAdded(String contactName) {
-    //TODO
+        this.chatViewHandler.addPaneForContact(contactName);
     }
 
     @Override
@@ -129,16 +129,13 @@ public class JavaFxViewController extends Application implements InputOutputMana
         loader.setLocation(JavaFxViewController.class.getResource(path));
         return loader.load();
     }
-    
-    //TEMP
-    @Override
-    public void setSelectedContactName(String name) {
-        this.selectedContactName = name;
+
+    void sendNewContactRequest(String contactName, String ip, int sendingPort) {
+        this.engine.createContact(contactName, ip, sendingPort);
     }
 
-    void sendNewContactRequest(String name, String address, String port) {
-        //TODO ask for a contact to engine
-        this.chatController.addPaneForContact(name);
+    void setReceivingPort(int port) {
+        this.engine.setReceivingPort(port);
     }
     
 }

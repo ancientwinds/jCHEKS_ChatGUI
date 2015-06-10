@@ -3,6 +3,8 @@ package com.archosResearch.jCHEKS.gui.chat.view;
 import com.archosResearch.jCHEKS.concept.engine.message.*;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.*;
 import javafx.geometry.Insets;
 import javafx.scene.*;
@@ -24,6 +26,15 @@ public class ChatViewHandler {
     
     @FXML
     private TabPane mainTabPane;
+      
+    @FXML
+    private MenuBar menuBar;
+    
+    @FXML
+    private TextField receivingPortField;
+    
+    @FXML
+    private Label portLabel;
 
     public ChatViewHandler(){
         this.mainController = JavaFxViewController.getInstance();
@@ -40,7 +51,14 @@ public class ChatViewHandler {
         }
     }
     
-        @FXML
+    private void handlePortConfig(){
+        portLabel.setText("Receiving port: " + receivingPortField.getText());
+        receivingPortField.setVisible(false);
+        this.menuBar.setDisable(false);
+        this.mainController.setReceivingPort(Integer.parseInt(receivingPortField.getText()));
+    }
+    
+    @FXML
     private void handleNewContactButton() {
         try {
             Pane aboutLayout = (Pane) this.mainController.loadFxml("ContactForm.fxml");
@@ -52,12 +70,21 @@ public class ChatViewHandler {
     }
 
     void displayOutgoingMessage(OutgoingMessage message) {
-        
-        //messageOutput.appendText("I said: " + message.getContent() + "\n");
+        try {
+            getSelectedTab().displayMessage("I said:" + message.getContent());
+        } catch (Exception ex) {
+            //TODO Change this and rethrow an exception.
+            Logger.getLogger(ChatViewHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     void displayIncomingMessage(IncomingMessage message, String contactName) {
-        //messageOutput.appendText(contactName + " said: " + message.getContent() + "\n");
+        try {
+            getSelectedTab().displayMessage(contactName + " said:" + message.getContent());
+        } catch (Exception ex) {
+            //TODO Change this and rethrow an exception.
+            Logger.getLogger(ChatViewHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }    
     }
 
     
@@ -65,10 +92,10 @@ public class ChatViewHandler {
         this.mainTabPane.getTabs().add(new ChatTab(contactName));
     }
     
-    private Tab getSelectedTab() throws Exception{
+    private ChatTab getSelectedTab() throws Exception{
         for(Tab tab : mainTabPane.getTabs()){
             if(tab.isSelected()){
-                return tab;
+                return (ChatTab)tab;
             }
         }
         //TODO Create an exception for that.
