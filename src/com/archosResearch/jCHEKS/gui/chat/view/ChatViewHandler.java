@@ -3,12 +3,12 @@ package com.archosResearch.jCHEKS.gui.chat.view;
 import com.archosResearch.jCHEKS.concept.engine.message.*;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.logging.*;
 import javafx.fxml.*;
 import javafx.geometry.Insets;
 import javafx.scene.*;
 import javafx.scene.control.*;
+import javafx.scene.input.*;
 import javafx.scene.layout.*;
 
 /**
@@ -51,11 +51,14 @@ public class ChatViewHandler {
         }
     }
     
-    private void handlePortConfig(){
-        portLabel.setText("Receiving port: " + receivingPortField.getText());
-        receivingPortField.setVisible(false);
-        this.menuBar.setDisable(false);
-        this.mainController.setReceivingPort(Integer.parseInt(receivingPortField.getText()));
+    @FXML
+    private void handlePortConfig(KeyEvent event){
+        if (event.getCode() == KeyCode.ENTER) {
+            portLabel.setText("Receiving port: " + receivingPortField.getText());
+            receivingPortField.setVisible(false);
+            this.menuBar.setDisable(false);
+            this.mainController.setReceivingPort(Integer.parseInt(receivingPortField.getText()));
+        }
     }
     
     @FXML

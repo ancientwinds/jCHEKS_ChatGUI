@@ -40,7 +40,7 @@
       <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <items>
             <Label fx:id="portLabel" text="Port: " />
-            <TextField fx:id="receivingPortField" />
+            <TextField fx:id="receivingPortField" onKeyPressed="#handlePortConfig" />
          </items>
       </ToolBar>
    </bottom>
