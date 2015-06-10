@@ -25,7 +25,7 @@ public class ChatTab extends Tab{
         inputField = new TextField();
         inputField.setOnKeyPressed((KeyEvent event) -> {
             if (event.getCode() == KeyCode.ENTER) {
-                JavaFxViewController.getInstance().forwardOutgoingMessage(inputField.getText());
+                JavaFxViewController.getInstance().forwardOutgoingMessage(inputField.getText(), this.getText());
                 resetInputField();
             }
         });

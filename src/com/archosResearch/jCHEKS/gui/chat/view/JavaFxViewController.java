@@ -27,7 +27,6 @@ public class JavaFxViewController extends Application implements InputOutputMana
     private Stage primaryStage;
     private BorderPane rootLayout;
     private ChatViewHandler chatViewHandler;
-    private String selectedContactName;
 
     /**
      * Should never be called. Call getInstance().
@@ -103,8 +102,8 @@ public class JavaFxViewController extends Application implements InputOutputMana
     }
 
     @Override
-    public void forwardOutgoingMessage(String messageContent) {
-        this.engine.handleOutgoingMessage(messageContent, this.selectedContactName);
+    public void forwardOutgoingMessage(String messageContent, String contactName) {
+        this.engine.handleOutgoingMessage(messageContent, contactName);
     }
 
     //Package private
