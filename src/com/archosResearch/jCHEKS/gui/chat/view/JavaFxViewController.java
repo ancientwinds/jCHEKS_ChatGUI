@@ -129,8 +129,8 @@ public class JavaFxViewController extends Application implements InputOutputMana
         return loader.load();
     }
 
-    void sendNewContactRequest(String contactName, String ip, int sendingPort) {
-        this.engine.createContact(contactName, ip, sendingPort);
+    void sendNewContactRequest(String contactName, String ip, int sendingPort, String uniqueId) {
+        this.engine.createContact(contactName, ip, sendingPort, uniqueId);
     }
 
     void setReceivingPort(int port) {

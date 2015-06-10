@@ -19,10 +19,12 @@ public class ContactFormViewHandler {
     @FXML
     private TextField portField;
 
-
+    @FXML
+    private TextField uniqueId;
+    
     @FXML
     private void handleCreateContact() {
-        JavaFxViewController.getInstance().sendNewContactRequest(nameField.getText(), addressField.getText(), Integer.parseInt(portField.getText()));
+        JavaFxViewController.getInstance().sendNewContactRequest(nameField.getText(), addressField.getText(), Integer.parseInt(portField.getText()), uniqueId.getText());
         Stage stage = (Stage) nameField.getScene().getWindow(); 
         stage.close();
     }
