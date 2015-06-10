@@ -8,8 +8,11 @@
 <?import javafx.scene.layout.*?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.archosResearch.jCHEKS.gui.chat.view.ChatViewHandler">
-    <top>
-        <MenuBar BorderPane.alignment="CENTER">
+   <center>
+      <TabPane fx:id="mainTabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="ALL_TABS" BorderPane.alignment="CENTER" />
+   </center>
+   <top>
+        <MenuBar fx:id="menuBar" disable="true" BorderPane.alignment="CENTER">
             <menus>
             <Menu mnemonicParsing="false" text="Edit">
               <items>
@@ -32,8 +35,13 @@
             </Menu>
             </menus>
         </MenuBar>
-    </top>
-   <center>
-      <TabPane fx:id="mainTabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="ALL_TABS" BorderPane.alignment="CENTER" />
-   </center>
+   </top>
+   <bottom>
+      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <items>
+            <Label fx:id="portLabel" text="Port: " />
+            <TextField fx:id="receivingPortField" />
+         </items>
+      </ToolBar>
+   </bottom>
 </BorderPane>
