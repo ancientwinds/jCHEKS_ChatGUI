@@ -72,6 +72,16 @@ public class ChatViewHandler {
         }
     }
 
+    private ChatTab getTabByName(String contactName) throws Exception {
+        for(Tab tab : mainTabPane.getTabs()){
+            if(tab.getText().equals(contactName)){
+                return (ChatTab)tab;
+            }
+        }
+        //TODO Create an exception for that.
+        throw new Exception();
+    }
+
     void displayOutgoingMessage(OutgoingMessage message) {
         try {
             getSelectedTab().displayMessage("I said:" + message.getContent());
@@ -83,7 +93,7 @@ public class ChatViewHandler {
 
     void displayIncomingMessage(IncomingMessage message, String contactName) {
         try {
-            getSelectedTab().displayMessage(contactName + " said:" + message.getContent());
+            getTabByName(contactName).displayMessage(contactName + " said:" + message.getContent());
         } catch (Exception ex) {
             //TODO Change this and rethrow an exception.
             Logger.getLogger(ChatViewHandler.class.getName()).log(Level.SEVERE, null, ex);
