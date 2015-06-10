@@ -1,5 +1,7 @@
 package com.archosResearch.jCHEKS.gui.chat.view;
 
+import javafx.collections.FXCollections;
+import javafx.collections.transformation.SortedList;
 import javafx.scene.control.*;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
@@ -12,6 +14,7 @@ public class ChatTab extends Tab{
     
     TextField inputField;
     TextArea outputField;
+
     
     public ChatTab(String contactName){
         super(contactName);

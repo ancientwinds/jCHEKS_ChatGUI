@@ -3,6 +3,7 @@ package com.archosResearch.jCHEKS.gui.chat.view;
 import com.archosResearch.jCHEKS.concept.ioManager.InputOutputManager;
 import com.archosResearch.jCHEKS.concept.engine.AbstractEngine;
 import com.archosResearch.jCHEKS.concept.engine.message.*;
+import com.archosResearch.jCHEKS.concept.ioManager.ContactInfo;
 import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
 import com.sun.javafx.application.HostServicesDelegate;
 import java.io.IOException;
@@ -130,7 +131,8 @@ public class JavaFxViewController extends Application implements InputOutputMana
     }
 
     void sendNewContactRequest(String contactName, String ip, int sendingPort, String uniqueId) {
-        this.engine.createContact(contactName, ip, sendingPort, uniqueId);
+        
+        this.engine.createContact(new ContactInfo(ip, sendingPort, contactName, uniqueId));
     }
 
     void setReceivingPort(int port) {
