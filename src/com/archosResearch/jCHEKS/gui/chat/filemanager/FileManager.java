@@ -1,19 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.archosResearch.jCHEKS.gui.chat.filemanager;
 
 import com.archosResearch.jCHEKS.concept.ioManager.ContactInfo;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,6 +33,26 @@ public class FileManager {
     }
     
     public Set<ContactInfo> loadContacts(String fileName) {
+        
+        try{
+            InputStreamReader ipsr=new InputStreamReader(new FileInputStream(fileName));
+            BufferedReader br=new BufferedReader(ipsr);
+            String line = br.readLine();
+
+            if(line != null) {
+                System.out.println(line);
+            }
+            br.close(); 
+            
+            Map<String, String> map = new HashMap<String, String>();
+            String[] parts = line.replaceAll("^\\{|\\}$","").split("\"?(:|,)(?![^\\{]*\\})\"?");
+            for (int i = 0; i < parts.length -1; i+=2)
+                map.put(parts[i], parts[i+1]);
+            System.out.println(map.size() + " entries: " + map);
+                }       
+        catch (Exception e){
+            System.out.println(e.toString());
+        }
         return null;
     }
     

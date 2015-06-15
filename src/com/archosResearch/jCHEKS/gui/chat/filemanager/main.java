@@ -16,10 +16,12 @@ public class main {
     
     public static void main(String args[]){
         FileManager fM = new FileManager();
-        HashSet<ContactInfo> contacts = new HashSet();
+        /*HashSet<ContactInfo> contacts = new HashSet();
         contacts.add(new ContactInfo(("1.1.1.1"), 9000, "Thomas", "TEst"));
         contacts.add(new ContactInfo(("2.2.2.2"), 8050, "Bob", "trete"));
 
-        fM.save(new ContactInfo("39.03.32.45", 1234, "Test", "tesfsddfadsfa"), "test.json");
+        fM.save(new ContactInfo("39.03.32.45", 1234, "Test", "tesfsddfadsfa"), "test.json");*/
+        
+        fM.loadContacts("test.json");
     }
 }

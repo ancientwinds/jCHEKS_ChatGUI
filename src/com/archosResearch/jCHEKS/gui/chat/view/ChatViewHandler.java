@@ -57,6 +57,7 @@ public class ChatViewHandler {
             portLabel.setText("Receiving port: " + receivingPortField.getText());
             receivingPortField.setVisible(false);
             this.menuBar.setDisable(false);
+            //TODO Add verification for the value if numeric
             this.mainController.setReceivingPort(Integer.parseInt(receivingPortField.getText()));
         }
     }
@@ -73,6 +74,7 @@ public class ChatViewHandler {
     }
 
     private ChatTab getTabByName(String contactName) throws Exception {
+        //TODO Remove for() and use HashMap
         for(Tab tab : mainTabPane.getTabs()){
             if(tab.getText().equals(contactName)){
                 return (ChatTab)tab;
@@ -106,6 +108,7 @@ public class ChatViewHandler {
     }
     
     private ChatTab getSelectedTab() throws Exception{
+        //TODO use a currentTab variable.
         for(Tab tab : mainTabPane.getTabs()){
             if(tab.isSelected()){
                 return (ChatTab)tab;

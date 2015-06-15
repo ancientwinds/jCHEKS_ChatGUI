@@ -39,10 +39,11 @@ public class ChatTab extends Tab{
     }
     
     public void displayMessage(String message){
+        //TODO Platform...
         outputField.appendText(message+"\n");
     }
     
-    public void resetInputField(){
+    private void resetInputField(){
         inputField.setText("");
     }
     
