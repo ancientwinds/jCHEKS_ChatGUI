@@ -1,8 +1,10 @@
 package com.archosResearch.jCHEKS.gui.chat.view;
 
+import java.awt.Image;
 import javafx.collections.FXCollections;
-import javafx.collections.transformation.SortedList;
+import javafx.collections.ObservableList;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
 
@@ -18,9 +20,39 @@ public class ChatTab extends Tab{
     
     public ChatTab(String contactName){
         super(contactName);
-        
         VBox mainContainer = new VBox();
+        /*ListView<String> list = new ListView();
+        
+        
+        ObservableList<String> data = FXCollections.observableArrayList(
+            "a.msg", "a1.msg", "b.txt", "c.pdf", 
+            "d.html", "e.png", "f.zip",
+            "g.docx", "h.xlsx", "i.pptx");
+                list.setItems(data);
 
+        list.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
+            @Override
+            public ListCell<String> call(ListView<String> list) {
+                return new AttachmentListCell();
+            }
+        });
+        
+        private static class AttachmentListCell extends ListCell<String> {
+            @Override
+            public void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                    setText(null);
+                } else {
+                    Image fxImage = ;
+                    ImageView imageView = new ImageView(fxImage);
+                    setGraphic(imageView);
+                    setText(item);
+                }
+            }
+        }
+        */
         outputField = new TextArea();
         outputField.setEditable(false);
         mainContainer.getChildren().add(outputField);
