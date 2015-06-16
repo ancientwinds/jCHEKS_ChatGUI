@@ -1,23 +1,18 @@
 package com.archosResearch.jCHEKS.gui.chat.view;
 
-import com.archosResearch.jCHEKS.concept.ioManager.InputOutputManager;
 import com.archosResearch.jCHEKS.concept.engine.AbstractEngine;
 import com.archosResearch.jCHEKS.concept.engine.message.*;
-import com.archosResearch.jCHEKS.concept.ioManager.ContactInfo;
+import com.archosResearch.jCHEKS.concept.ioManager.*;
 import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
 import com.sun.javafx.application.HostServicesDelegate;
-import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.concurrent.CountDownLatch;
-import javafx.application.Application;
-import javafx.application.Platform;
+import javafx.application.*;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
+import javafx.scene.*;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+import javafx.stage.*;
 
 /**
  *
@@ -36,12 +31,8 @@ public class JavaFxViewController extends Application implements InputOutputMana
      * Should never be called. Call getInstance().
      */
     public JavaFxViewController() throws Exception {
-        if (instance == null) {
-            setInstance(this);
-        } else {
-            //TODO Change exception type
-            throw new Exception();
-        }
+        if (instance == null) setInstance(this);
+        JavaFxViewController.class.getDeclaredField("JavaFxViewController").setAccessible(false);
     }
 
     private static void setInstance(JavaFxViewController instance) {
