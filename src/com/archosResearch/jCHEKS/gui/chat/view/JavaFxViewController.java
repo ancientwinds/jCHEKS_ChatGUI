@@ -6,12 +6,15 @@ import com.archosResearch.jCHEKS.concept.engine.message.*;
 import com.archosResearch.jCHEKS.concept.ioManager.ContactInfo;
 import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
 import com.sun.javafx.application.HostServicesDelegate;
+import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -52,6 +55,11 @@ public class JavaFxViewController extends Application implements InputOutputMana
         }
         return instance;
     }
+    
+    public void refreshMessage(){
+        Platform.runLater(() -> this.chatViewHandler.refreshMessage());
+    }
+    
     private static void createInstance(){
         try {
                 Runnable launchJavaFx = () -> { javafx.application.Application.launch(JavaFxViewController.class); };
@@ -82,6 +90,7 @@ public class JavaFxViewController extends Application implements InputOutputMana
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(ChatViewHandler.class.getResource("Chat.fxml"));
+           
             this.rootLayout = (BorderPane) loader.load();
             this.chatViewHandler = loader.getController();
             Scene scene = new Scene(this.rootLayout);

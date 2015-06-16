@@ -1,12 +1,17 @@
 package com.archosResearch.jCHEKS.gui.chat.view;
 
-import java.awt.Image;
+import com.archosResearch.jCHEKS.concept.engine.message.AbstractMessage;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
+import javafx.util.Callback;
 
 /**
  *
@@ -15,47 +20,24 @@ import javafx.scene.layout.*;
 public class ChatTab extends Tab{
     
     TextField inputField;
-    TextArea outputField;
-
+    ListView<AbstractMessage>  messagesListView;
+    MessageListCell msgList;
     
     public ChatTab(String contactName){
         super(contactName);
         VBox mainContainer = new VBox();
-        /*ListView<String> list = new ListView();
+        messagesListView = new ListView();
         
+        ObservableList<AbstractMessage> data = FXCollections.observableArrayList();
+        messagesListView.setItems(data);
+        messagesListView.setCellFactory((ListView<AbstractMessage> param) -> new MessageListCell());
         
-        ObservableList<String> data = FXCollections.observableArrayList(
-            "a.msg", "a1.msg", "b.txt", "c.pdf", 
-            "d.html", "e.png", "f.zip",
-            "g.docx", "h.xlsx", "i.pptx");
-                list.setItems(data);
-
-        list.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
-            @Override
-            public ListCell<String> call(ListView<String> list) {
-                return new AttachmentListCell();
-            }
-        });
-        
-        private static class AttachmentListCell extends ListCell<String> {
-            @Override
-            public void updateItem(String item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty) {
-                    setGraphic(null);
-                    setText(null);
-                } else {
-                    Image fxImage = ;
-                    ImageView imageView = new ImageView(fxImage);
-                    setGraphic(imageView);
-                    setText(item);
-                }
-            }
-        }
-        */
+        mainContainer.getChildren().add(messagesListView);
+        /*
         outputField = new TextArea();
         outputField.setEditable(false);
         mainContainer.getChildren().add(outputField);
+        */
         
         inputField = new TextField();
         inputField.setOnKeyPressed((KeyEvent event) -> {
@@ -70,13 +52,60 @@ public class ChatTab extends Tab{
         this.setClosable(true);
     }
     
-    public void displayMessage(String message){
-        //TODO Platform...
-        outputField.appendText(message+"\n");
+    public void displayMessage(AbstractMessage message){
+        Platform.runLater(() -> this.messagesListView.getItems().add(message));
+        
+        /*try {
+            Thread.sleep(5000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(ChatTab.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        message.setContent("Patate");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(ChatTab.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        message.setContent("poutine");*/
     }
     
     private void resetInputField(){
         inputField.setText("");
     }
-    
+    private static class MessageListCell extends ListCell<AbstractMessage> {
+        
+            @Override
+            public void updateItem(AbstractMessage message, boolean empty) {
+                super.updateItem(message, empty);
+                if (empty) {
+                    setGraphic(null);
+                    setText(null);
+                } else {
+                    String src;
+                    switch(message.getState()){
+                        case FROM_ME:
+                            src = "glyphicons-246-chat.png";
+                            break;
+                        default:
+                            src = "glyphicons-83-roundabout.png";
+                    }
+                    Image fxImage = new Image(JavaFxViewController.class.getResourceAsStream(src));
+                    ImageView imageView = new ImageView(fxImage);
+                    setGraphic(imageView);
+                    setText(message.getContent());
+                }
+            }
+            
+            /*@Override
+            public void commitEdit(String newValue){
+                Image fxImage = new Image("glyphicons-83-roundabout.png");
+                ImageView imageView = new ImageView(fxImage);
+                setGraphic(imageView);
+            }*/
+        }
+    public void refresh(){
+        ObservableList<AbstractMessage> items = this.messagesListView.getItems();
+        this.messagesListView.setItems(null);
+        this.messagesListView.setItems(items);
+    }
 }

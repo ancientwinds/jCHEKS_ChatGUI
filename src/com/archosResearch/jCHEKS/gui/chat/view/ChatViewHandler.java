@@ -86,7 +86,7 @@ public class ChatViewHandler {
 
     void displayOutgoingMessage(OutgoingMessage message) {
         try {
-            getSelectedTab().displayMessage("I said:" + message.getContent());
+            getSelectedTab().displayMessage(message);
         } catch (Exception ex) {
             //TODO Change this and rethrow an exception.
             Logger.getLogger(ChatViewHandler.class.getName()).log(Level.SEVERE, null, ex);
@@ -95,7 +95,7 @@ public class ChatViewHandler {
 
     void displayIncomingMessage(IncomingMessage message, String contactName) {
         try {
-            getTabByName(contactName).displayMessage(contactName + " said:" + message.getContent());
+            getTabByName(contactName).displayMessage(message);
         } catch (Exception ex) {
             //TODO Change this and rethrow an exception.
             Logger.getLogger(ChatViewHandler.class.getName()).log(Level.SEVERE, null, ex);
@@ -116,6 +116,14 @@ public class ChatViewHandler {
         }
         //TODO Create an exception for that.
         throw new Exception();
+    }
+    
+    public void refreshMessage() {
+        try {
+            this.getSelectedTab().refresh();
+        } catch (Exception ex) {
+            Logger.getLogger(ChatViewHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     @FXML
@@ -146,7 +154,8 @@ public class ChatViewHandler {
     private void test_write() {
         try {
             ChatTab tab = (ChatTab)getSelectedTab();
-            tab.displayMessage("This is a test message!");
+            tab.displayMessage(new IncomingMessage("This is a test message"));
+            tab.displayMessage(new OutgoingMessage("This is a test message"));
         } catch (Exception ex) {}
     }
 }
