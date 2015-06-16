@@ -6,7 +6,6 @@ import com.archosResearch.jCHEKS.concept.ioManager.*;
 import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
 import com.sun.javafx.application.HostServicesDelegate;
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.util.concurrent.CountDownLatch;
 import javafx.application.*;
 import javafx.fxml.FXMLLoader;
