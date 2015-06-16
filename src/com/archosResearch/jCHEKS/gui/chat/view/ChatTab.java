@@ -44,7 +44,7 @@ public class ChatTab extends Tab {
     
     private ListView<AbstractMessage> createOutputNode(){
         ListView<AbstractMessage> outputNode = new ListView();
-        outputNode.setItems(FXCollections.<AbstractMessage>emptyObservableList());
+        outputNode.setItems(FXCollections.<AbstractMessage>observableArrayList());
         outputNode.setCellFactory((ListView<AbstractMessage> param) -> new MessageListCell());
         return outputNode;
     }
