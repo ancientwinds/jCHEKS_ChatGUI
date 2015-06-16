@@ -84,7 +84,7 @@ public class ChatViewHandler {
         if(tab != null) return tab;
         throw new TabNotFoundException("There is no tab associated with that name.");
     }
-
+    
     void displayOutgoingMessage(OutgoingMessage message) {
         try {
             getSelectedTab().displayMessage(message);
