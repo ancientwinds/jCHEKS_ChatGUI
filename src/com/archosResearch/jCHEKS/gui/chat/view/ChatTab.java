@@ -83,7 +83,7 @@ public class ChatTab extends Tab{
                 } else {
                     String src;
                     switch(message.getState()){
-                        case FROM_ME:
+                        case FOR_ME:
                             src = "glyphicons-246-chat.png";
                             break;
                         default:
