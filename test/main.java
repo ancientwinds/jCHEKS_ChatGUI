@@ -1,4 +1,3 @@
-
 import com.archosResearch.jCHEKS.gui.chat.view.JavaFxViewController;
 
 /**
