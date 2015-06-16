@@ -130,11 +130,12 @@ public class JavaFxViewController extends Application implements InputOutputMana
         return loader.load();
     }
 
-    void sendNewContactRequest(String contactName, String ip, int sendingPort, String uniqueId) {
-        //TODO change the ContactInfo creation location
-        this.engine.createContact(new ContactInfo(ip, sendingPort, contactName, uniqueId));
+    //Package private
+    void sendNewContactRequest(ContactInfo contactInfo) {
+        this.engine.createContact(contactInfo);
     }
 
+    //Package private
     void setReceivingPort(int port) {
         this.engine.setReceivingPort(port);
     }

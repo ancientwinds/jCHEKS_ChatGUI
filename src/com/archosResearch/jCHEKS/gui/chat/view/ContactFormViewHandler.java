@@ -1,5 +1,6 @@
 package com.archosResearch.jCHEKS.gui.chat.view;
 
+import com.archosResearch.jCHEKS.concept.ioManager.ContactInfo;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -17,16 +18,15 @@ public class ContactFormViewHandler {
     private TextField addressField;
     
     @FXML
-    private TextField portField;
+    private SpecificTextField portField;
 
     @FXML
     private TextField uniqueId;
     
     @FXML
     private void handleCreateContact() {
-        //TODO Check if int create your own TextField
-        //TODO Create the contactInfo here.
-        JavaFxViewController.getInstance().sendNewContactRequest(nameField.getText(), addressField.getText(), Integer.parseInt(portField.getText()), uniqueId.getText());
+        ContactInfo contactInfo = new ContactInfo(addressField.getText(), Integer.parseInt(portField.getText()), nameField.getText(), uniqueId.getText());
+        JavaFxViewController.getInstance().sendNewContactRequest(contactInfo);
         Stage stage = (Stage) nameField.getScene().getWindow(); 
         stage.close();
     }
