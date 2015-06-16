@@ -25,15 +25,6 @@
                         <MenuItem mnemonicParsing="false" onAction="#handleAboutButton" text="About" />
                     </items>
                 </Menu>
-            <Menu mnemonicParsing="false" text="Tests menu">
-               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#test_createTab" text="Add new tab" />
-                  <MenuItem mnemonicParsing="false" onAction="#test_deleteAllTab" text="Remove all tab" />
-                  <MenuItem mnemonicParsing="false" onAction="#test_createTabGroups" text="Add some tabs" />
-                  <MenuItem mnemonicParsing="false" onAction="#test_invertSelTab" text="invert name of selected tab" />
-                  <MenuItem mnemonicParsing="false" onAction="#test_write" text="write test message" />
-               </items>
-            </Menu>
             </menus>
         </MenuBar>
    </top>
