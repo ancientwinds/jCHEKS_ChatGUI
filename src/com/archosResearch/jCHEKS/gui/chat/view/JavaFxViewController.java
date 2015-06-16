@@ -56,7 +56,7 @@ public class JavaFxViewController extends Application implements InputOutputMana
         return instance;
     }
     
-    public void refreshMessage(){
+    public void refresh(){
         Platform.runLater(() -> this.chatViewHandler.refreshMessage());
     }
     
@@ -69,6 +69,7 @@ public class JavaFxViewController extends Application implements InputOutputMana
                 e.printStackTrace();
             }
     }
+    
     @Override
     public void messageSent(OutgoingMessage message, String contactName) {
         chatViewHandler.displayOutgoingMessage(message);
