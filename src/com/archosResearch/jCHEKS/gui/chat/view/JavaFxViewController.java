@@ -32,7 +32,7 @@ public class JavaFxViewController extends Application implements InputOutputMana
      */
     public JavaFxViewController() throws Exception {
         if (instance == null) setInstance(this);
-        JavaFxViewController.class.getDeclaredField("JavaFxViewController").setAccessible(false);
+        JavaFxViewController.class.getConstructor().setAccessible(false);
     }
 
     private static void setInstance(JavaFxViewController instance) {
