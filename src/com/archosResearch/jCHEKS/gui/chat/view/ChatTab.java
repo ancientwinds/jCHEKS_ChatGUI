@@ -19,7 +19,6 @@ public class ChatTab extends Tab {
 
     TextField inputField;
     ListView<AbstractMessage> messagesListView;
-    MessageListCell msgList;
 
     public ChatTab(String contactName) {
         super(contactName);
@@ -49,6 +48,7 @@ public class ChatTab extends Tab {
         outputNode.setCellFactory((ListView<AbstractMessage> param) -> new MessageListCell());
         return outputNode;
     }
+    
     private TextField createInputNode(){
         TextField inputNode = new TextField();
         inputNode.setOnKeyPressed((KeyEvent event) -> {
@@ -103,6 +103,4 @@ public class ChatTab extends Tab {
             }
         }
     }
-
-
 }
