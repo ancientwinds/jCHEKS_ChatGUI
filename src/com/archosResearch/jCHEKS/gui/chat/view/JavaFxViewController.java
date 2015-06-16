@@ -3,10 +3,13 @@ package com.archosResearch.jCHEKS.gui.chat.view;
 import com.archosResearch.jCHEKS.concept.engine.AbstractEngine;
 import com.archosResearch.jCHEKS.concept.engine.message.*;
 import com.archosResearch.jCHEKS.concept.ioManager.*;
+import com.archosResearch.jCHEKS.gui.chat.view.exception.TabNotFoundException;
 import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
 import com.sun.javafx.application.HostServicesDelegate;
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
@@ -67,7 +70,12 @@ public class JavaFxViewController extends Application implements InputOutputMana
 
     @Override
     public void messageReceived(IncomingMessage message, String contactName) {
-        chatViewHandler.displayIncomingMessage(message, contactName);
+        try {
+            chatViewHandler.displayIncomingMessage(message, contactName);
+        } catch (TabNotFoundException ex) {
+            Logger.getLogger(JavaFxViewController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     @Override
