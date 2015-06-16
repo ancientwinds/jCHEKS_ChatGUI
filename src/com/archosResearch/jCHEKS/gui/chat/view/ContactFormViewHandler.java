@@ -24,6 +24,8 @@ public class ContactFormViewHandler {
     
     @FXML
     private void handleCreateContact() {
+        //TODO Check if int create your own TextField
+        //TODO Create the contactInfo here.
         JavaFxViewController.getInstance().sendNewContactRequest(nameField.getText(), addressField.getText(), Integer.parseInt(portField.getText()), uniqueId.getText());
         Stage stage = (Stage) nameField.getScene().getWindow(); 
         stage.close();
