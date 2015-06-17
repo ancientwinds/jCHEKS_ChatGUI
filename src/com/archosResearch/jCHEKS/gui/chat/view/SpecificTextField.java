@@ -6,27 +6,24 @@ import javafx.scene.control.TextField;
  *
  * @author Michael Roussel <rousselm4@gmail.com>
  */
-public class SpecificTextField extends TextField{
+public class SpecificTextField extends TextField {
+
     private String pattern;
-    
-    public SpecificTextField(){
+
+    public SpecificTextField() {
         this.pattern = "(.*?)";
     }
-    
+
     @Override
-    public void replaceText(int start, int end, String text)
-    {
-        if (validate(text))
-        {
+    public void replaceText(int start, int end, String text) {
+        if (validate(text)) {
             super.replaceText(start, end, text);
         }
     }
 
     @Override
-    public void replaceSelection(String text)
-    {
-        if (validate(text))
-        {
+    public void replaceSelection(String text) {
+        if (validate(text)) {
             super.replaceSelection(text);
         }
     }
@@ -39,8 +36,7 @@ public class SpecificTextField extends TextField{
         this.pattern = pattern;
     }
 
-    private boolean validate(String text)
-    {
+    private boolean validate(String text) {
         return ("".equals(text) || text.matches(this.getPattern()));
     }
 }

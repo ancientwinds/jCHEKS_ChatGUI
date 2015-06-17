@@ -9,17 +9,17 @@
 <?import com.archosResearch.jCHEKS.gui.chat.view.*?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.archosResearch.jCHEKS.gui.chat.view.ChatViewHandler">
-   <center>
-      <TabPane fx:id="mainTabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER" />
-   </center>
-   <top>
+    <center>
+        <TabPane fx:id="mainTabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER" />
+    </center>
+    <top>
         <MenuBar fx:id="menuBar" BorderPane.alignment="CENTER">
             <menus>
-            <Menu mnemonicParsing="false" text="Edit">
-              <items>
-                <MenuItem mnemonicParsing="false" onAction="#handleNewContactButton" text="Add new contact" />
-              </items>
-            </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#handleNewContactButton" text="Add new contact" />
+                    </items>
+                </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#handleAboutButton" text="About" />
@@ -27,12 +27,12 @@
                 </Menu>
             </menus>
         </MenuBar>
-   </top>
-   <bottom>
-      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <items>
-            <Label fx:id="infoLabel" />
-         </items>
-      </ToolBar>
-   </bottom>
+    </top>
+    <bottom>
+        <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <items>
+                <Label fx:id="infoLabel" />
+            </items>
+        </ToolBar>
+    </bottom>
 </BorderPane>

@@ -9,5 +9,5 @@ public class DisplayIncomingMessageException extends Exception {
     public DisplayIncomingMessageException(String msg) {
         super(msg);
     }
-    
+
 }

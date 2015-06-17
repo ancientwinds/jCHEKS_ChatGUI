@@ -9,5 +9,5 @@ public class TabNotFoundException extends Exception {
     public TabNotFoundException(String msg) {
         super(msg);
     }
-    
+
 }

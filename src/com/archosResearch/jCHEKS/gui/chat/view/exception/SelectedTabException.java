@@ -9,5 +9,5 @@ public class SelectedTabException extends Exception {
     public SelectedTabException(String msg) {
         super(msg);
     }
-    
+
 }

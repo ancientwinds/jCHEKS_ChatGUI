@@ -17,24 +17,24 @@ import javafx.scene.layout.*;
  * @author Michael Roussel <rousselm4@gmail.com>
  */
 public class ChatViewHandler {
-    
+
     private final JavaFxViewController mainController;
-    
+
     HashMap<String, ChatTab> tabsMap = new HashMap();
-   
+
     @FXML
     private MenuItem addContactButton;
-    
+
     @FXML
     private TabPane mainTabPane;
-      
+
     @FXML
     private Label infoLabel;
-    
-    public ChatViewHandler(){
+
+    public ChatViewHandler() {
         this.mainController = JavaFxViewController.getInstance();
     }
-    
+
     @FXML
     private void handleAboutButton() {
         try {
@@ -45,12 +45,12 @@ public class ChatViewHandler {
             e.printStackTrace();
         }
     }
-    
+
     //Package private
-    void displayInfo(String ip, int port){
+    void displayInfo(String ip, int port) {
         infoLabel.setText("Your ip: " + ip + "        Receiving port:" + port);
     }
-    
+
     @FXML
     private void handleNewContactButton() {
         try {
@@ -62,13 +62,14 @@ public class ChatViewHandler {
         }
     }
 
-    
     private ChatTab getTabByName(String contactName) throws TabNotFoundException {
         ChatTab tab = tabsMap.get(contactName);
-        if(tab != null) return tab;
+        if (tab != null) {
+            return tab;
+        }
         throw new TabNotFoundException("There is no tab associated with that name.");
     }
-    
+
     //Package private
     void displayOutgoingMessage(OutgoingMessage message) {
         try {
@@ -83,20 +84,22 @@ public class ChatViewHandler {
     void displayIncomingMessage(IncomingMessage message, String contactName) throws TabNotFoundException {
         getTabByName(contactName).handleMessage(message);
     }
-    
+
     //Package private
-    void addPaneForContact(String contactName){
+    void addPaneForContact(String contactName) {
         ChatTab tab = new ChatTab(contactName);
         this.tabsMap.putIfAbsent(contactName, tab);
         this.mainTabPane.getTabs().add(tab);
     }
-    
-    private ChatTab getSelectedTab() throws Exception{
+
+    private ChatTab getSelectedTab() throws Exception {
         Tab selectedTab = mainTabPane.getSelectionModel().getSelectedItem();
-        if(selectedTab != null) return (ChatTab)selectedTab;
+        if (selectedTab != null) {
+            return (ChatTab) selectedTab;
+        }
         throw new SelectedTabException("There is no currently selected tab.");
     }
-    
+
     //Package private
     void refreshMessage() {
         try {

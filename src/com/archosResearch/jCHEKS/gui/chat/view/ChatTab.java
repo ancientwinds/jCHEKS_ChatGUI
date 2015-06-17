@@ -31,29 +31,30 @@ public class ChatTab extends Tab {
     public void handleMessage(AbstractMessage message) {
         Platform.runLater(() -> this.displayMessage(message));
     }
-    private void displayMessage(AbstractMessage message){
+
+    private void displayMessage(AbstractMessage message) {
         this.messagesListView.getItems().add(message);
         this.messagesListView.scrollTo(message);
     }
-    
+
     private void resetInputField() {
         inputField.setText("");
     }
-    
+
     public void refresh() {
         ObservableList<AbstractMessage> items = this.messagesListView.getItems();
         this.messagesListView.setItems(null);
         this.messagesListView.setItems(items);
     }
-    
-    private ListView<AbstractMessage> createOutputNode(){
+
+    private ListView<AbstractMessage> createOutputNode() {
         ListView<AbstractMessage> outputNode = new ListView();
         outputNode.setItems(FXCollections.<AbstractMessage>observableArrayList());
         outputNode.setCellFactory((ListView<AbstractMessage> param) -> new MessageListCell());
         return outputNode;
     }
-    
-    private TextField createInputNode(){
+
+    private TextField createInputNode() {
         TextField inputNode = new TextField();
         inputNode.setOnKeyPressed((KeyEvent event) -> {
             if (event.getCode() == KeyCode.ENTER) {
@@ -63,14 +64,14 @@ public class ChatTab extends Tab {
         });
         return inputNode;
     }
-    
-    private Node createChatContainer(){
+
+    private Node createChatContainer() {
         VBox chatContainer = new VBox();
         chatContainer.getChildren().add(this.messagesListView);
         chatContainer.getChildren().add(this.inputField);
         return chatContainer;
     }
-    
+
     private static class MessageListCell extends ListCell<AbstractMessage> {
 
         @Override

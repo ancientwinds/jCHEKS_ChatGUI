@@ -38,7 +38,9 @@ public class JavaFxViewController extends Application implements InputOutputMana
      * Should never be called. Call getInstance().
      */
     public JavaFxViewController() throws Exception {
-        if (instance == null) setInstance(this);
+        if (instance == null) {
+            setInstance(this);
+        }
         JavaFxViewController.class.getConstructor().setAccessible(false);
     }
 
@@ -53,21 +55,23 @@ public class JavaFxViewController extends Application implements InputOutputMana
         }
         return instance;
     }
-    
-    public void refresh(){
+
+    public void refresh() {
         Platform.runLater(() -> this.chatViewHandler.refreshMessage());
     }
-    
-    private static void createInstance(){
+
+    private static void createInstance() {
         try {
-                Runnable launchJavaFx = () -> { javafx.application.Application.launch(JavaFxViewController.class); };
-                new Thread(launchJavaFx).start();
-                latch.await();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            Runnable launchJavaFx = () -> {
+                javafx.application.Application.launch(JavaFxViewController.class);
+            };
+            new Thread(launchJavaFx).start();
+            latch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
-    
+
     @Override
     public void messageSent(OutgoingMessage message, String contactName) {
         chatViewHandler.displayOutgoingMessage(message);
@@ -99,7 +103,7 @@ public class JavaFxViewController extends Application implements InputOutputMana
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(ChatViewHandler.class.getResource("Chat.fxml"));
-           
+
             this.rootLayout = (BorderPane) loader.load();
             this.chatViewHandler = loader.getController();
             Scene scene = new Scene(this.rootLayout);
@@ -126,7 +130,7 @@ public class JavaFxViewController extends Application implements InputOutputMana
     }
 
     private void openConfigPopup() throws IOException {
-        addPopup(new Scene((Pane)loadFxml("config.fxml"), 300, 200), "Configuration", true);
+        addPopup(new Scene((Pane) loadFxml("config.fxml"), 300, 200), "Configuration", true);
     }
 
     //Package private
@@ -142,17 +146,19 @@ public class JavaFxViewController extends Application implements InputOutputMana
         stage.initOwner(this.primaryStage);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(popup);
-        if(important){
-            stage.setOnCloseRequest((new EventHandler<WindowEvent>(){
+        if (important) {
+            stage.setOnCloseRequest((new EventHandler<WindowEvent>() {
                 @Override
-                public void handle(WindowEvent arg) {primaryStage.close();}
+                public void handle(WindowEvent arg) {
+                    primaryStage.close();
+                }
             }));
         }
         stage.show();
     }
-    
+
     //Package private
-    Node loadFxml(String path) throws IOException{
+    Node loadFxml(String path) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(JavaFxViewController.class.getResource(path));
         return loader.load();
@@ -160,13 +166,12 @@ public class JavaFxViewController extends Application implements InputOutputMana
 
     //Package private
     void sendNewContactRequest(ContactInfo contactInfo) {
-        if(!contactInfo.getIp().equals(currentIp)){
+        if (!contactInfo.getIp().equals(currentIp)) {
             contactInfo.generateUniqueId(currentIp);
             this.engine.createContact(contactInfo);
         }
     }
 
-    
     //Package private
     void setIpAndPort(String ip, int port) {
         this.currentIp = ip;
@@ -174,5 +179,5 @@ public class JavaFxViewController extends Application implements InputOutputMana
         this.engine.setReceivingPort(port);
         this.chatViewHandler.displayInfo(ip, port);
     }
-    
+
 }
