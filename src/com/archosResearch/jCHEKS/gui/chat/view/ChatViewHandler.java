@@ -72,7 +72,7 @@ public class ChatViewHandler {
     //Package private
     void displayOutgoingMessage(OutgoingMessage message) {
         try {
-            getSelectedTab().displayMessage(message);
+            getSelectedTab().handleMessage(message);
         } catch (Exception ex) {
             //TODO Change this and rethrow an exception.
             Logger.getLogger(ChatViewHandler.class.getName()).log(Level.SEVERE, null, ex);
@@ -81,7 +81,7 @@ public class ChatViewHandler {
 
     //Package private
     void displayIncomingMessage(IncomingMessage message, String contactName) throws TabNotFoundException {
-        getTabByName(contactName).displayMessage(message);
+        getTabByName(contactName).handleMessage(message);
     }
     
     //Package private

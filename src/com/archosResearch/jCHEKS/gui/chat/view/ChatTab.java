@@ -28,10 +28,14 @@ public class ChatTab extends Tab {
         this.setClosable(true);
     }
 
-    public void displayMessage(AbstractMessage message) {
-        Platform.runLater(() -> this.messagesListView.getItems().add(message));
+    public void handleMessage(AbstractMessage message) {
+        Platform.runLater(() -> this.displayMessage(message));
     }
-
+    private void displayMessage(AbstractMessage message){
+        this.messagesListView.getItems().add(message);
+        this.messagesListView.scrollTo(message);
+    }
+    
     private void resetInputField() {
         inputField.setText("");
     }
