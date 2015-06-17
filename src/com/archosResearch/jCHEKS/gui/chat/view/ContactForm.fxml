@@ -34,8 +34,8 @@
         </items>
       </ChoiceBox>
       <TextField fx:id="nameField" promptText="Alice" GridPane.columnIndex="1" />
-      <SpecificTextField fx:id="addressField" onKeyPressed="#validate" pattern="[0-9]|\." prefHeight="26.0" prefWidth="186.0" promptText="123.123.123.123" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <SpecificTextField fx:id="portField" onKeyPressed="#validate" pattern="[0-9]" promptText="9000" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <SpecificTextField fx:id="addressField" onKeyReleased="#validate" pattern="[0-9]|\." prefHeight="26.0" prefWidth="186.0" promptText="123.123.123.123" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <SpecificTextField fx:id="portField" onKeyReleased="#validate" pattern="[0-9]" promptText="9000" GridPane.columnIndex="1" GridPane.rowIndex="3" />
       <TextField fx:id="uniqueId" promptText="S1D5C6F3E2E4R1U6G6G5" GridPane.columnIndex="1" GridPane.rowIndex="4" />
       <Button fx:id="createContactButton" defaultButton="true" disable="true" mnemonicParsing="false" onAction="#handleCreateContact" text="Create contact" GridPane.columnIndex="1" GridPane.rowIndex="5" />
       <Label text="Unique id" GridPane.rowIndex="4" />

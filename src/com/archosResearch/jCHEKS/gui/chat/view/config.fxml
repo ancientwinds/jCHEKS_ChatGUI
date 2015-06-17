@@ -20,8 +20,8 @@
       <Button fx:id="continueButton" disable="true" mnemonicParsing="false" onAction="#handleContinueButton" text="Continue" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <Label text="IP Address" />
       <Label text="Receiving port" GridPane.rowIndex="1" />
-      <SpecificTextField fx:id="ipAddressField" onKeyPressed="#validate" pattern="[0-9]|\." promptText="123.123.123.123" GridPane.columnIndex="1" />
-      <SpecificTextField fx:id="portField" onKeyPressed="#validate" pattern="[0-9]" promptText="9000" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <SpecificTextField fx:id="ipAddressField" onKeyReleased="#validate" pattern="[0-9]|\." promptText="123.123.123.123" GridPane.columnIndex="1" />
+      <SpecificTextField fx:id="portField" onKeyReleased="#validate" pattern="[0-9]" promptText="9000" GridPane.columnIndex="1" GridPane.rowIndex="1" />
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
