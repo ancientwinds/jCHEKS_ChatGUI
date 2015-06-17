@@ -31,7 +31,7 @@ public class JavaFxViewController extends Application implements InputOutputMana
     private Stage primaryStage;
     private BorderPane rootLayout;
     private ChatViewHandler chatViewHandler;
-    private Object currentIp;
+    private String currentIp;
     private int receivingPort;
 
     /**
@@ -161,9 +161,12 @@ public class JavaFxViewController extends Application implements InputOutputMana
     //Package private
     void sendNewContactRequest(ContactInfo contactInfo) {
         if(!contactInfo.getIp().equals(currentIp)){
+            contactInfo.generateUniqueId(currentIp);
             this.engine.createContact(contactInfo);
         }
     }
+
+    
     //Package private
     void setIpAndPort(String ip, int port) {
         this.currentIp = ip;

@@ -55,6 +55,8 @@ public class ContactFormViewHandler {
            for (ContactInfo contactInfo : contactsInfo) {
                 controller.sendNewContactRequest(contactInfo);
            }
+           Stage stage = (Stage) nameField.getScene().getWindow(); 
+           stage.close();
         }
     }
     
