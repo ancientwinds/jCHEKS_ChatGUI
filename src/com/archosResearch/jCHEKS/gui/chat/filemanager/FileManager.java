@@ -24,13 +24,13 @@ public class FileManager {
         this.writeToFile(this.generateJSON(contacts), fileName);
     }
     
-    public HashSet<ContactInfo> loadContacts(String fileName) {
+    public HashSet<ContactInfo> loadContacts(File file) {
         
         HashSet<ContactInfo> contactList = new HashSet<ContactInfo>() {};
         
         JSONParser parser = new JSONParser();
         try {
-            Object obj = parser.parse(new FileReader(fileName));
+            Object obj = parser.parse(new FileReader(file));
             JSONObject jsonObject = (JSONObject) obj;
             
             JSONArray contacts = (JSONArray) jsonObject.get("contacts");
