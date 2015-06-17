@@ -6,14 +6,17 @@ import com.archosResearch.jCHEKS.concept.ioManager.*;
 import com.archosResearch.jCHEKS.gui.chat.view.exception.TabNotFoundException;
 import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
 import com.sun.javafx.application.HostServicesDelegate;
+
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.*;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.*;
 
 /**
@@ -28,6 +31,8 @@ public class JavaFxViewController extends Application implements InputOutputMana
     private Stage primaryStage;
     private BorderPane rootLayout;
     private ChatViewHandler chatViewHandler;
+    private Object currentIp;
+    private int receivingPort;
 
     /**
      * Should never be called. Call getInstance().
@@ -80,9 +85,14 @@ public class JavaFxViewController extends Application implements InputOutputMana
 
     @Override
     public void start(Stage primaryStage) {
-        this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Chat");
-        initRootLayout();
+        try {
+            this.primaryStage = primaryStage;
+            this.primaryStage.setTitle("Chat");
+            initRootLayout();
+            openConfigPopup();
+        } catch (IOException ex) {
+            Logger.getLogger(JavaFxViewController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void initRootLayout() {
@@ -115,6 +125,10 @@ public class JavaFxViewController extends Application implements InputOutputMana
         this.engine.handleOutgoingMessage(messageContent, contactName);
     }
 
+    private void openConfigPopup() throws IOException {
+        addPopup(new Scene((Pane)loadFxml("config.fxml"), 300, 200), "Configuration", true);
+    }
+
     //Package private
     void openInBrowser(String url) {
         HostServicesDelegate hostServices = HostServicesFactory.getInstance(this);
@@ -122,12 +136,18 @@ public class JavaFxViewController extends Application implements InputOutputMana
     }
 
     //Package private
-    void addPopup(Scene popup, String title) {
+    void addPopup(Scene popup, String title, boolean important) {
         Stage stage = new Stage();
         stage.setTitle(title);
         stage.initOwner(this.primaryStage);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(popup);
+        if(important){
+            stage.setOnCloseRequest((new EventHandler<WindowEvent>(){
+                @Override
+                public void handle(WindowEvent arg) {primaryStage.close();}
+            }));
+        }
         stage.show();
     }
     
@@ -140,12 +160,16 @@ public class JavaFxViewController extends Application implements InputOutputMana
 
     //Package private
     void sendNewContactRequest(ContactInfo contactInfo) {
-        this.engine.createContact(contactInfo);
+        if(!contactInfo.getIp().equals(currentIp)){
+            this.engine.createContact(contactInfo);
+        }
     }
-
     //Package private
-    void setReceivingPort(int port) {
+    void setIpAndPort(String ip, int port) {
+        this.currentIp = ip;
+        this.receivingPort = port;
         this.engine.setReceivingPort(port);
+        this.chatViewHandler.displayInfo(ip, port);
     }
     
 }

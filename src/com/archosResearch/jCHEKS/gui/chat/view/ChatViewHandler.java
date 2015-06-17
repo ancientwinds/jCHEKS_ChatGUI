@@ -6,13 +6,10 @@ import com.archosResearch.jCHEKS.concept.engine.message.*;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.logging.*;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.*;
 import javafx.geometry.Insets;
 import javafx.scene.*;
 import javafx.scene.control.*;
-import javafx.scene.input.*;
 import javafx.scene.layout.*;
 
 /**
@@ -25,7 +22,6 @@ public class ChatViewHandler {
     
     HashMap<String, ChatTab> tabsMap = new HashMap();
    
-    
     @FXML
     private MenuItem addContactButton;
     
@@ -33,14 +29,8 @@ public class ChatViewHandler {
     private TabPane mainTabPane;
       
     @FXML
-    private MenuBar menuBar;
+    private Label infoLabel;
     
-    @FXML
-    private TextField receivingPortField;
-    
-    @FXML
-    private Label portLabel;
-
     public ChatViewHandler(){
         this.mainController = JavaFxViewController.getInstance();
     }
@@ -50,21 +40,15 @@ public class ChatViewHandler {
         try {
             Pane aboutLayout = (Pane) this.mainController.loadFxml("About.fxml");
             aboutLayout.setPadding(new Insets(15));
-            this.mainController.addPopup(new Scene(aboutLayout, 300, 200), "About");
+            this.mainController.addPopup(new Scene(aboutLayout, 300, 200), "About", false);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
     
-    @FXML
-    private void handlePortConfig(KeyEvent event){
-        if (event.getCode() == KeyCode.ENTER) {
-            portLabel.setText("Receiving port: " + receivingPortField.getText());
-            receivingPortField.setVisible(false);
-            this.menuBar.setDisable(false);
-            //TODO Add verification for the value if numeric
-            this.mainController.setReceivingPort(Integer.parseInt(receivingPortField.getText()));
-        }
+    //Package private
+    void displayInfo(String ip, int port){
+        infoLabel.setText("Your ip: " + ip + "        Receiving port:" + port);
     }
     
     @FXML
@@ -72,7 +56,7 @@ public class ChatViewHandler {
         try {
             Pane aboutLayout = (Pane) this.mainController.loadFxml("ContactForm.fxml");
             aboutLayout.setPadding(new Insets(15));
-            this.mainController.addPopup(new Scene(aboutLayout, 300, 200), "Create new contact");
+            this.mainController.addPopup(new Scene(aboutLayout, 300, 200), "Create new contact", false);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -85,6 +69,7 @@ public class ChatViewHandler {
         throw new TabNotFoundException("There is no tab associated with that name.");
     }
     
+    //Package private
     void displayOutgoingMessage(OutgoingMessage message) {
         try {
             getSelectedTab().displayMessage(message);
@@ -94,10 +79,12 @@ public class ChatViewHandler {
         }
     }
 
+    //Package private
     void displayIncomingMessage(IncomingMessage message, String contactName) throws TabNotFoundException {
         getTabByName(contactName).displayMessage(message);
     }
     
+    //Package private
     void addPaneForContact(String contactName){
         ChatTab tab = new ChatTab(contactName);
         this.tabsMap.putIfAbsent(contactName, tab);
@@ -110,7 +97,8 @@ public class ChatViewHandler {
         throw new SelectedTabException("There is no currently selected tab.");
     }
     
-    public void refreshMessage() {
+    //Package private
+    void refreshMessage() {
         try {
             this.getSelectedTab().refresh();
         } catch (Exception ex) {

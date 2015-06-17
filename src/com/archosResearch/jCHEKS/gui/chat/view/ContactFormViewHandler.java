@@ -1,7 +1,9 @@
 package com.archosResearch.jCHEKS.gui.chat.view;
 
 import com.archosResearch.jCHEKS.concept.ioManager.ContactInfo;
+import com.archosResearch.jCHEKS.gui.chat.filemanager.FileManager;
 import java.io.File;
+import java.util.HashSet;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
@@ -44,7 +46,12 @@ public class ContactFormViewHandler {
         fileChooser.getExtensionFilters().addAll(new ExtensionFilter("Json Files", "*.json"));
         File selectedFile = fileChooser.showOpenDialog((Stage) nameField.getScene().getWindow());
         if (selectedFile != null) {
-           //JavaFxViewController.getInstance().loadJson(selectedFile);
+           FileManager fileManager = new FileManager();
+           HashSet<ContactInfo> contactsInfo = fileManager.loadContacts(selectedFile);
+           JavaFxViewController controller = JavaFxViewController.getInstance();
+           for (ContactInfo contactInfo : contactsInfo) {
+                controller.sendNewContactRequest(contactInfo);
+           }
         }
     }
 

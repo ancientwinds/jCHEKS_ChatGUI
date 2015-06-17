@@ -13,7 +13,7 @@
       <TabPane fx:id="mainTabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER" />
    </center>
    <top>
-        <MenuBar fx:id="menuBar" disable="true" BorderPane.alignment="CENTER">
+        <MenuBar fx:id="menuBar" BorderPane.alignment="CENTER">
             <menus>
             <Menu mnemonicParsing="false" text="Edit">
               <items>
@@ -31,8 +31,7 @@
    <bottom>
       <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <items>
-            <Label fx:id="portLabel" text="Port: " />
-            <SpecificTextField fx:id="receivingPortField" pattern="[0-9]"  onKeyPressed="#handlePortConfig" />
+            <Label fx:id="infoLabel" />
          </items>
       </ToolBar>
    </bottom>
