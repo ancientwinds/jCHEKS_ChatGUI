@@ -5,7 +5,6 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -23,16 +22,17 @@ public class ChatTab extends Tab {
     ListView<AbstractMessage> messagesListView;
     Button sendButton;
     AbstractMessage lastMessageSent;
+    Label log;
     
     public ChatTab(String contactName) {
         super(contactName);
         this.messagesListView = createOutputNode();
         this.inputField = createInputNode();
         this.sendButton = createSendButton();
+        this.log = new Label();
         this.setContent(this.createChatContainer());
         this.setClosable(true);
     }
-
     public void handleMessage(AbstractMessage message) {
         Platform.runLater(() -> this.displayMessage(message));
     }
@@ -57,6 +57,7 @@ public class ChatTab extends Tab {
         if(this.lastMessageSent.getState() == AbstractMessage.State.OK){
             unlock();
         }
+        this.log.setText("State of last message sent: " + this.lastMessageSent.getState().toString());
     }
     
     private void lock(){
@@ -102,15 +103,15 @@ public class ChatTab extends Tab {
     private Node createChatContainer() {
         VBox chatContainer = new VBox();
         HBox inputContainer = new HBox();
-        
         chatContainer.getChildren().add(this.messagesListView);
+        chatContainer.getChildren().add(this.log);
         inputContainer.getChildren().add(this.inputField);
         inputContainer.getChildren().add(new Separator());
         inputContainer.getChildren().add(this.sendButton);
         chatContainer.getChildren().add(inputContainer);
         return chatContainer;
     }
-
+    
     private static class MessageListCell extends ListCell<AbstractMessage> {
 
         @Override
