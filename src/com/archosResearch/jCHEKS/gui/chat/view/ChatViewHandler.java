@@ -46,11 +46,6 @@ public class ChatViewHandler {
         }
     }
 
-    //Package private
-    void displayInfo(String ip, int port) {
-        infoLabel.setText("Your ip: " + ip + "        Receiving port:" + port);
-    }
-
     @FXML
     private void handleNewContactButton() {
         try {
@@ -70,6 +65,14 @@ public class ChatViewHandler {
         throw new TabNotFoundException("There is no tab associated with that name.");
     }
 
+    private ChatTab getSelectedTab() throws Exception {
+        Tab selectedTab = mainTabPane.getSelectionModel().getSelectedItem();
+        if (selectedTab != null) {
+            return (ChatTab) selectedTab;
+        }
+        throw new SelectedTabException("There is no currently selected tab.");
+    }
+    
     //Package private
     void displayOutgoingMessage(OutgoingMessage message) {
         try {
@@ -84,20 +87,17 @@ public class ChatViewHandler {
     void displayIncomingMessage(IncomingMessage message, String contactName) throws TabNotFoundException {
         getTabByName(contactName).handleMessage(message);
     }
+    
+    //Package private
+    void displayInfo(String ip, int port) {
+        infoLabel.setText("Your ip: " + ip + "        Receiving port:" + port);
+    }
 
     //Package private
     void addPaneForContact(String contactName) {
         ChatTab tab = new ChatTab(contactName);
         this.tabsMap.putIfAbsent(contactName, tab);
         this.mainTabPane.getTabs().add(tab);
-    }
-
-    private ChatTab getSelectedTab() throws Exception {
-        Tab selectedTab = mainTabPane.getSelectionModel().getSelectedItem();
-        if (selectedTab != null) {
-            return (ChatTab) selectedTab;
-        }
-        throw new SelectedTabException("There is no currently selected tab.");
     }
 
     //Package private
