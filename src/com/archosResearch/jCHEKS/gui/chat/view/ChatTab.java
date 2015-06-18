@@ -4,6 +4,8 @@ import com.archosResearch.jCHEKS.concept.engine.message.AbstractMessage;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -19,11 +21,14 @@ public class ChatTab extends Tab {
 
     TextField inputField;
     ListView<AbstractMessage> messagesListView;
-
+    Button sendButton;
+    AbstractMessage lastMessageSent;
+    
     public ChatTab(String contactName) {
         super(contactName);
         this.messagesListView = createOutputNode();
         this.inputField = createInputNode();
+        this.sendButton = createSendButton();
         this.setContent(this.createChatContainer());
         this.setClosable(true);
     }
@@ -35,9 +40,13 @@ public class ChatTab extends Tab {
     private void displayMessage(AbstractMessage message) {
         this.messagesListView.getItems().add(message);
         this.messagesListView.scrollTo(message);
+        if(message.getState() != AbstractMessage.State.FOR_ME){
+            this.lastMessageSent = message;
+        }
     }
 
-    private void resetInputField() {
+    private void updateInputField() {
+        lock();
         inputField.setText("");
     }
 
@@ -45,8 +54,21 @@ public class ChatTab extends Tab {
         ObservableList<AbstractMessage> items = this.messagesListView.getItems();
         this.messagesListView.setItems(null);
         this.messagesListView.setItems(items);
+        if(this.lastMessageSent.getState() == AbstractMessage.State.OK){
+            unlock();
+        }
     }
-
+    
+    private void lock(){
+        inputField.setDisable(true);
+        sendButton.setDisable(true);
+    }
+    
+    private void unlock(){
+        inputField.setDisable(false);
+        sendButton.setDisable(false);
+    }
+    
     private ListView<AbstractMessage> createOutputNode() {
         ListView<AbstractMessage> outputNode = new ListView();
         outputNode.setItems(FXCollections.<AbstractMessage>observableArrayList());
@@ -56,19 +78,36 @@ public class ChatTab extends Tab {
 
     private TextField createInputNode() {
         TextField inputNode = new TextField();
+        inputNode.setMinWidth(500);
         inputNode.setOnKeyPressed((KeyEvent event) -> {
             if (event.getCode() == KeyCode.ENTER) {
                 JavaFxViewController.getInstance().forwardOutgoingMessage(inputField.getText(), this.getText());
-                resetInputField();
+                updateInputField();
             }
         });
         return inputNode;
     }
+    
+    private Button createSendButton() {
+        Button sendButton = new Button();
+        sendButton.setText("Send");
+        sendButton.setMinWidth(100);
+        sendButton.setOnAction((ActionEvent e) -> {
+            JavaFxViewController.getInstance().forwardOutgoingMessage(inputField.getText(), this.getText());
+            updateInputField();
+        });
+        return sendButton;
+    }
 
     private Node createChatContainer() {
         VBox chatContainer = new VBox();
+        HBox inputContainer = new HBox();
+        
         chatContainer.getChildren().add(this.messagesListView);
-        chatContainer.getChildren().add(this.inputField);
+        inputContainer.getChildren().add(this.inputField);
+        inputContainer.getChildren().add(new Separator());
+        inputContainer.getChildren().add(this.sendButton);
+        chatContainer.getChildren().add(inputContainer);
         return chatContainer;
     }
 

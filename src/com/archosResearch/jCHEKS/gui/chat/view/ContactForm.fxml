@@ -33,8 +33,8 @@
             </items>
         </ChoiceBox>
         <TextField fx:id="nameField" promptText="Alice" GridPane.columnIndex="1" />
-        <SpecificTextField fx:id="addressField" onKeyPressed="#validate" pattern="[0-9]|\." prefHeight="26.0" prefWidth="186.0" promptText="123.123.123.123" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-        <SpecificTextField fx:id="portField" onKeyPressed="#validate" pattern="[0-9]" promptText="9000" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <SpecificTextField fx:id="addressField" onKeyReleased="#validate" pattern="[0-9]|\." prefHeight="26.0" prefWidth="186.0" promptText="123.123.123.123" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <SpecificTextField fx:id="portField" onKeyReleased="#validate" pattern="[0-9]" promptText="9000" GridPane.columnIndex="1" GridPane.rowIndex="3" />
         <Button fx:id="createContactButton" defaultButton="true" disable="true" mnemonicParsing="false" onAction="#handleCreateContact" text="Create contact" GridPane.columnIndex="1" GridPane.rowIndex="4" />
         <Button mnemonicParsing="false" onAction="#handleSelectFile" text="From file" GridPane.rowIndex="4" />
     </children>
