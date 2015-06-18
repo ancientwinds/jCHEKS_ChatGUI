@@ -1,19 +1,23 @@
 package com.archosResearch.jCHEKS.gui.chat.view;
 
-import com.archosResearch.jCHEKS.concept.ioManager.InputOutputManager;
 import com.archosResearch.jCHEKS.concept.engine.AbstractEngine;
 import com.archosResearch.jCHEKS.concept.engine.message.*;
+import com.archosResearch.jCHEKS.concept.ioManager.*;
+import com.archosResearch.jCHEKS.gui.chat.view.exception.TabNotFoundException;
 import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
 import com.sun.javafx.application.HostServicesDelegate;
+
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
-import javafx.application.Application;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.application.*;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
+import javafx.scene.*;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+import javafx.scene.layout.Pane;
+import javafx.stage.*;
 
 /**
  *
@@ -27,7 +31,7 @@ public class JavaFxViewController extends Application implements InputOutputMana
     private Stage primaryStage;
     private BorderPane rootLayout;
     private ChatViewHandler chatViewHandler;
-    private String selectedContactName;
+    private String currentIp;
 
     /**
      * Should never be called. Call getInstance().
@@ -35,8 +39,7 @@ public class JavaFxViewController extends Application implements InputOutputMana
     public JavaFxViewController() throws Exception {
         if (instance == null) {
             setInstance(this);
-        } else {
-            //TODO Change exception type
+        }else{
             throw new Exception();
         }
     }
@@ -52,15 +55,24 @@ public class JavaFxViewController extends Application implements InputOutputMana
         }
         return instance;
     }
-    private static void createInstance(){
-        try {
-                Runnable launchJavaFx = () -> { javafx.application.Application.launch(JavaFxViewController.class); };
-                new Thread(launchJavaFx).start();
-                latch.await();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+
+    @Override
+    public void refresh() {
+        Platform.runLater(() -> this.chatViewHandler.refreshMessage());
     }
+
+    private static void createInstance() {
+        try {
+            Runnable launchJavaFx = () -> {
+                javafx.application.Application.launch(JavaFxViewController.class);
+            };
+            new Thread(launchJavaFx).start();
+            latch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void messageSent(OutgoingMessage message, String contactName) {
         chatViewHandler.displayOutgoingMessage(message);
@@ -68,20 +80,31 @@ public class JavaFxViewController extends Application implements InputOutputMana
 
     @Override
     public void messageReceived(IncomingMessage message, String contactName) {
-        chatViewHandler.displayIncomingMessage(message, contactName);
+        try {
+            chatViewHandler.displayIncomingMessage(message, contactName);
+        } catch (TabNotFoundException ex) {
+            Logger.getLogger(JavaFxViewController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     @Override
     public void start(Stage primaryStage) {
-        this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Chat");
-        initRootLayout();
+        try {
+            this.primaryStage = primaryStage;
+            this.primaryStage.setTitle("Chat");
+            initRootLayout();
+            openConfigPopup();
+        } catch (IOException ex) {
+            Logger.getLogger(JavaFxViewController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void initRootLayout() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(ChatViewHandler.class.getResource("Chat.fxml"));
+
             this.rootLayout = (BorderPane) loader.load();
             this.chatViewHandler = loader.getController();
             Scene scene = new Scene(this.rootLayout);
@@ -103,8 +126,12 @@ public class JavaFxViewController extends Application implements InputOutputMana
     }
 
     @Override
-    public void forwardOutgoingMessage(String messageContent) {
-        this.engine.handleOutgoingMessage(messageContent, this.selectedContactName);
+    public void forwardOutgoingMessage(String messageContent, String contactName) {
+        this.engine.handleOutgoingMessage(messageContent, contactName);
+    }
+
+    private void openConfigPopup() throws IOException {
+        addPopup(new Scene((Pane) loadFxml("config.fxml"), 300, 200), "Configuration", true);
     }
 
     //Package private
@@ -114,28 +141,43 @@ public class JavaFxViewController extends Application implements InputOutputMana
     }
 
     //Package private
-    void addPopup(Scene popup, String title) {
+    void addPopup(Scene popup, String title, boolean important) {
         Stage stage = new Stage();
         stage.setTitle(title);
         stage.initOwner(this.primaryStage);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(popup);
+        if (important) {
+            stage.setOnCloseRequest((new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent arg) {
+                    primaryStage.close();
+                }
+            }));
+        }
         stage.show();
     }
-    
+
     //Package private
-    Node loadFxml(String path) throws IOException{
+    Node loadFxml(String path) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(JavaFxViewController.class.getResource(path));
         return loader.load();
     }
 
-    void sendNewContactRequest(String contactName, String ip, int sendingPort) {
-        this.engine.createContact(contactName, ip, sendingPort);
+    //Package private
+    void sendNewContactRequest(ContactInfo contactInfo, boolean enableSameIp) {
+        if (!contactInfo.getIp().equals(currentIp) | enableSameIp) {
+            contactInfo.generateUniqueId(currentIp);
+            this.engine.createContact(contactInfo);
+        }
     }
 
-    void setReceivingPort(int port) {
+    //Package private
+    void setIpAndPort(String ip, int port) {
+        this.currentIp = ip;
         this.engine.setReceivingPort(port);
+        this.chatViewHandler.displayInfo(ip, port);
     }
-    
+
 }

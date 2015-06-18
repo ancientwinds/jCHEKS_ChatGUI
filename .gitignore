@@ -6,3 +6,4 @@
 /build/
 /nbproject/private/
 /.jacocoverage/
+!/src/lib/json-simple-1.1.1.jar

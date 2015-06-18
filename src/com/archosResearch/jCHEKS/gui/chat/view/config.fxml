@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import com.archosResearch.jCHEKS.gui.chat.view.*?>
+
+<GridPane hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.archosResearch.jCHEKS.gui.chat.view.ConfigViewHandler">
+    <columnConstraints>
+        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="115.0" minWidth="10.0" prefWidth="97.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.0" minWidth="10.0" prefWidth="113.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+        <Button fx:id="continueButton" disable="true" mnemonicParsing="false" onAction="#handleContinueButton" text="Continue" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Label text="IP Address" />
+        <Label text="Receiving port" GridPane.rowIndex="1" />
+        <SpecificTextField fx:id="ipAddressField" onKeyReleased="#validate" pattern="[0-9]|\." promptText="123.123.123.123" GridPane.columnIndex="1" />
+        <SpecificTextField fx:id="portField" onKeyReleased="#validate" pattern="[0-9]" promptText="9000" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+    </children>
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+</GridPane>
