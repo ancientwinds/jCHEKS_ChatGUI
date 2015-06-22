@@ -57,6 +57,11 @@ public class JavaFxViewController extends Application implements InputOutputMana
     }
 
     @Override
+    public void log(String logMessage, String id) {
+        this.chatViewHandler.log(logMessage, id);
+    }
+
+    @Override
     public void refresh() {
         Platform.runLater(() -> this.chatViewHandler.refreshMessage());
     }
