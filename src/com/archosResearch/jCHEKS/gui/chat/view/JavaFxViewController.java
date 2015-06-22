@@ -174,9 +174,10 @@ public class JavaFxViewController extends Application implements InputOutputMana
     }
 
     //Package private
-    void setIpAndPort(String ip, int port) {
+    void setIpAndPort(String name, String ip, int port) {
         this.currentIp = ip;
         this.receivingPort = port;
+        this.currentName = name;
         this.engine.setReceivingPort(port);
         this.chatViewHandler.displayInfo(ip, port);
     }
