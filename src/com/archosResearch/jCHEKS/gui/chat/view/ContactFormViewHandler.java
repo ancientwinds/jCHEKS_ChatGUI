@@ -36,7 +36,7 @@ public class ContactFormViewHandler {
 
     @FXML
     private void handleCreateContact() {
-        ContactInfo contactInfo = new ContactInfo(addressField.getText(), Integer.parseInt(portField.getText()), nameField.getText(), "");
+        ContactInfo contactInfo = new ContactInfo(addressField.getText(), Integer.parseInt(portField.getText()), nameField.getText(), "", "temp1", "temp2");
         JavaFxViewController.getInstance().sendNewContactRequest(contactInfo);
         Stage stage = (Stage) nameField.getScene().getWindow();
         stage.close();
