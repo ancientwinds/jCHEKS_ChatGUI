@@ -22,7 +22,7 @@
         <Label text="Name" GridPane.rowIndex="0" />
         <Label text="IP Address" GridPane.rowIndex="1" />
         <Label text="Receiving port" GridPane.rowIndex="2" />
-        <TextField id="nameField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        <TextField fx:id="nameField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
         <SpecificTextField fx:id="ipAddressField" onKeyReleased="#validate" pattern="[0-9]|\." promptText="123.123.123.123" GridPane.columnIndex="1" GridPane.rowIndex="1" />
         <SpecificTextField fx:id="portField" onKeyReleased="#validate" pattern="[0-9]" promptText="9000" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       
