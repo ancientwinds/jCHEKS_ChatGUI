@@ -39,8 +39,9 @@ public class FileManager {
                 String ipAddress = (String) ((JSONObject) contact).get("ip");
                 int port = ((Long) ((JSONObject) contact).get("port")).intValue();
                 String uniqueId = (String) ((JSONObject) contact).get("unid");
-
-                ContactInfo contactInfo = new ContactInfo(ipAddress, port, contactName, uniqueId);
+                String receivingChaoticSystem = (String) ((JSONObject) contact).get("rChaotic");
+                String sendingChaoticSystem = (String) ((JSONObject) contact).get("sChaotic");
+                ContactInfo contactInfo = new ContactInfo(ipAddress, port, contactName, uniqueId, receivingChaoticSystem, sendingChaoticSystem);
                 contactList.add(contactInfo);
             }
 
@@ -75,6 +76,9 @@ public class FileManager {
             obj.put("ip", contact.getIp());
             obj.put("port", contact.getPort());
             obj.put("unid", contact.getUniqueId());
+            obj.put("rChaotic", contact.getReceivingChaoticSystem());
+            obj.put("sChaotic", contact.getSendingChaoticSystem());
+
             contactArray.add(obj);
         }
 
