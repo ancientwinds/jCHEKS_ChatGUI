@@ -2,6 +2,7 @@ package com.archosResearch.jCHEKS.gui.chat.view;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -15,6 +16,9 @@ public class ConfigViewHandler {
 
     @FXML
     SpecificTextField portField;
+    
+    @FXML
+    TextField nameField;
 
     @FXML
     Button continueButton;
@@ -35,7 +39,7 @@ public class ConfigViewHandler {
     @FXML
     private void handleContinueButton() {
         JavaFxViewController controller = JavaFxViewController.getInstance();
-        controller.setIpAndPort(ipAddressField.getText(), Integer.parseInt(portField.getText()));
+        controller.setIpAndPort(nameField.getText(), ipAddressField.getText(), Integer.parseInt(portField.getText()));
         Stage stage = (Stage) continueButton.getScene().getWindow();
         stage.close();
     }
