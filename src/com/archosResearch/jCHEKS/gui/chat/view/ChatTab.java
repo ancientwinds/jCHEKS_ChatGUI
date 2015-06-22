@@ -18,18 +18,18 @@ import javafx.scene.layout.*;
  */
 public class ChatTab extends Tab {
 
-    TextField inputField;
-    ListView<AbstractMessage> messagesListView;
-    Button sendButton;
-    AbstractMessage lastMessageSent;
-    Label log;
+    private TextField inputField;
+    private ListView<AbstractMessage> messagesListView;
+    private Button sendButton;
+    private AbstractMessage lastMessageSent;
+    private ListView<String> logListView;
     
     public ChatTab(String contactName) {
         super(contactName);
         this.messagesListView = createOutputNode();
         this.inputField = createInputNode();
         this.sendButton = createSendButton();
-        this.log = new Label();
+        this.logListView = new ListView();
         this.setContent(this.createChatContainer());
         this.setClosable(true);
     }
@@ -57,7 +57,11 @@ public class ChatTab extends Tab {
         if(this.lastMessageSent.getState() == AbstractMessage.State.OK){
             unlock();
         }
-        this.log.setText("State of last message sent: " + this.lastMessageSent.getState().toString());
+        
+    }
+    
+    void log(String logMessage){
+        this.logListView.getItems().add(logMessage);
     }
     
     private void lock(){
@@ -104,7 +108,7 @@ public class ChatTab extends Tab {
         VBox chatContainer = new VBox();
         HBox inputContainer = new HBox();
         chatContainer.getChildren().add(this.messagesListView);
-        chatContainer.getChildren().add(this.log);
+        chatContainer.getChildren().add(this.logListView);
         inputContainer.getChildren().add(this.inputField);
         inputContainer.getChildren().add(new Separator());
         inputContainer.getChildren().add(this.sendButton);

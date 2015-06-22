@@ -20,7 +20,7 @@ public class ChatViewHandler {
 
     private final JavaFxViewController mainController;
 
-    HashMap<String, ChatTab> tabsMap = new HashMap();
+    private HashMap<String, ChatTab> tabsMap = new HashMap();
 
     @FXML
     private MenuItem addContactButton;
@@ -98,6 +98,14 @@ public class ChatViewHandler {
         ChatTab tab = new ChatTab(contactName);
         this.tabsMap.putIfAbsent(contactName, tab);
         this.mainTabPane.getTabs().add(tab);
+    }
+
+    void log(String logMessage, String contactName) {
+        try {
+            this.getTabByName(contactName).log(logMessage);
+        } catch (TabNotFoundException ex) {
+            Logger.getLogger(ChatViewHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     //Package private
