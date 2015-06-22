@@ -32,6 +32,8 @@ public class JavaFxViewController extends Application implements InputOutputMana
     private BorderPane rootLayout;
     private ChatViewHandler chatViewHandler;
     private String currentIp;
+    private String currentName;
+    private int receivingPort;
 
     /**
      * Should never be called. Call getInstance().
@@ -90,7 +92,6 @@ public class JavaFxViewController extends Application implements InputOutputMana
         } catch (TabNotFoundException ex) {
             Logger.getLogger(JavaFxViewController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     @Override
@@ -174,13 +175,16 @@ public class JavaFxViewController extends Application implements InputOutputMana
     void sendNewContactRequest(ContactInfo contactInfo, boolean enableSameIp) {
         if (!contactInfo.getIp().equals(currentIp) | enableSameIp) {
             contactInfo.generateUniqueId(currentIp);
+            contactInfo.generateChaoticSystemName(currentName);
             this.engine.createContact(contactInfo);
         }
     }
 
     //Package private
-    void setIpAndPort(String ip, int port) {
+    void setIpAndPort(String name, String ip, int port) {
         this.currentIp = ip;
+        this.receivingPort = port;
+        this.currentName = name;
         this.engine.setReceivingPort(port);
         this.chatViewHandler.displayInfo(ip, port);
     }
