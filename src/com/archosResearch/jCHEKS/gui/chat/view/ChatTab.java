@@ -61,7 +61,7 @@ public class ChatTab extends Tab {
     }
     
     void log(String logMessage){
-        this.logListView.getItems().add(logMessage);
+        Platform.runLater(() -> this.logListView.getItems().add(logMessage));
     }
     
     private void lock(){
