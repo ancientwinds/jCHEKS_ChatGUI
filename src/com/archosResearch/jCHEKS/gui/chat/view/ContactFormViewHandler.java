@@ -37,7 +37,7 @@ public class ContactFormViewHandler {
     @FXML
     private void handleCreateContact() {
         ContactInfo contactInfo = new ContactInfo(addressField.getText(), Integer.parseInt(portField.getText()), nameField.getText(), "");
-        JavaFxViewController.getInstance().sendNewContactRequest(contactInfo);
+        JavaFxViewController.getInstance().sendNewContactRequest(contactInfo, true);
         Stage stage = (Stage) nameField.getScene().getWindow();
         stage.close();
     }
@@ -53,7 +53,7 @@ public class ContactFormViewHandler {
             HashSet<ContactInfo> contactsInfo = fileManager.loadContacts(selectedFile);
             JavaFxViewController controller = JavaFxViewController.getInstance();
             for (ContactInfo contactInfo : contactsInfo) {
-                controller.sendNewContactRequest(contactInfo);
+                controller.sendNewContactRequest(contactInfo, false);
             }
             Stage stage = (Stage) nameField.getScene().getWindow();
             stage.close();
@@ -69,7 +69,6 @@ public class ContactFormViewHandler {
         } else {
             addressField.setStyle("-fx-text-inner-color: red;");
         }
-
         if (portIsValid) {
             portField.setStyle("-fx-text-inner-color: black;");
         } else {

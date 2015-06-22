@@ -41,8 +41,9 @@ public class JavaFxViewController extends Application implements InputOutputMana
     public JavaFxViewController() throws Exception {
         if (instance == null) {
             setInstance(this);
+        }else{
+            throw new Exception();
         }
-        JavaFxViewController.class.getConstructor().setAccessible(false);
     }
 
     private static void setInstance(JavaFxViewController instance) {
@@ -57,6 +58,7 @@ public class JavaFxViewController extends Application implements InputOutputMana
         return instance;
     }
 
+    @Override
     public void refresh() {
         Platform.runLater(() -> this.chatViewHandler.refreshMessage());
     }
@@ -165,8 +167,8 @@ public class JavaFxViewController extends Application implements InputOutputMana
     }
 
     //Package private
-    void sendNewContactRequest(ContactInfo contactInfo) {
-        if (!contactInfo.getIp().equals(currentIp)) {
+    void sendNewContactRequest(ContactInfo contactInfo, boolean enableSameIp) {
+        if (!contactInfo.getIp().equals(currentIp) | enableSameIp) {
             contactInfo.generateUniqueId(currentIp);
             contactInfo.generateChaoticSystemName(currentName);
             this.engine.createContact(contactInfo);
