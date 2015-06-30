@@ -19,6 +19,9 @@
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#handleNewContactButton" text="Add new contact" />
                     </items>
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#handleSelectFile" text="Load address book" />
+                    </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
