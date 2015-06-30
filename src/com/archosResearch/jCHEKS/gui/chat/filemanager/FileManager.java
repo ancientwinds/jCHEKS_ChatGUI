@@ -23,7 +23,7 @@ public class FileManager {
         this.writeToFile(this.generateJSON(contacts), fileName);
     }
 
-    public HashSet<ContactInfo> loadContacts(File file) {
+    public HashSet<ContactInfo> loadContacts(File file, String ownName) {
 
         HashSet<ContactInfo> contactList = new HashSet<ContactInfo>() {
         };
@@ -38,9 +38,9 @@ public class FileManager {
                 String contactName = (String) ((JSONObject) contact).get("name");
                 String ipAddress = (String) ((JSONObject) contact).get("ip");
                 int port = ((Long) ((JSONObject) contact).get("port")).intValue();
-                String uniqueId = (String) ((JSONObject) contact).get("unid");
-                
-                ContactInfo contactInfo = new ContactInfo(ipAddress, port, contactName, uniqueId);
+                String receivingSystem = generateChaoticSystemName(contactName, ownName);
+                String sendingSystem = generateChaoticSystemName(ownName, contactName);
+                ContactInfo contactInfo = new ContactInfo(ipAddress, port, contactName, receivingSystem, sendingSystem);
                 contactList.add(contactInfo);
             }
 
@@ -49,7 +49,13 @@ public class FileManager {
         }
         return contactList;
     }
-
+    
+    public String generateChaoticSystemName(String contactNameLeft, String contactNameRight) {
+        contactNameLeft = contactNameLeft.replace("-", "");
+        contactNameRight = contactNameRight.replace("-", "");
+        return contactNameLeft + "-" + contactNameRight + ".xml";
+    }
+    
     private void writeToFile(String content, String fileName) {
         try (Writer writer = new BufferedWriter(new OutputStreamWriter(
                 new FileOutputStream(fileName), "utf-8"))) {
@@ -74,7 +80,6 @@ public class FileManager {
             obj.put("name", contact.getName());
             obj.put("ip", contact.getIp());
             obj.put("port", contact.getPort());
-            obj.put("unid", contact.getUniqueId());
 
             contactArray.add(obj);
         }

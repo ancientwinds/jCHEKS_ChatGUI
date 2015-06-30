@@ -174,11 +174,10 @@ public class JavaFxViewController extends Application implements InputOutputMana
     //Package private
     void sendNewContactRequest(ContactInfo contactInfo, boolean enableSameIp) {
         if (!contactInfo.getIp().equals(currentIp) | enableSameIp) {
-            contactInfo.generateUniqueId(currentIp);
-            contactInfo.generateChaoticSystemName(currentName);
             this.engine.createContact(contactInfo);
         }
     }
+    
 
     //Package private
     void setIpAndPort(String name, String ip, int port) {
@@ -188,5 +187,9 @@ public class JavaFxViewController extends Application implements InputOutputMana
         this.engine.setReceivingPort(port);
         this.chatViewHandler.displayInfo(ip, port);
     }
-
+    
+    //Package private 
+    String getName(){
+        return this.currentName;
+    }
 }

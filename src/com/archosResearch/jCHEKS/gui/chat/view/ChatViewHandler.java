@@ -68,7 +68,7 @@ public class ChatViewHandler {
         File selectedFile = fileChooser.showOpenDialog((Stage) infoLabel.getScene().getWindow());
         if (selectedFile != null) {
             FileManager fileManager = new FileManager();
-            HashSet<ContactInfo> contactsInfo = fileManager.loadContacts(selectedFile);
+            HashSet<ContactInfo> contactsInfo = fileManager.loadContacts(selectedFile, mainController.getName());
             for (ContactInfo contactInfo : contactsInfo) {
                 mainController.sendNewContactRequest(contactInfo, false);
             }

@@ -40,14 +40,11 @@ public class ContactFormViewHandler {
 
     @FXML
     private void handleCreateContact() {
-        ContactInfo contactInfo = new ContactInfo(addressField.getText(), Integer.parseInt(portField.getText()), nameField.getText(), "");
+        ContactInfo contactInfo = new ContactInfo(addressField.getText(), Integer.parseInt(portField.getText()), nameField.getText(), inSysId.getText(), outSysId.getText());
         JavaFxViewController.getInstance().sendNewContactRequest(contactInfo, true);
         Stage stage = (Stage) nameField.getScene().getWindow();
         stage.close();
     }
-
-    
-    
     
     @FXML
     private void setInSysId(){
@@ -56,7 +53,7 @@ public class ContactFormViewHandler {
         fileChooser.getExtensionFilters().addAll(new ExtensionFilter("Chaotic system files", "*.json", "*.xml"));
         File selectedFile = fileChooser.showOpenDialog((Stage) nameField.getScene().getWindow());
         if (selectedFile != null) {
-            inSysId.setText(selectedFile.getAbsolutePath());
+            inSysId.setText(selectedFile.getName());
             validate();
         }
     }
@@ -65,10 +62,11 @@ public class ContactFormViewHandler {
     private void setOutSysId(){
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select system file (out)");
+        fileChooser.setInitialDirectory(new File("system/"));
         fileChooser.getExtensionFilters().addAll(new ExtensionFilter("Chaotic system files", "*.json", "*.xml"));
         File selectedFile = fileChooser.showOpenDialog((Stage) nameField.getScene().getWindow());
         if (selectedFile != null) {
-            outSysId.setText(selectedFile.getAbsolutePath());
+            outSysId.setText(selectedFile.getName());
             validate();
         }
     }
