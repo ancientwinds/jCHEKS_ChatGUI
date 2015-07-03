@@ -56,6 +56,17 @@ public class ChatViewHandler {
             e.printStackTrace();
         }
     }
+    
+    @FXML
+    private void handleGenerateButton() {
+        try {
+            Pane generateLayout = (Pane) this.mainController.loadFxml("SystemGenerator.fxml");
+            generateLayout.setPadding(new Insets(15));
+            this.mainController.addPopup(new Scene(generateLayout, 300, 200), "Generate Chaotic System", false);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     private ChatTab getTabByName(String contactName) throws TabNotFoundException {
         ChatTab tab = tabsMap.get(contactName);
