@@ -12,7 +12,7 @@
             <Label text="Key Length" />
             <Label text="System Id" GridPane.rowIndex="1" />
             <Label disable="true" text="Max Level" GridPane.rowIndex="2" />
-            <TextField fx:id="keyLengthField" GridPane.columnIndex="1" />
+            <TextField fx:id="keyLengthField" promptText="ex. 128, 256, ..." GridPane.columnIndex="1" />
             <TextField fx:id="systemIdField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
          <columnConstraints>

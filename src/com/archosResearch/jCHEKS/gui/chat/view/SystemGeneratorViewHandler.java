@@ -1,18 +1,11 @@
 package com.archosResearch.jCHEKS.gui.chat.view;
 
-import com.archosResearch.jCHEKS.chaoticSystem.ChaoticSystem;
-import com.archosResearch.jCHEKS.chaoticSystem.FileReader;
-import com.archosResearch.jCHEKS.concept.chaoticSystem.AbstractChaoticSystem;
-import com.archosResearch.jCHEKS.concept.ioManager.ContactInfo;
+import com.archosResearch.jCHEKS.chaoticSystem.*;
 import java.io.File;
-import java.util.HashSet;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.logging.*;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
+import javafx.stage.*;
 
 /**
  *
@@ -35,7 +28,7 @@ public class SystemGeneratorViewHandler {
         if (selectedFile != null) {
             try {
                 FileReader fileReader = new FileReader();
-                ChaoticSystem chaoticSystem = new ChaoticSystem(Integer.parseInt(keyLengthField.getText()));
+                ChaoticSystem chaoticSystem = new ChaoticSystem(Integer.parseInt(keyLengthField.getText()), systemIdField.getText());
                 
                 fileReader.saveChaoticSystem(selectedFile.getName(), chaoticSystem);
                 
