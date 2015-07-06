@@ -16,11 +16,12 @@ public class SystemGeneratorViewHandler {
     @FXML
     private TextField keyLengthField;
     @FXML
-    private TextField systemIdField;
+    private TextField systemIdField;    
+    @FXML
+    private TextField seedField;
     
     @FXML
     private void handleCreateAndSave() {
-        System.out.println("gfdgfd");
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save Location.");
         
@@ -28,8 +29,12 @@ public class SystemGeneratorViewHandler {
         if (selectedFile != null) {
             try {
                 FileReader fileReader = new FileReader();
-                ChaoticSystem chaoticSystem = new ChaoticSystem(Integer.parseInt(keyLengthField.getText()), systemIdField.getText());
-                
+                ChaoticSystem chaoticSystem;
+                if(seedField.getText().length() > 0) {
+                    chaoticSystem = new ChaoticSystem(Integer.parseInt(keyLengthField.getText()), systemIdField.getText(), seedField.getText());
+                } else {
+                    chaoticSystem = new ChaoticSystem(Integer.parseInt(keyLengthField.getText()), systemIdField.getText());
+                }                
                 fileReader.saveChaoticSystem(selectedFile.getName(), chaoticSystem);
                 
                 Stage stage = (Stage) keyLengthField.getScene().getWindow();
