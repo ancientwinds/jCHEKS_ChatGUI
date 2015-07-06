@@ -61,6 +61,16 @@ public class ChatViewHandler {
     }
     
     @FXML
+    private void handleGenerateButton() {
+        try {
+            Pane generateLayout = (Pane) this.mainController.loadFxml("SystemGenerator.fxml");
+            generateLayout.setPadding(new Insets(15));
+            this.mainController.addPopup(new Scene(generateLayout, 300, 300), "Generate Chaotic System", false);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void handleSelectFile() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Load contact list.");
