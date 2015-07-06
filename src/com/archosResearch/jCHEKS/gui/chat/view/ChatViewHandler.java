@@ -3,14 +3,17 @@ package com.archosResearch.jCHEKS.gui.chat.view;
 import com.archosResearch.jCHEKS.gui.chat.view.exception.SelectedTabException;
 import com.archosResearch.jCHEKS.gui.chat.view.exception.TabNotFoundException;
 import com.archosResearch.jCHEKS.concept.engine.message.*;
-import java.io.IOException;
-import java.util.HashMap;
+import com.archosResearch.jCHEKS.concept.ioManager.ContactInfo;
+import com.archosResearch.jCHEKS.gui.chat.filemanager.FileManager;
+import java.io.*;
+import java.util.*;
 import java.util.logging.*;
 import javafx.fxml.*;
 import javafx.geometry.Insets;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.stage.*;
 
 /**
  *
@@ -20,7 +23,7 @@ public class ChatViewHandler {
 
     private final JavaFxViewController mainController;
 
-    private HashMap<String, ChatTab> tabsMap = new HashMap();
+    private final HashMap<String, ChatTab> tabsMap = new HashMap();
 
     @FXML
     private MenuItem addContactButton;
@@ -51,12 +54,26 @@ public class ChatViewHandler {
         try {
             Pane aboutLayout = (Pane) this.mainController.loadFxml("ContactForm.fxml");
             aboutLayout.setPadding(new Insets(15));
-            this.mainController.addPopup(new Scene(aboutLayout, 300, 200), "Create new contact", false);
+            this.mainController.addPopup(new Scene(aboutLayout), "Create new contact", false);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
+    
+    @FXML
+    private void handleSelectFile() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Load contact list.");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Json Files", "*.json"));
+        File selectedFile = fileChooser.showOpenDialog((Stage) infoLabel.getScene().getWindow());
+        if (selectedFile != null) {
+            FileManager fileManager = new FileManager();
+            HashSet<ContactInfo> contactsInfo = fileManager.loadContacts(selectedFile, mainController.getName());
+            for (ContactInfo contactInfo : contactsInfo) {
+                mainController.sendNewContactRequest(contactInfo, false);
+            }
+        }
+    }
     private ChatTab getTabByName(String contactName) throws TabNotFoundException {
         ChatTab tab = tabsMap.get(contactName);
         if (tab != null) {

@@ -30,11 +30,11 @@ public class ConfigViewHandler {
         boolean portIsValid = portField.getText().matches("^0*(?:6553[0-5]|655[0-2][0-9]|65[0-4][0-9]{2}|6[0-4][0-9]{3}|[1-5][0-9]{4}|[1-9][0-9]{1,3}|[0-9])$");
         ipAddressField.setStyle(getValidationStyle(ipIsValid));
         portField.setStyle(getValidationStyle(portIsValid));
-        continueButton.setDisable(!ipIsValid | !portIsValid);
+        continueButton.setDisable(!(ipIsValid & portIsValid & !nameField.getText().isEmpty()));
     }
     
-    private String getValidationStyle(boolean isValid){
-        return "-fx-text-inner-color: " + (isValid ? "black;" : "red;");
+        private String getValidationStyle(boolean isValid){
+        return "-fx-control-inner-background: " + (isValid ? "white;" : "#FFC2C2;");
     }
     
     @FXML
