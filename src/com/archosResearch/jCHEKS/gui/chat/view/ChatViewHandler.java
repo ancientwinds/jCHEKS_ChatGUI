@@ -71,6 +71,7 @@ public class ChatViewHandler {
         }
     }
 
+    @FXML
     private void handleSelectFile() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Load contact list.");
