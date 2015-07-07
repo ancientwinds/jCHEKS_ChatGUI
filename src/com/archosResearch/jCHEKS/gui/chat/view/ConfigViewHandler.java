@@ -1,9 +1,7 @@
 package com.archosResearch.jCHEKS.gui.chat.view;
 
-import com.archosResearch.jCHEKS.concept.engine.message.IncomingMessage;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 /**

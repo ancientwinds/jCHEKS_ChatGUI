@@ -2,13 +2,11 @@ package com.archosResearch.jCHEKS.gui.chat.view;
 
 import com.archosResearch.jCHEKS.concept.engine.message.AbstractMessage;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.collections.*;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.image.*;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
 
@@ -18,11 +16,11 @@ import javafx.scene.layout.*;
  */
 public class ChatTab extends Tab {
 
-    private TextField inputField;
-    private ListView<AbstractMessage> messagesListView;
-    private Button sendButton;
+    private final TextField inputField;
+    private final ListView<AbstractMessage> messagesListView;
+    private final Button sendButton;
     private AbstractMessage lastMessageSent;
-    private ListView<String> logListView;
+    private final ListView<String> logListView;
     
     public ChatTab(String contactName) {
         super(contactName);
@@ -94,14 +92,14 @@ public class ChatTab extends Tab {
     }
     
     private Button createSendButton() {
-        Button sendButton = new Button();
-        sendButton.setText("Send");
-        sendButton.setMinWidth(100);
-        sendButton.setOnAction((ActionEvent e) -> {
+        Button newSendButton = new Button();
+        newSendButton.setText("Send");
+        newSendButton.setMinWidth(100);
+        newSendButton.setOnAction((ActionEvent e) -> {
             JavaFxViewController.getInstance().forwardOutgoingMessage(inputField.getText(), this.getText());
             updateInputField();
         });
-        return sendButton;
+        return newSendButton;
     }
 
     private Node createChatContainer() {

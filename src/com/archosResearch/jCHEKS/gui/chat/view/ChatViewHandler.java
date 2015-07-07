@@ -126,7 +126,8 @@ public class ChatViewHandler {
         this.tabsMap.putIfAbsent(contactName, tab);
         this.mainTabPane.getTabs().add(tab);
     }
-
+    
+    //Package private
     void log(String logMessage, String contactName) {
         try {
             this.getTabByName(contactName).log(logMessage);
