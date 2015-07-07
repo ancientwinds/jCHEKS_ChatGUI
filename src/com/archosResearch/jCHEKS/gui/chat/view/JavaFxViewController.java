@@ -9,14 +9,12 @@ import com.sun.javafx.application.HostServicesDelegate;
 
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.logging.*;
 import javafx.application.*;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 import javafx.stage.*;
 
 /**

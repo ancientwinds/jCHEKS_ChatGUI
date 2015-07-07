@@ -25,8 +25,7 @@ public class FileManager {
 
     public HashSet<ContactInfo> loadContacts(File file) {
 
-        HashSet<ContactInfo> contactList = new HashSet<ContactInfo>() {
-        };
+        HashSet<ContactInfo> contactList = new HashSet();
 
         JSONParser parser = new JSONParser();
         try {
