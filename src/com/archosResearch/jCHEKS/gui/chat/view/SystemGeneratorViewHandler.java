@@ -28,14 +28,13 @@ public class SystemGeneratorViewHandler {
         File selectedFile = fileChooser.showSaveDialog((Stage) keyLengthField.getScene().getWindow());
         if (selectedFile != null) {
             try {
-                FileReader fileReader = new FileReader();
                 ChaoticSystem chaoticSystem;
                 if(seedField.getText().length() > 0) {
                     chaoticSystem = new ChaoticSystem(Integer.parseInt(keyLengthField.getText()), systemIdField.getText(), seedField.getText());
                 } else {
                     chaoticSystem = new ChaoticSystem(Integer.parseInt(keyLengthField.getText()), systemIdField.getText());
                 }                
-                fileReader.saveChaoticSystem(selectedFile.getName(), chaoticSystem);
+                FileReader.saveChaoticSystem(selectedFile.getName(), chaoticSystem);
                 
                 Stage stage = (Stage) keyLengthField.getScene().getWindow();
                 stage.close();
