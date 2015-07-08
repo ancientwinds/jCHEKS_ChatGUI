@@ -5,6 +5,7 @@ import java.io.File;
 import java.util.Random;
 import java.util.logging.*;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.*;
 
@@ -20,6 +21,8 @@ public class SystemGeneratorViewHandler {
     private TextField systemIdField;    
     @FXML
     private TextField seedField;
+    @FXML
+    private Button createSystemButton;
     
     @FXML
     private void handleCreateAndSave() {
@@ -44,5 +47,16 @@ public class SystemGeneratorViewHandler {
             }
         }
     }
+    
+    @FXML
+    private void validate() {
+        boolean keyLenghtIsValid = !keyLengthField.getText().isEmpty() & keyLengthField.getText().matches("^[0-9]*$");
+        boolean keyPlusIdIsValdid =  !systemIdField.getText().isEmpty() & keyLenghtIsValid;
+        boolean keyPlusSeedIsValdid =  !seedField.getText().isEmpty() & keyLenghtIsValid;
+        boolean buttonEnabled = keyPlusIdIsValdid || keyPlusSeedIsValdid;
+        
+        createSystemButton.setDisable(!buttonEnabled);
+    }
+    
     
 }

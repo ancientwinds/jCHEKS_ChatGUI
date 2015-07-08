@@ -9,13 +9,13 @@
    <center>
       <GridPane hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Key Length" />
-            <Label text="System Id" GridPane.rowIndex="1" />
+            <Label text="Key Length*" />
+            <Label text="System Id**" GridPane.rowIndex="1" />
             <Label disable="true" text="Max Level" GridPane.rowIndex="2" />
-            <TextField fx:id="keyLengthField" promptText="ex. 128, 256, ..." GridPane.columnIndex="1" />
-            <TextField fx:id="systemIdField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label text="Seed" GridPane.rowIndex="3" />
-            <TextField fx:id="seedField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="keyLengthField" onKeyReleased="#validate" promptText="ex. 128, 256, ..." GridPane.columnIndex="1" />
+            <TextField fx:id="systemIdField" onKeyReleased="#validate" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Seed**" GridPane.rowIndex="3" />
+            <TextField fx:id="seedField" onKeyReleased="#validate" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -36,6 +36,19 @@
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
    <bottom>
-      <Button mnemonicParsing="false" onAction="#handleCreateAndSave" text="Create and save System" BorderPane.alignment="CENTER" />
+      <VBox prefHeight="109.0" prefWidth="260.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="* Keylenght is required." />
+            <Label prefHeight="64.0" prefWidth="260.0" text="** If you specify a seed only the key length and the seed will be use to generate the system." wrapText="true">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Label>
+            <Button fx:id="createSystemButton" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#handleCreateAndSave" prefHeight="26.0" prefWidth="260.0" text="Create and save System" />
+         </children>
+         <BorderPane.margin>
+            <Insets top="20.0" />
+         </BorderPane.margin>
+      </VBox>
    </bottom>
 </BorderPane>
