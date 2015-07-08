@@ -2,6 +2,7 @@ package com.archosResearch.jCHEKS.gui.chat.view;
 
 import com.archosResearch.jCHEKS.chaoticSystem.*;
 import java.io.File;
+import java.util.Random;
 import java.util.logging.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -30,7 +31,7 @@ public class SystemGeneratorViewHandler {
             try {
                 ChaoticSystem chaoticSystem;
                 if(seedField.getText().length() > 0) {
-                    chaoticSystem = new ChaoticSystem(Integer.parseInt(keyLengthField.getText()), systemIdField.getText(), seedField.getText());
+                    chaoticSystem = new ChaoticSystem(Integer.parseInt(keyLengthField.getText()), new Random(seedField.getText().hashCode()));
                 } else {
                     chaoticSystem = new ChaoticSystem(Integer.parseInt(keyLengthField.getText()), systemIdField.getText());
                 }                
