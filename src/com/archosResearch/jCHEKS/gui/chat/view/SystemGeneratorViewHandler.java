@@ -34,9 +34,9 @@ public class SystemGeneratorViewHandler {
             try {
                 ChaoticSystem chaoticSystem;
                 if(seedField.getText().length() > 0) {
-                    chaoticSystem = new ChaoticSystem(Integer.parseInt(keyLengthField.getText()), new Random(seedField.getText().hashCode()));
+                    chaoticSystem = new CryptoChaoticSystem(Integer.parseInt(keyLengthField.getText()), new Random(seedField.getText().hashCode()));
                 } else {
-                    chaoticSystem = new ChaoticSystem(Integer.parseInt(keyLengthField.getText()), systemIdField.getText());
+                    chaoticSystem = new CryptoChaoticSystem(Integer.parseInt(keyLengthField.getText()), systemIdField.getText());
                 }                
                 FileReader.saveChaoticSystem(selectedFile.getName(), chaoticSystem);
                 
